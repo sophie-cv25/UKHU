@@ -1,0 +1,7 @@
+{
+  "name": "UKHU",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
