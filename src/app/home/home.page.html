@@ -2,19 +2,28 @@
   <ion-toolbar>
     <ion-title>
       Blank
+
+
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-button shape="round" color="warning">UKHU</ion-button>
+  <ion-button shape="round" color="warning"  fill="outline">UKHU</ion-button>
+  <ion-button shape="round" color="success">UKHU</ion-button>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
-
+  <app-input1></app-input1>
+  <app-input2 [labelText2]="'Texto:'"></app-input2>
+  <app-card-notificacion></app-card-notificacion>
+  <app-card></app-card>
+  <app-card-2></app-card-2>
+  <app-tab-bar></app-tab-bar>
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
   </div>
 </ion-content>

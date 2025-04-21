@@ -1,0 +1,6 @@
+ion-tab-bar ion-label:hover {
+    pointer-events: none; /* Desactiva la interacción */
+    color: inherit; /* Mantén el color predeterminado sin cambios */
+    text-decoration: none; /* Sin subrayado o efectos adicionales */
+  }
+  
