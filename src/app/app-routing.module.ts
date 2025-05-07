@@ -15,10 +15,10 @@ const routes: Routes = [
     path: 'eventos',
     loadChildren: () => import('./pages/eventos/eventos.module').then( m => m.EventosPageModule)
   },
-  {
-    path: 'buscar',
-    loadChildren: () => import('./pages/buscar/buscar.module').then( m => m.BuscarPageModule)
-  },
+  // {
+  //   path: 'buscar',
+  //   loadChildren: () => import('./pages/busqueda/buscar.module').then( m => m.BuscarPageModule)
+  // },
   {
     path: 'puntos',
     loadChildren: () => import('./pages/puntos/puntos.module').then( m => m.PuntosPageModule)
