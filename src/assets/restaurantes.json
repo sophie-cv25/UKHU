@@ -1,0 +1,188 @@
+[
+  {
+    "nombre": "La Terraza",
+    "descripcion": "Restaurante con una vista increíble y una selección de comida internacional.",
+    "ubicacion": "Av. 16 de Julio, La Paz, Bolivia",
+    "categoria": "Internacional",
+    "horario": {
+      "apertura": "08:00",
+      "cierre": "23:00"
+    },
+    "imagen_perfil": "https://example.com/images/la-terraza.jpg",
+    "menu": [
+      {
+        "nombre": "Lomo Saltado",
+        "precio": 12.50,
+        "descripcion": "Plato peruano con carne de res, papas fritas y arroz.",
+        "imagen": "https://example.com/images/lomo-saltado.jpg"
+      },
+      {
+        "nombre": "Ensalada César",
+        "precio": 8.00,
+        "descripcion": "Lechuga fresca, aderezo césar, pollo a la parrilla y queso parmesano.",
+        "imagen": "https://example.com/images/ensalada-cesar.jpg"
+      },
+      {
+        "nombre": "Tiramisu",
+        "precio": 6.50,
+        "descripcion": "Postre italiano con café, queso mascarpone y cacao.",
+        "imagen": "https://example.com/images/tiramisu.jpg"
+      }
+    ]
+  },
+  {
+    "nombre": "El Fogón",
+    "descripcion": "Especialidad en parrilladas y cortes premium de carne.",
+    "ubicacion": "Calle Sagárnaga, La Paz, Bolivia",
+    "categoria": "Parrillada",
+    "horario": {
+      "apertura": "12:00",
+      "cierre": "22:30"
+    },
+    "imagen_perfil": "https://example.com/images/el-fogon.jpg",
+    "menu": [
+      {
+        "nombre": "Bife de Chorizo",
+        "precio": 18.00,
+        "descripcion": "Corte jugoso de carne acompañado de papas y ensalada.",
+        "imagen": "https://example.com/images/bife-chorizo.jpg"
+      },
+      {
+        "nombre": "Milanesa Napolitana",
+        "precio": 15.00,
+        "descripcion": "Milanesa de pollo con salsa de tomate, jamón y queso gratinado.",
+        "imagen": "https://example.com/images/milanesa-napolitana.jpg"
+      },
+      {
+        "nombre": "Papas Criollas",
+        "precio": 5.00,
+        "descripcion": "Papas pequeñas doradas con especias y salsa de ajo.",
+        "imagen": "https://example.com/images/papas-criollas.jpg"
+      }
+    ]
+  },
+  {
+    "nombre": "Sushi Express",
+    "descripcion": "Una experiencia de sushi auténtico con ingredientes frescos.",
+    "ubicacion": "Zona Sur, La Paz, Bolivia",
+    "categoria": "Sushi",
+    "horario": {
+      "apertura": "11:00",
+      "cierre": "21:00"
+    },
+    "imagen_perfil": "https://example.com/images/sushi-express.jpg",
+    "menu": [
+      {
+        "nombre": "Roll de Salmón",
+        "precio": 14.00,
+        "descripcion": "Salmón fresco, aguacate y arroz envuelto en alga nori.",
+        "imagen": "https://example.com/images/roll-salmon.jpg"
+      },
+      {
+        "nombre": "Nigiri de Atún",
+        "precio": 10.00,
+        "descripcion": "Arroz de sushi con una delicada pieza de atún.",
+        "imagen": "https://example.com/images/nigiri-atun.jpg"
+      },
+      {
+        "nombre": "Tempura de Camarón",
+        "precio": 12.00,
+        "descripcion": "Camarones crujientes en tempura con salsa especial.",
+        "imagen": "https://example.com/images/tempura-camaron.jpg"
+      }
+    ]
+  },
+  {
+    "nombre": "Café Aroma",
+    "descripcion": "Un acogedor café especializado en postres y café artesanal.",
+    "ubicacion": "Av. Arce, La Paz, Bolivia",
+    "categoria": "Cafetería",
+    "horario": {
+      "apertura": "07:00",
+      "cierre": "20:00"
+    },
+    "imagen_perfil": "https://example.com/images/cafe-aroma.jpg",
+    "menu": [
+      {
+        "nombre": "Café Espresso",
+        "precio": 3.00,
+        "descripcion": "Café puro con un sabor intenso y aroma fuerte.",
+        "imagen": "https://example.com/images/cafe-espresso.jpg"
+      },
+      {
+        "nombre": "Tarta de Chocolate",
+        "precio": 7.00,
+        "descripcion": "Delicioso pastel de chocolate con cobertura de ganache.",
+        "imagen": "https://example.com/images/tarta-chocolate.jpg"
+      },
+      {
+        "nombre": "Croissant de Almendra",
+        "precio": 5.50,
+        "descripcion": "Croissant relleno de crema de almendra y cubierto con azúcar glas.",
+        "imagen": "https://example.com/images/croissant-almendra.jpg"
+      }
+    ]
+  },
+  {
+    "nombre": "Pasta Bella",
+    "descripcion": "Auténtica comida italiana con ingredientes frescos y recetas tradicionales.",
+    "ubicacion": "Calle Jaén, La Paz, Bolivia",
+    "categoria": "Italiana",
+    "horario": {
+      "apertura": "12:00",
+      "cierre": "22:00"
+    },
+    "imagen_perfil": "https://example.com/images/pasta-bella.jpg",
+    "menu": [
+      {
+        "nombre": "Spaghetti alla Carbonara",
+        "precio": 14.00,
+        "descripcion": "Pasta italiana con salsa de huevo, queso, panceta y pimienta.",
+        "imagen": "https://example.com/images/spaghetti-carbonara.jpg"
+      },
+      {
+        "nombre": "Lasagna Bolognese",
+        "precio": 16.50,
+        "descripcion": "Capas de pasta con ragú de carne, bechamel y queso gratinado.",
+        "imagen": "https://example.com/images/lasagna-bolognese.jpg"
+      },
+      {
+        "nombre": "Tiramisù",
+        "precio": 8.00,
+        "descripcion": "Postre italiano con café, mascarpone y cacao.",
+        "imagen": "https://example.com/images/tiramisu.jpg"
+      }
+    ]
+  },
+  {
+    "nombre": "La Parrilla Real",
+    "descripcion": "Especialistas en carnes a la parrilla con los mejores cortes y sabor.",
+    "ubicacion": "Zona Calacoto, La Paz, Bolivia",
+    "categoria": "Parrillada",
+    "horario": {
+      "apertura": "11:30",
+      "cierre": "23:00"
+    },
+    "imagen_perfil": "https://example.com/images/la-parrilla-real.jpg",
+    "menu": [
+      {
+        "nombre": "Costillas BBQ",
+        "precio": 22.00,
+        "descripcion": "Costillas de cerdo con salsa barbacoa, acompañadas de ensalada y papas.",
+        "imagen": "https://example.com/images/costillas-bbq.jpg"
+      },
+      {
+        "nombre": "Chorizo Criollo",
+        "precio": 9.00,
+        "descripcion": "Chorizo artesanal servido con pan y chimichurri.",
+        "imagen": "https://example.com/images/chorizo-criollo.jpg"
+      },
+      {
+        "nombre": "Filete Angus",
+        "precio": 25.00,
+        "descripcion": "Filete de carne Angus acompañado de vegetales asados.",
+        "imagen": "https://example.com/images/filete-angus.jpg"
+      }
+    ]
+  }
+]

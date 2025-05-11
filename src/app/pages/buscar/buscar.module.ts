@@ -5,13 +5,15 @@ import { IonicModule } from '@ionic/angular';
 import { BuscarPageRoutingModule } from './buscar-routing.module';
 import { BuscarPage } from './buscar.page';
 import { TabBarComponent } from 'src/app/componentes/tab-bar/tab-bar.component';
+import { SharedModule } from 'src/app/modulos/shared/shared.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     BuscarPageRoutingModule,
-    TabBarComponent
+    TabBarComponent,
+    SharedModule
   ],
   declarations: [BuscarPage]
 })
