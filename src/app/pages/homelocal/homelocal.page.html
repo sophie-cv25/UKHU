@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Home-Local</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="home-local">
+  <!-- Logo -->
+  <div class="logo-container">
+    <img src="assets/images/logo-ukhu.png" alt="UKHU Logo" class="logo" />
+  </div>
+
+  <!-- Reseña -->
+  <div class="review-card">
+    <ion-icon name="person-circle-outline"></ion-icon>
+    <div class="review-content">
+      <h3>Gianis <ion-icon name="star" color="warning"></ion-icon><ion-icon name="star" color="warning"></ion-icon><ion-icon name="star" color="warning"></ion-icon><ion-icon name="star" color="warning"></ion-icon><ion-icon name="star" color="warning"></ion-icon></h3>
+      <p>El pollo estaba rico, las papas secas</p>
+    </div>
+  </div>
+
+  <!-- Ranking y Estado -->
+  <div class="ranking-status">
+    <!-- Ranking -->
+    <div class="ranking-card">
+      <h3>Ranking</h3>
+      <img src="assets/images/chicken-logo.png" alt="Chicken Logo" class="ranking-logo" />
+      <p>Pollo Frito Sophie</p>
+      <span class="ranking-score">7</span>
+    </div>
+
+    <!-- Estado -->
+    <div class="status-card">
+      <h3>Cerrado</h3>
+      <ion-toggle color="danger"></ion-toggle>
+      <ion-button expand="block" color="danger" class="generate-code-btn">Generar Código</ion-button>
+    </div>
+  </div>
+</ion-content>

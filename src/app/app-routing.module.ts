@@ -34,7 +34,15 @@ const routes: Routes = [
   {
     path: 'sign-up',
     loadChildren: () => import('./pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
+  },  {
+    path: 'homeusuario',
+    loadChildren: () => import('./pages/homeusuario/homeusuario.module').then( m => m.HomeusuarioPageModule)
   },
+  {
+    path: 'homelocal',
+    loadChildren: () => import('./pages/homelocal/homelocal.module').then( m => m.HomelocalPageModule)
+  },
+
 ];
 
 @NgModule({
