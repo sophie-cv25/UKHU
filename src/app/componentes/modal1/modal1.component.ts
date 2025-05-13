@@ -6,10 +6,8 @@ import { IonicModule } from '@ionic/angular';
   selector: 'app-modal1',
   templateUrl: './modal1.component.html',
   styleUrls: ['./modal1.component.scss'],
-  standalone:true,
-  imports: [
-    IonicModule,
-  ]
+  standalone:false,
+
 })
 export class Modal1Component  implements OnInit {
 

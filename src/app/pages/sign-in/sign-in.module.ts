@@ -5,13 +5,15 @@ import { IonicModule } from '@ionic/angular';
 import { SignInPageRoutingModule } from './sign-in-routing.module';
 import { SignInPage } from './sign-in.page';
 import { SharedModule } from 'src/app/modulos/shared/shared.module';
+import { Router, RouterLink } from '@angular/router';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     SignInPageRoutingModule,
-    SharedModule
+    SharedModule,
+    RouterLink
   ],
   declarations: [SignInPage]
 })
