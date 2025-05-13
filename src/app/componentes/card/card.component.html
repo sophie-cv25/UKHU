@@ -1,9 +1,9 @@
 <div class="card-container">
   <figure class="imagendecard">
-
+    <img [src]="'assets/images/' + restaurante.imagen" alt="{{ restaurante.nombre }}" />
   </figure>
   <section class="infocard">
-    <h4>Nombre del restaurante</h4>
-    <h4>Ubicación</h4>
+    <h4>{{ restaurante.nombre }}</h4>
+    <h4>{{ restaurante.ubicacion }}</h4>
   </section>
 </div>

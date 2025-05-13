@@ -37,6 +37,21 @@
     </ion-card>
   </div>
 
+  <!-- CARRUSEL -->
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <swiper-container [options]="slideOpts" style="height: 300px">
+          <swiper-slide *ngFor="let restaurante of restaurantes">
+            <app-card [restaurante]="restaurante"></app-card> <!-- Pasamos el objeto al componente -->
+          </swiper-slide>
+        </swiper-container>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <!-- Sección: Recién visitados -->
   <div class="section">
     <h2>Recién visitados</h2>

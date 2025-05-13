@@ -7,14 +7,30 @@ import { CardComponent } from 'src/app/componentes/card/card.component';
 import { Card2Component } from 'src/app/componentes/card-2/card-2.component';
 import { CardNotificacionComponent } from 'src/app/componentes/card-notificacion/card-notificacion.component';
 import { MapComponent } from 'src/app/componentes/map/map.component';
-
+import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
-  declarations: [Input1Component,Input2Component,CardComponent,Card2Component,CardNotificacionComponent,MapComponent],
-  exports:[Input1Component,Input2Component,CardComponent,Card2Component,CardNotificacionComponent,MapComponent,],
+  declarations: [
+    Input1Component,
+    Input2Component,
+    CardComponent,
+    Card2Component,
+    CardNotificacionComponent,
+    MapComponent
+  ],
+  exports:[
+    Input1Component,
+    Input2Component,
+    CardComponent,
+    Card2Component,
+    CardNotificacionComponent,
+    MapComponent,
+  IonicModule
+],
   imports: [
-    CommonModule
+    CommonModule,
+    IonicModule
   ]
 })
 export class SharedModule { }
