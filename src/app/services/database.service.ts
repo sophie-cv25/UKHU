@@ -62,8 +62,9 @@ export class DatabaseService {
 
   // Obtener documento por ID
   getDocumentById(collection: string, uid: string): Observable<any> {
-    return runInInjectionContext(this.injector, () => {
-      return this.firestore.collection(collection).doc(uid).valueChanges({ idField: 'id' });
-    });
-  }
+  return runInInjectionContext(this.injector, () => {
+    return this.firestore.collection(collection).doc(uid).snapshotChanges();
+  });
+}
+
 }

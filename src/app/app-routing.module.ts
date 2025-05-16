@@ -48,6 +48,12 @@ const routes: Routes = [
     path: 'forgot-pasword',
     loadChildren: () => import('./pages/forgot-pasword/forgot-pasword.module').then( m => m.ForgotPaswordPageModule)
   },
+  {
+  path: 'restaurante-detalle/:id', // Se agrega ":id" como parámetro dinámico
+  loadChildren: () => import('./pages/restaurante-detalle/restaurante-detalle.module').then(m => m.RestauranteDetallePageModule)
+  },
+
+
 
 ];
 
