@@ -7,7 +7,9 @@ import { CardComponent } from 'src/app/componentes/card/card.component';
 import { Card2Component } from 'src/app/componentes/card-2/card-2.component';
 import { CardNotificacionComponent } from 'src/app/componentes/card-notificacion/card-notificacion.component';
 import { MapComponent } from 'src/app/componentes/map/map.component';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { Modal1Component } from 'src/app/componentes/modal1/modal1.component';
+import { Modal2Component } from 'src/app/componentes/modal2/modal2.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { IonicModule } from '@ionic/angular';
     CardComponent,
     Card2Component,
     CardNotificacionComponent,
-    MapComponent
+    MapComponent,
+    Modal1Component,
+    Modal2Component
   ],
   exports:[
     Input1Component,
@@ -26,11 +30,13 @@ import { IonicModule } from '@ionic/angular';
     Card2Component,
     CardNotificacionComponent,
     MapComponent,
-  IonicModule
+  Modal1Component,
+  Modal2Component
 ],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule.forRoot(),
+    CommonModule
   ]
 })
 export class SharedModule { }
