@@ -14,16 +14,23 @@ export class BuscarPage implements OnInit {
 
   restaurantes: any[] = [];
   restaurantesFiltrados: any[] = [];
+  categorias: string[] = [];
   searchTerm: string = '';
   busquedaActiva: boolean = false;
+  mostrarFiltros: boolean = false;
 
-  constructor( private databaseService: DatabaseService, private navCtrl: NavController ) { }
+  constructor(private databaseService: DatabaseService, private navCtrl: NavController) { }
 
   ngOnInit() {
+    // Obtener todos los restaurantes
     this.databaseService.fetchFirestoreCollection('restaurantes').subscribe((data: any) => {
       this.restaurantes = data;
       console.log("Restaurantes:", this.restaurantes);
-  });
+
+      // Extraer categorías únicas desde la base de datos
+      this.categorias = [...new Set(this.restaurantes.map(restaurante => restaurante.categoria))];
+      console.log("Categorías disponibles:", this.categorias);
+    });
   }
 
   activarBusqueda() {
@@ -33,10 +40,19 @@ export class BuscarPage implements OnInit {
   }
 
   irARestaurante(restaurante: any) {
-    console.log ('Navegando a:', `/restaurante-detalle/${restaurante.id}`);
-  this.modal.dismiss();
-  this.navCtrl.navigateForward(`/restaurante-detalle/${restaurante.id}`); // ✅ Usa el nombre correcto de la ruta
-}
+    console.log('Navegando a:', `/restaurante-detalle/${restaurante.id}`);
+    this.modal.dismiss();
+    this.navCtrl.navigateForward(`/restaurante-detalle/${restaurante.id}`);
+  }
+
+  toggleFiltros() {
+    this.mostrarFiltros = !this.mostrarFiltros; // Alterna la visibilidad de los filtros
+  }
+
+  filtrarPorCategoria(categoria: string) {
+    console.log(`🔍 Filtrando por categoría: ${categoria}`);
+    this.restaurantesFiltrados = this.restaurantes.filter(restaurante => restaurante.categoria === categoria);
+  }
 
 
 
