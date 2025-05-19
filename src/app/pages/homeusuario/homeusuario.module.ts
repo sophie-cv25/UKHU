@@ -1,24 +1,23 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { HomeusuarioPageRoutingModule } from './homeusuario-routing.module';
-
 import { HomeusuarioPage } from './homeusuario.page';
 import { SharedModule } from 'src/app/modulos/shared/shared.module';
-
+import { register } from 'swiper/element/bundle';
+register();
 
 @NgModule({
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     HomeusuarioPageRoutingModule,
-    SharedModule,
+    SharedModule
   ],
-  declarations: [HomeusuarioPage]
+  declarations: [HomeusuarioPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class HomeusuarioPageModule {}
