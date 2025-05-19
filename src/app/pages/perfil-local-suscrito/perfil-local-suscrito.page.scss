@@ -1,3 +1,14 @@
+//   @font-face {
+//   font-family: 'Montserrat';
+//   src: url('/assets/fonts/static/Montserrat-Bold.ttf') format('truetype');
+//   font-weight: 700;
+//   font-style: normal;
+// }
+// ion-title {
+//   font-family: 'Montserrat', sans-serif;
+//   font-weight: 700; // Bold
+//   font-size: 24px; // Puedes ajustar el tamaño si lo quieres más grande
+// }
 
 .boton-personalizado {
   --background: #fec530;
@@ -13,9 +24,7 @@
   --padding-start: 16px;
   --padding-end: 16px;
 }
-
-
-.contenedor-perfil {
+ .contenedor-perfil {
   display: flex;
   flex-direction: column;
   align-items: center;       // Centra horizontalmente
@@ -24,6 +33,7 @@
   height: 100%;
   padding: 16px;
 }
+
 .info-basica {
   align-self: stretch; // Hace que ocupe todo el ancho disponible
   text-align: left;    // Alinea el texto a la izquierda
@@ -60,3 +70,41 @@
   filter: none;
   /* Cambia el color del SVG usando el atributo fill si es SVG inline, o coloreado desde el archivo si es externo */
 }
+
+.botones {
+  display: flex;
+  justify-content: space-evenly; /* mejor distribución con espacio entre */
+  padding: 0 20px; /* margen interno a los lados */
+  box-sizing: border-box;
+  font-weight: 300;
+}
+
+.botones ion-button {
+  --background: transparent;
+  --color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: capitalize;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  padding: 0;
+  height: auto;
+  --padding-start: 0;
+  --padding-end: 0;
+  --ripple-color: transparent;
+  --box-shadow: none;
+  min-width: 100px; /* puedes ajustar según lo necesites */
+  overflow: visible; /* asegúrate que nada se corte */
+}
+
+.botones ion-button ion-icon {
+  background-color: #F84B5F;
+  border-radius: 50%;
+  padding: 12px;
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: white;
+  overflow: visible;
+}
+

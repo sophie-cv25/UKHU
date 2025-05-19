@@ -1,9 +1,21 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
-    <ion-title class="ion-text-center" color="warning" >Perfil</ion-title>
+    <!-- Flecha atrás -->
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/perfil">
+        <ion-icon name="arrow-back" slot="icon-only" color="warning"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title class="ion-text-center titulo-configuracion" color="danger">
+      Perfil
+    </ion-title>
+
+    <!-- Campanita -->
     <ion-buttons slot="end">
       <ion-button fill="clear">
-        <ion-icon name="settings-sharp" slot="icon-only" color="warning"></ion-icon>
+        <ion-icon name="notifications" slot="icon-only" color="warning"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -30,26 +42,22 @@
       >
         Editar
       </ion-button>
-      <ion-button
-        color="success"
-        shape="round"
-        size="small"
-        class="boton-personalizado"
-      >
-        Historial
-      </ion-button>
     </div>
 
     <!-- Información básica -->
     <div class="info-basica">
-      <app-input2 [labelText2]="'Nombre:'"></app-input2>
-      <app-input2 [labelText2]="'Usuario:'"></app-input2>
+      <app-input2 [labelText2]="'Nombre del local:'"></app-input2>
+      <app-input2 [labelText2]="'Gmail:'"></app-input2>
+      <app-input2 [labelText2]="'Número:'"></app-input2>
+      <app-input2 [labelText2]="'Horarios de Atención:'"></app-input2>
     </div>
 
-    <!-- Gráfico (placeholder) -->
-    <div class="grafico-placeholder">
-      Gráfico de la acumulación<br />
-      de puntos o nivel
+    <!-- botones -->
+    <div class="botones">
+      <ion-button color="primary">
+         <ion-icon slot="start" name="diamond"></ion-icon>
+          Suscripción
+          </ion-button>
     </div>
 
     <!-- Botón cerrar sesión -->
@@ -62,5 +70,3 @@
     </ion-button>
   </div>
 </ion-content>
-
-<app-tab-bar></app-tab-bar>

@@ -1,0 +1,54 @@
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+.fondo {
+    background-color:#191A1D;
+ /* Color de fondo oscuro */
+}
+
+.titulo-configuracion {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.contenedor-configuracion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.boton-configuracion {
+  width: 100%;
+  border: 2px solid #FEC530;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: #fff;
+  background-color: transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  
+  /* Alineación a la izquierda */
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  padding-left: 16px;
+}
+
+.botones-configuracion ion-button:first-child {
+  margin-bottom: 20px; /* Puedes ajustar el valor según lo que necesites */
+}
+
+
+.botones-configuracion ion-button:last-child {
+    width: 90%;
+    font-size: 16px;
+    background-color: #FEC530; /* Fondo amarillo */
+    color: #121212; /* Texto oscuro para contraste */
+    border-radius: 50px; /* Bordes totalmente redondeados */
+    text-transform: capitalize;
+    font-weight: normal;
+    align-self: center; 
+}

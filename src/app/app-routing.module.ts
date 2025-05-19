@@ -52,6 +52,28 @@ const routes: Routes = [
   path: 'restaurante-detalle/:id', // Se agrega ":id" como parámetro dinámico
   loadChildren: () => import('./pages/restaurante-detalle/restaurante-detalle.module').then(m => m.RestauranteDetallePageModule)
   },
+  {
+    path: 'historial',
+    loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule)
+  },
+  {
+    path: 'cambiar-contrasena',
+    loadChildren: () => import('./pages/cambiar-contrasena/cambiar-contrasena.module').then( m => m.CambiarContrasenaPageModule)
+  },  {
+    path: 'configuracion',
+    loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
+  },
+  {
+    path: 'perfil-local-suscrito',
+    loadChildren: () => import('./pages/perfil-local-suscrito/perfil-local-suscrito.module').then( m => m.PerfilLocalSuscritoPageModule)
+  },
+  {
+    path: 'perfil-local-no-suscrito',
+    loadChildren: () => import('./pages/perfil-local-no-suscrito/perfil-local-no-suscrito.module').then( m => m.PerfilLocalNoSuscritoPageModule)
+  },
+
+
+
 
 
 

@@ -1,0 +1,84 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <!-- Flecha atrás -->
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/perfil">
+        <ion-icon name="arrow-back" slot="icon-only" color="warning"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title class="ion-text-center titulo-historial" color="warning">
+      Historial
+    </ion-title>
+
+    <!-- Campanita -->
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="notifications" slot="icon-only" color="warning"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="primary" class="fondo" [fullscreen]="true">
+  <div class="contenedor-historial">
+
+    <!-- Subtítulo -->
+    <div class="subtitulo-historial">
+      Restaurantes recién visitados
+    </div>
+
+    <!-- Lista de historial en tarjetas -->
+    <div class="tarjetas-historial">
+      <div class="tarjeta-historial">
+        <div class="icono-restaurante">
+          <ion-icon name="search" color="primary"></ion-icon>
+        </div>
+        <div class="info-restaurante">
+          <div class="nombre-restaurante">Hamburguesas Coki</div>
+          <div class="fecha-restaurante">01/02/2025</div>
+        </div>
+      </div>
+
+      <div class="tarjeta-historial">
+        <div class="icono-restaurante">
+          <ion-icon name="search" color="primary"></ion-icon>
+        </div>
+        <div class="info-restaurante">
+          <div class="nombre-restaurante">Pollo Frito Sophie</div>
+          <div class="fecha-restaurante">05/03/2025</div>
+        </div>
+      </div>
+
+      <div class="tarjeta-historial">
+        <div class="icono-restaurante">
+          <ion-icon name="search" color="primary"></ion-icon>
+        </div>
+        <div class="info-restaurante">
+          <div class="nombre-restaurante">Sandwich de Gianis</div>
+          <div class="fecha-restaurante">10/03/2025</div>
+        </div>
+      </div>
+
+      <div class="tarjeta-historial">
+        <div class="icono-restaurante">
+          <ion-icon name="search" color="primary"></ion-icon>
+        </div>
+        <div class="info-restaurante">
+          <div class="nombre-restaurante">Trancapechos Di</div>
+          <div class="fecha-restaurante">05/04/2025</div>
+        </div>
+      </div>
+
+      <div class="tarjeta-historial">
+        <div class="icono-restaurante">
+          <ion-icon name="search" color="primary"></ion-icon>
+        </div>
+        <div class="info-restaurante">
+          <div class="nombre-restaurante">Anticuchos Pedririwi</div>
+          <div class="fecha-restaurante">24/04/2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

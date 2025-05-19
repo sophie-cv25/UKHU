@@ -1,0 +1,50 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <!-- Flecha atrás -->
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/perfil">
+        <ion-icon name="arrow-back" slot="icon-only" color="warning"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title class="ion-text-center titulo-historial" color="warning">
+      Cambiar Contraseña
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary" class="fondo" [fullscreen]="true">
+  <div class="contenedor-historial">
+
+    <!-- Subtítulo -->
+    <div class="subtitulo-historial">
+      La contraseña debe tener al menos 6
+      caracteres e incluir una combinación de
+      números, letras y caracteres especilaes
+    </div>
+
+    <!-- Información básica -->
+    <div class="datos">
+      <app-input2 [labelText2]="'Contraseña Actual :'"></app-input2>
+      <app-input2 [labelText2]="'Contraseña Nueva : '"></app-input2>
+      <app-input2 [labelText2]="'Repetir contraseña : '"></app-input2>
+    </div>
+
+    <!-- Botón olvidaste contraseña -->
+    <ion-button class="boton-enlace" fill="clear">
+      Olvidaste tu contraseña
+    </ion-button>
+
+    <!-- Botón cerrar sesión -->
+    <ion-button
+      color="success"
+      shape="round"
+      class="boton-personalizado"
+    >
+      Cambiar Contraseña
+    </ion-button>
+
+  </div>
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <!-- Flecha atrás -->
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/perfil">
+        <ion-icon name="arrow-back" slot="icon-only" color="warning"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title class="ion-text-center titulo-configuracion" color="danger">
+      Configuraciones
+    </ion-title>
+
+    <!-- Campanita -->
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="notifications" slot="icon-only" color="warning"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary" class="fondo" [fullscreen]="true">
+  <div class="contenedor-configuracion">
+
+    <!-- Botones de configuración -->
+    <div class="botones-configuracion">
+      <ion-button class="boton-configuracion" expand="block" fill="clear" color="light">
+        Soporte Técnico
+      </ion-button>
+
+      <ion-button class="boton-configuracion" expand="block" fill="clear" color="light">
+        Preferencias de la App
+      </ion-button>
+
+      <ion-button expand="block" fill="clear" color="primary">
+        Cambiar Contraseña
+      </ion-button>
+    </div>
+
+  </div> 
+</ion-content>
