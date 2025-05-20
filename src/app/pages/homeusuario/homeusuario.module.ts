@@ -7,6 +7,7 @@ import { HomeusuarioPage } from './homeusuario.page';
 import { SharedModule } from 'src/app/modulos/shared/shared.module';
 import { register } from 'swiper/element/bundle';
 register();
+import { TabBarComponent } from 'src/app/componentes/tab-bar/tab-bar.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ register();
     FormsModule,
     IonicModule,
     HomeusuarioPageRoutingModule,
-    SharedModule
+    SharedModule,
+    TabBarComponent,
   ],
   declarations: [HomeusuarioPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
