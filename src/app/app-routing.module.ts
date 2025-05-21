@@ -71,6 +71,10 @@ const routes: Routes = [
     path: 'perfil-local-no-suscrito',
     loadChildren: () => import('./pages/perfil-local-no-suscrito/perfil-local-no-suscrito.module').then( m => m.PerfilLocalNoSuscritoPageModule)
   },
+  {
+    path: 'edit-perfilc',
+    loadChildren: () => import('./pages/edit-perfilc/edit-perfilc.module').then( m => m.EditPerfilcPageModule)
+  },
 
 
 

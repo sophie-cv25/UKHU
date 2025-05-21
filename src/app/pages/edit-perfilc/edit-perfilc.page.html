@@ -1,0 +1,35 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center" color="warning">Editar Perfil</ion-title>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/perfil">
+        <ion-icon name="arrow-back-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary" class="fondo" [fullscreen]="true">
+  <div class="contenedor-editar-perfil">
+    <div class="formulario-editar">
+      <ion-item>
+        <ion-label position="floating">Correo</ion-label>
+        <ion-input [(ngModel)]="userData.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input [(ngModel)]="userData.nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input [(ngModel)]="userData.nombreUsuario"></ion-input>
+      </ion-item>
+    </div>
+
+    <ion-button expand="block" color="success" (click)="guardarCambios()">
+      Guardar Cambios
+    </ion-button>
+  </div>
+</ion-content>

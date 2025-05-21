@@ -6,6 +6,7 @@ import { PerfilPageRoutingModule } from './perfil-routing.module';
 import { PerfilPage } from './perfil.page';
 import { TabBarComponent } from 'src/app/componentes/tab-bar/tab-bar.component';
 import { SharedModule } from 'src/app/modulos/shared/shared.module';
+import { RouterLink } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { SharedModule } from 'src/app/modulos/shared/shared.module';
     IonicModule,
     PerfilPageRoutingModule,
     TabBarComponent,
-    SharedModule
+    SharedModule,
+    RouterLink
   ],
   declarations: [PerfilPage]
 })
