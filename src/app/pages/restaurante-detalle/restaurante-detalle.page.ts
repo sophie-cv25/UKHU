@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -8,24 +8,34 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./restaurante-detalle.page.scss'],
   standalone: false
 })
-
 export class RestauranteDetallePage implements OnInit {
   restaurante: any;
 
-  constructor(private route: ActivatedRoute, private databaseService: DatabaseService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private databaseService: DatabaseService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id'); // Obtiene el ID de la URL
-
+    const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      console.log('🔍 Buscando restaurante con ID:', id);
-
       this.databaseService.getDocumentById('restaurantes', id).subscribe((doc) => {
         if (doc.payload.exists) {
-          console.log('✅ Restaurante encontrado:', doc.payload.data()); // Verifica los datos
-          this.restaurante = doc.payload.data();
-        } else {
-          console.log('❌ Restaurante no encontrado');
+          // Incluye el id en el objeto restaurante
+          this.restaurante = { id, ...doc.payload.data() };
+        }
+      });
+    }
+  }
+
+  comoLlegar() {
+    if (this.restaurante?.latitud && this.restaurante?.longitud && this.restaurante?.id) {
+      this.router.navigate(['/buscar'], {
+        queryParams: {
+          latitud: this.restaurante.latitud,
+          longitud: this.restaurante.longitud,
+          id: this.restaurante.id
         }
       });
     }
