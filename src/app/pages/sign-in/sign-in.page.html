@@ -1,27 +1,46 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Iniciar Sesión</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="login-content" fullscreen>
+  <div class="top-bg">
+    <h2 class="title-signin">Sign In</h2>
+  </div>
 
-<ion-content class="ion-padding">
-  <form (submit)="iniciarSesion()">
-    <ion-item>
-      <ion-label position="floating">Correo Electrónico</ion-label>
-      <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
-    </ion-item>
+  <div class="login-box">
+    <form (submit)="iniciarSesion()">
+      <ion-item lines="none" class="custom-input">
+        <ion-input
+          [(ngModel)]="email"
+          name="email"
+          type="email"
+          placeholder="Correo electrónico:"
+          required
+        ></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
-    </ion-item>
+      <ion-item lines="none" class="custom-input">
+        <ion-input
+          [(ngModel)]="password"
+          name="password"
+          type="password"
+          placeholder="Contraseña:"
+          required
+        ></ion-input>
+      </ion-item>
 
-    <ion-button expand="full" type="submit">Iniciar Sesión</ion-button>
-  </form>
+      <div class="forgot-password">
+        <a routerLink="/forgot-pasword">Olvidaste tu contraseña</a>
+      </div>
 
-  <ion-button expand="full" fill="outline" routerLink="/forgot-pasword">
-    ¿Olvidaste tu contraseña?
-  </ion-button>
-  
-  
+      <ion-button expand="block" class="btn-login" type="submit">Sign In</ion-button>
+
+      <div class="social-icons">
+        <ion-icon name="logo-facebook"></ion-icon>
+        <ion-icon name="logo-google"></ion-icon>
+        <ion-icon name="logo-apple"></ion-icon>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Comercio</a>
+        <a href="#">Sign Up</a>
+      </div>
+    </form>
+  </div>
 </ion-content>
