@@ -20,17 +20,23 @@ export class SignInPage {
     }
 
     this.authService.iniciarSesion(this.email, this.password)
-      .then(user => {
-        console.log('Inicio de sesión exitoso:', user);
-      })
-      .catch(err => console.error('Error en inicio de sesión:', err));
+  .then(user => {
+    if (!user) {
+      console.error('Error: No se pudo obtener el usuario.');
+      return;
+    }
+
+    console.log('Inicio de sesión exitoso:', user);
+    console.log('UID del usuario:', user.uid); // ✅ Esto solo se ejecutará si `user` no es `null`
+  })
+  .catch(err => console.error('Error en inicio de sesión:', err));
+
   }
+
   recuperarPassword() {
     if (!this.email) {
       console.error('Por favor, ingresa tu correo electrónico.');
       return;
     }
-  
   }
-  
 }
