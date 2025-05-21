@@ -23,10 +23,13 @@
 
 <ion-content color="primary" class="fondo" [fullscreen]="true">
   <div class="contenedor-configuracion">
-
-    <!-- Botones de configuración -->
     <div class="botones-configuracion">
-      <ion-button class="boton-configuracion" expand="block" fill="clear" color="light">
+      <ion-button 
+        class="boton-configuracion" 
+        expand="block" 
+        fill="clear" 
+        color="light"
+        (click)="abrirSoporteTecnico()">
         Soporte Técnico
       </ion-button>
 
@@ -38,6 +41,7 @@
         Cambiar Contraseña
       </ion-button>
     </div>
-
   </div> 
+
+
 </ion-content>

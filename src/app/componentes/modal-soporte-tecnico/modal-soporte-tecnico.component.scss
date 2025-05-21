@@ -1,0 +1,46 @@
+.item-contacto,
+.item-faq {
+  background: #232428 !important; // Igual al fondo del card/modal
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: none !important;
+  border: none !important;
+  color: #fff;
+  --background: #232428 !important; // Para Ionic internamente
+  --ion-item-background: #232428 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+ion-card-content {
+  background: transparent !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+ion-list {
+  background: transparent !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+ion-item {
+  --background: #232428 !important;
+  --ion-item-background: #232428 !important;
+  background: #232428 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.icono-circular {
+  background: #ffd600 !important;   // Fondo amarillo
+  color: #232428 !important;        // Lupa color fondo (oscuro)
+  border-radius: 50%;
+  padding: 8px;
+  font-size: 1.5rem;
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

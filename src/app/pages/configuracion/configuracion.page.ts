@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ModalSoporteTecnicoComponent } from '../../componentes/modal-soporte-tecnico/modal-soporte-tecnico.component';
 
 @Component({
   selector: 'app-configuracion',
@@ -6,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./configuracion.page.scss'],
   standalone: false
 })
-export class ConfiguracionPage implements OnInit {
+export class ConfiguracionPage {
+  constructor(private modalCtrl: ModalController) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  async abrirSoporteTecnico() {
+    const modal = await this.modalCtrl.create({
+      component: ModalSoporteTecnicoComponent,
+      breakpoints: [0, 0.5, 0.75, 1],
+      initialBreakpoint: 0.75,
+      cssClass: 'modal-soporte-sheet'
+    });
+    await modal.present();
   }
-
 }

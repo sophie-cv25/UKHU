@@ -10,6 +10,7 @@ import { MapComponent } from 'src/app/componentes/map/map.component';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { Modal1Component } from 'src/app/componentes/modal1/modal1.component';
 import { Modal2Component } from 'src/app/componentes/modal2/modal2.component';
+import { ModalSoporteTecnicoComponent } from 'src/app/componentes/modal-soporte-tecnico/modal-soporte-tecnico.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { Modal2Component } from 'src/app/componentes/modal2/modal2.component';
     CardNotificacionComponent,
     MapComponent,
     Modal1Component,
-    Modal2Component
+    Modal2Component,
+    ModalSoporteTecnicoComponent
   ],
   exports:[
     Input1Component,
@@ -31,7 +33,8 @@ import { Modal2Component } from 'src/app/componentes/modal2/modal2.component';
     CardNotificacionComponent,
     MapComponent,
   Modal1Component,
-  Modal2Component
+  Modal2Component,
+  ModalSoporteTecnicoComponent
 ],
   imports: [
     CommonModule,

@@ -1,0 +1,57 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title color="warning" class="titulo-modal">Soporte Tecnico</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon name="close" color="warning"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding fondo-modal">
+  <ion-card class="card-modal">
+    <ion-card-header>
+      <ion-card-title class="titulo-seccion">Contáctanos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="none" class="item-contacto">
+        <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
+        <ion-label>Correo</ion-label>
+        <ion-button fill="clear" color="warning" href="mailto:soporte@tucorreo.com" slot="end">
+          <ion-icon name="send-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-modal">
+    <ion-card-header>
+      <ion-card-title class="titulo-seccion">Preguntas Frecuentes</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item lines="none" class="item-faq">
+          <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
+          <ion-label>¿Dónde puedo ver el puesto de comidas en el qito ukhuver?</ion-label>
+        </ion-item>
+        <ion-item lines="none" class="item-faq">
+          <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
+          <ion-label>¿Cómo puedo ganar un descuento en un local?</ion-label>
+        </ion-item>
+        <ion-item lines="none" class="item-faq">
+          <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
+          <ion-label>¿Cómo cambio mi contraseña?</ion-label>
+        </ion-item>
+        <ion-item lines="none" class="item-faq">
+          <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
+          <ion-label>¿Cómo puedo cambiar el idioma de la app?</ion-label>
+        </ion-item>
+        <ion-item lines="none" class="item-faq">
+          <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
+          <ion-label>¿Cómo cambio la apariencia de la app?</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
