@@ -66,5 +66,10 @@ export class DatabaseService {
     return this.firestore.collection(collection).doc(uid).snapshotChanges();
   });
 }
-
+  getCollectionByCustomparam(collection: string, customParam: string, searched: string): Observable<any> {
+    return runInInjectionContext(this.injector, () => {
+      return this.firestore.collection(collection, ref => ref.where(customParam, '==', searched))
+        .valueChanges({ idField: 'id' });
+    });
+  }
 }
