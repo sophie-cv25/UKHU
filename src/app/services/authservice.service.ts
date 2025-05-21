@@ -8,13 +8,31 @@ export class AuthserviceService {
   constructor(private afAuth: AngularFireAuth) {}
 
   registrar(email: string, password: string) {
-    return this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then(userCredential => userCredential.user)
-      .catch(error => {
-        console.error('Error en el registro:', error);
-        throw error;
-      });
-  }
+  return this.afAuth.createUserWithEmailAndPassword(email, password)
+    .then(userCredential => {
+      const user = userCredential.user;
+      if (user) {
+        // 🔹 Extraer la primera parte del correo antes del "@"
+        const emailPrefix = email.split('@')[0];
+        const numeroAleatorio = Math.floor(Math.random() * 9000) + 1000;
+        const nombreUsuario = `${emailPrefix}${numeroAleatorio}`;
+
+        // 🔹 Actualizar el perfil del usuario en Firebase Authentication
+        return user.updateProfile({ displayName: nombreUsuario })
+          .then(() => {
+            console.log(`Usuario registrado con nombre automático: ${nombreUsuario}`);
+            return user;
+          });
+      }
+      return null;
+    })
+    .catch(error => {
+      console.error('Error en el registro:', error);
+      throw error;
+    });
+}
+
+
 
   iniciarSesion(email: string, password: string) {
     return this.afAuth.signInWithEmailAndPassword(email, password)

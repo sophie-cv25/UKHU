@@ -18,12 +18,12 @@ export class SignUpPage {
   constructor(private authService: AuthserviceService, private db: DatabaseService) {}
 
   validarEmail(email: string): boolean {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Patrón de email válido
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
     return regex.test(email);
   }
 
   validarPassword(password: string): boolean {
-    return password.length >= 6; // Firebase recomienda al menos 6 caracteres
+    return password.length >= 6; 
   }
 
   registrarUsuario() {
@@ -48,17 +48,31 @@ export class SignUpPage {
           console.log('Registro exitoso:', user);
           localStorage.setItem('userUID', user.uid);
 
-          const userData = {
-            uid: user.uid,
-            nombre: this.nombre,
-            apellido: this.apellido,
-            email: this.email
-          };
+          // 🔹 Extraer la primera parte del email antes del "@"
+          const emailPrefix = this.email.split('@')[0];
+          const numeroAleatorio = Math.floor(Math.random() * 9000) + 1000;
+          const nombreUsuario = `${emailPrefix}${numeroAleatorio}`;
 
-          this.db.addFirestoreDocument('users', userData)
-            .then(() => console.log('Usuario guardado en Firestore'))
-            .catch(err => console.error('Error guardando usuario:', err));
+          // 🔹 Actualizar perfil del usuario en Firebase Authentication
+          return user.updateProfile({ displayName: nombreUsuario })
+            .then(() => {
+              console.log(`Usuario registrado con nombre automático: ${nombreUsuario}`);
+
+              // 🔹 Guardar usuario en Firestore
+              const userData = {
+                uid: user.uid,
+                nombre: this.nombre,
+                apellido: this.apellido,
+                email: this.email,
+                nombreUsuario: nombreUsuario
+              };
+
+              return this.db.addFirestoreDocument('users', userData)
+                .then(() => console.log('Usuario guardado en Firestore'))
+                .catch(err => console.error('Error guardando usuario:', err));
+            });
         }
+        return null;
       })
       .catch(err => console.error('Error en registro:', err));
   }
