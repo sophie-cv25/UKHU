@@ -15,6 +15,7 @@ export class BuscarPage implements OnInit {
 
   restaurantes: any[] = [];
   restaurantesFiltrados: any[] = [];
+  zonas: string[] = [];
   categorias: string[] = [];
   searchTerm: string = '';
   busquedaActiva: boolean = false;
@@ -48,6 +49,7 @@ export class BuscarPage implements OnInit {
     this.databaseService.fetchFirestoreCollection('restaurantes').subscribe((data: any) => {
       this.restaurantes = data;
       this.categorias = [...new Set(this.restaurantes.map(restaurante => restaurante.categoria))];
+      this.zonas = [...new Set(this.restaurantes.map(restaurante => restaurante.zona))];
 
       if (this.destino && this.destino.id) {
         // Solo el restaurante seleccionado
@@ -75,18 +77,26 @@ export class BuscarPage implements OnInit {
   }
 
   filtrarPorCategoria(categoria: string) {
-    this.restaurantesFiltrados = this.restaurantes.filter(restaurante => restaurante.categoria === categoria);
-  }
+  this.restaurantesFiltrados = this.restaurantes.filter(restaurante => restaurante.categoria === categoria);
+  this.mostrarFiltros = false; // Cierra los filtros
+}
+
+filtrarPorZona(zona: string) {
+  this.restaurantesFiltrados = this.restaurantes.filter(restaurante => restaurante.zona === zona);
+  this.mostrarFiltros = false; // Cierra los filtros
+}
 
   buscarRestaurantes() {
-    if (!this.busquedaActiva) return; 
-    if (this.searchTerm.trim() === '') {
-      this.restaurantesFiltrados = this.restaurantes;
-    } else {
-      this.restaurantesFiltrados = this.restaurantes.filter((restaurante) =>
-        restaurante.nombre.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        restaurante.categoria.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    }
+  if (!this.busquedaActiva) return; 
+  if (this.searchTerm.trim() === '') {
+    this.restaurantesFiltrados = this.restaurantes;
+  } else {
+    const term = this.searchTerm.toLowerCase();
+    this.restaurantesFiltrados = this.restaurantes.filter((restaurante) =>
+      restaurante.nombre?.toLowerCase().includes(term) ||
+      restaurante.categoria?.toLowerCase().includes(term) ||
+      restaurante.zona?.toLowerCase().includes(term) // <-- Filtra por zona también
+    );
   }
+}
 }

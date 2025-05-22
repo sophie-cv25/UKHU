@@ -33,9 +33,17 @@
           </ion-header>
 
           <!-- Lista de filtros (se muestra solo cuando 'mostrarFiltros' es true) -->
+          <!-- ...dentro de tu ion-list de filtros... -->
           <ion-list *ngIf="mostrarFiltros">
             <ion-item *ngFor="let categoria of categorias" (click)="filtrarPorCategoria(categoria)">
               <ion-label>{{ categoria }}</ion-label>
+            </ion-item>
+
+            <ion-item-divider color="light">
+              <ion-label>Zonas</ion-label>
+            </ion-item-divider>
+            <ion-item *ngFor="let zona of zonas" (click)="filtrarPorZona(zona)">
+              <ion-label>{{ zona }}</ion-label>
             </ion-item>
           </ion-list>
 
