@@ -75,6 +75,10 @@ const routes: Routes = [
     path: 'edit-perfilc',
     loadChildren: () => import('./pages/edit-perfilc/edit-perfilc.module').then( m => m.EditPerfilcPageModule)
   },
+  {
+    path: 'preferencias',
+    loadChildren: () => import('./pages/preferencias/preferencias.module').then( m => m.PreferenciasPageModule)
+  },
 
 
 

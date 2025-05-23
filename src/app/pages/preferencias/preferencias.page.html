@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Preferencias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label>Idioma</ion-label>
+    <ion-select [(ngModel)]="idiomaSeleccionado" (ionChange)="cambiarIdioma($event.detail.value)">
+      <ion-select-option value="es">🇪🇸 Español</ion-select-option>
+      <ion-select-option value="en">🇺🇸 English</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-content>
