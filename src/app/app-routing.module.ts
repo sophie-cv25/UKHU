@@ -87,6 +87,10 @@ const routes: Routes = [
     path: 'editar-local',
     loadChildren: () => import('./pages/editar-local/editar-local.module').then( m => m.EditarLocalPageModule)
   },
+  {
+    path: 'resenas',
+    loadChildren: () => import('./pages/resenas/resenas.module').then( m => m.ResenasPageModule)
+  },
 
 
 

@@ -11,6 +11,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { Modal1Component } from 'src/app/componentes/modal1/modal1.component';
 import { Modal2Component } from 'src/app/componentes/modal2/modal2.component';
 import { ModalSoporteTecnicoComponent } from 'src/app/componentes/modal-soporte-tecnico/modal-soporte-tecnico.component';
+import { CardResenasComponent } from 'src/app/componentes/card-resenas/card-resenas.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ModalSoporteTecnicoComponent } from 'src/app/componentes/modal-soporte-
     MapComponent,
     Modal1Component,
     Modal2Component,
-    ModalSoporteTecnicoComponent
+    ModalSoporteTecnicoComponent,
+    CardResenasComponent
   ],
   exports:[
     Input1Component,
@@ -34,7 +36,8 @@ import { ModalSoporteTecnicoComponent } from 'src/app/componentes/modal-soporte-
     MapComponent,
   Modal1Component,
   Modal2Component,
-  ModalSoporteTecnicoComponent
+  ModalSoporteTecnicoComponent,
+  CardResenasComponent
 ],
   imports: [
     CommonModule,

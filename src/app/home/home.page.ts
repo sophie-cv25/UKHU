@@ -34,16 +34,16 @@ export class HomePage implements OnInit {
     // });
 
     // Ejemplo de inserción de usuario
-    this.db.addFirestoreDocument('users', {
-      name: 'Juanito',
-      email: 'juanito@gmail.com',
-      password: 123456,
-      phone: 123456789,
-    }).then((res) => {
-      console.log('Usuario creado', res.id);
-    }).catch((err) => {
-      console.log('Error al crear el usuario', err);
-    });
+    // this.db.addFirestoreDocument('users', {
+    //   name: 'Juanito',
+    //   email: 'juanito@gmail.com',
+    //   password: 123456,
+    //   phone: 123456789,
+    // }).then((res) => {
+    //   console.log('Usuario creado', res.id);
+    // }).catch((err) => {
+    //   console.log('Error al crear el usuario', err);
+    // });
   }
 
   // Función para subir restaurantes a Firestore

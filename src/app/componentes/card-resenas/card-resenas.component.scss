@@ -1,0 +1,43 @@
+.resena-card {
+  background: #232326;
+  border-radius: 18px;
+  padding: 18px 20px 14px 20px;
+  color: #fff;
+  margin: 12px 0;
+  box-shadow: 0 4px 16px #00000030;
+}
+
+.resena-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.avatar {
+  font-size: 2.2rem;
+  color: #ffd600;
+  margin-right: 8px;
+}
+
+.nombre {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-right: 10px;
+}
+
+.estrellas {
+  display: flex;
+  align-items: center;
+}
+
+.estrella {
+  color: #ffd600;
+  font-size: 1.2rem;
+  margin-right: 2px;
+}
+
+.resena-texto {
+  font-size: 1rem;
+  color: #fff;
+  margin-top: 4px;
+}
