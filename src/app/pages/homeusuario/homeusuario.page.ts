@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/services/database.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homeusuario',
@@ -10,15 +10,19 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class HomeusuarioPage implements OnInit {
   restaurantes: any[] = [];
-  restaurantesCerca: any[] = [];
-  restaurantesRecientes: any[] = [];
-  restaurantesRankeados: any[] = [];
 
-  constructor(private databaseService: DatabaseService) { }
+  constructor(
+    private databaseService: DatabaseService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.databaseService.fetchFirestoreCollection('restaurantes').subscribe((data: any[]) => {
       this.restaurantes = data;
     });
+  }
+
+  irADetalle(restaurante: any) {
+    this.router.navigate(['/restaurante-detalle', restaurante.id]);
   }
 }

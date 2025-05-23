@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-restaurante-detalle',
@@ -14,7 +15,8 @@ export class RestauranteDetallePage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private databaseService: DatabaseService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -39,5 +41,9 @@ export class RestauranteDetallePage implements OnInit {
         }
       });
     }
+  }
+
+    goBack() {
+    this.location.back();
   }
 }

@@ -1,37 +1,47 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>{{ 'titulo_app' | translate }}</ion-title>
+<ion-header>
+ <ion-toolbar>
+    <ion-title>UKHU</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="home-usuario">
 
   <!-- Carrusel: Cerca tuyo -->
-  <h2 class="section-title">{{ 'cerca_tuyo' | translate }}</h2>
+  <h2 class="section-title">Cerca tuyo</h2>
   <swiper-container slides-per-view="2.2" space-between="10" style="width: 100%;">
     <swiper-slide *ngFor="let restaurante of restaurantes">
-      <app-card [restaurante]="restaurante"></app-card>
+      <div class="card" (click)="irADetalle(restaurante)">
+        <!-- Aquí va el contenido de tu card, por ejemplo: -->
+        <img [src]="restaurante.imagen" alt="{{ restaurante.nombre }}">
+        <div>{{ restaurante.nombre }}</div>
+        <!-- ...otros datos... -->
+      </div>
     </swiper-slide>
   </swiper-container>
 
   <!-- Carrusel: Recién visitados -->
-  <h2 class="section-title">{{ 'recien_visitados' | translate }}</h2>
+  <h2 class="section-title">Recién visitados</h2>
   <swiper-container slides-per-view="1.2" space-between="10" style="width: 100%;">
     <swiper-slide *ngFor="let restaurante of restaurantes">
-      <app-card [restaurante]="restaurante"></app-card>
+      <div class="card" (click)="irADetalle(restaurante)">
+        <img [src]="restaurante.imagen" alt="{{ restaurante.nombre }}">
+        <div>{{ restaurante.nombre }}</div>
+      </div>
     </swiper-slide>
   </swiper-container>
 
   <!-- Mejores rankeados (4 cards grandes, NO carrusel) -->
-  <h2 class="section-title">{{ 'mejores_rankeados' | translate }}</h2>
+  <h2 class="section-title">Mejores rankeados</h2>
   <div class="cards-grid">
-    <app-card
+    <div
+      class="card"
       *ngFor="let restaurante of restaurantes"
-      [restaurante]="restaurante">
-    </app-card>
+      (click)="irADetalle(restaurante)">
+      <img [src]="restaurante.imagen" alt="{{ restaurante.nombre }}">
+      <div>{{ restaurante.nombre }}</div>
+    </div>
   </div>
 </ion-content>
-
 <ion-footer>
   <app-tab-bar></app-tab-bar>
 </ion-footer>
