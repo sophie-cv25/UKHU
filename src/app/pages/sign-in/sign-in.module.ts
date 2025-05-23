@@ -7,6 +7,7 @@ import { SignInPage } from './sign-in.page';
 import { SharedModule } from 'src/app/modulos/shared/shared.module';
 import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+RouterLink
 @NgModule({
   imports: [
     CommonModule,
@@ -15,7 +16,8 @@ import { TranslateModule } from '@ngx-translate/core';
     SignInPageRoutingModule,
     SharedModule,
     RouterLink,
-    TranslateModule
+    TranslateModule,
+    RouterLink
   ],
   declarations: [SignInPage]
 })

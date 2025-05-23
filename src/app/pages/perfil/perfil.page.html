@@ -28,18 +28,17 @@
       </ion-button>
     </div>
 
-    <!-- Información básica con datos dinámicos -->
+    <!-- Información básica con datos dinámicos (Usando ion-input) -->
     <div class="info-basica">
-      <app-input2>
-        <ng-container *ngIf="userData?.nombre">
-          {{ 'perfil_nombre' | translate }} {{ userData.nombre }}
-        </ng-container>
-      </app-input2>
-      <app-input2>
-        <ng-container *ngIf="userData?.nombreUsuario">
-          {{ 'perfil_usuario' | translate }} {{ userData.nombreUsuario }}
-        </ng-container>
-      </app-input2>
+      <ion-item>
+        <ion-label position="floating">{{ 'perfil_nombre' | translate }}</ion-label>
+        <ion-input [(ngModel)]="userData.nombre" name="nombre" type="text" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">{{ 'perfil_usuario' | translate }}</ion-label>
+        <ion-input [(ngModel)]="userData.nombreUsuario" name="nombreUsuario" type="text" readonly></ion-input>
+      </ion-item>
     </div>
 
     <!-- Gráfico (placeholder) -->
@@ -52,6 +51,5 @@
       {{ 'boton_cerrar_sesion' | translate }}
     </ion-button>
 
-    <!-- Selector de idioma -->
   </div>
 </ion-content>

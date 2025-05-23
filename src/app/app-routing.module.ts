@@ -79,6 +79,14 @@ const routes: Routes = [
     path: 'preferencias',
     loadChildren: () => import('./pages/preferencias/preferencias.module').then( m => m.PreferenciasPageModule)
   },
+  {
+    path: 'signin-comercio',
+    loadChildren: () => import('./pages/signin-comercio/signin-comercio.module').then( m => m.SigninComercioPageModule)
+  },
+  {
+    path: 'editar-local',
+    loadChildren: () => import('./pages/editar-local/editar-local.module').then( m => m.EditarLocalPageModule)
+  },
 
 
 

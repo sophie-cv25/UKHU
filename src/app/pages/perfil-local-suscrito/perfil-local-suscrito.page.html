@@ -1,18 +1,15 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
-    <!-- Flecha atrás -->
     <ion-buttons slot="start">
       <ion-button fill="clear" routerLink="/perfil">
         <ion-icon name="arrow-back" slot="icon-only" color="warning"></ion-icon>
       </ion-button>
     </ion-buttons>
 
-    <!-- Título centrado -->
     <ion-title class="ion-text-center titulo-configuracion" color="danger">
       Perfil
     </ion-title>
 
-    <!-- Campanita -->
     <ion-buttons slot="end">
       <ion-button fill="clear">
         <ion-icon name="notifications" slot="icon-only" color="warning"></ion-icon>
@@ -31,7 +28,7 @@
       </div>
     </div>
 
-    <!-- Botones Editar / Historial -->
+    <!-- Botón Editar -->
     <div class="botones-perfil">
       <ion-button
         color="success"
@@ -44,33 +41,39 @@
       </ion-button>
     </div>
 
-    <!-- Información básica -->
+    <!-- Información del local -->
     <div class="info-basica">
-      <app-input2 [labelText2]="'Nombre del local:'"></app-input2>
-      <app-input2 [labelText2]="'Gmail:'"></app-input2>
-      <app-input2 [labelText2]="'Número:'"></app-input2>
-      <app-input2 [labelText2]="'Horarios de Atención:'"></app-input2>
+      <ion-item>
+        <ion-label position="stacked">Nombre del local:</ion-label>
+        <ion-text>{{ nombreLocal }}</ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Gmail:</ion-label>
+        <ion-text>{{ emailLocal }}</ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Horarios de Atención:</ion-label>
+        <ion-text>{{ horarioApertura }} - {{ horarioCierre }}</ion-text>
+      </ion-item>
     </div>
 
-    <!-- botones -->
+    <!-- Botones adicionales -->
     <div class="botones">
       <ion-button color="primary">
-         <ion-icon slot="start" name="diamond"></ion-icon>
-          Suscripción
-          </ion-button>
+        <ion-icon slot="start" name="diamond"></ion-icon>
+        Suscripción
+      </ion-button>
 
-         <ion-button color="primary">
-            <ion-icon slot="start" name="settings"></ion-icon>
-            Configuración
-          </ion-button>
+      <ion-button color="primary">
+        <ion-icon slot="start" name="settings"></ion-icon>
+        Configuración
+      </ion-button>
     </div>
 
     <!-- Botón cerrar sesión -->
-    <ion-button
-      color="success"
-      shape="round"
-      class="boton-personalizado boton-cerrar-sesion"
-    >
+    <ion-button color="success" shape="round" class="boton-personalizado boton-cerrar-sesion" (click)="cerrarSesion()">
       Cerrar sesión
     </ion-button>
   </div>
