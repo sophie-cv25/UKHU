@@ -10,6 +10,12 @@
   --ion-item-background: #232428 !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.item-faq:hover {
+  background: #292b30 !important;
 }
 
 ion-card-content {
@@ -43,4 +49,16 @@ ion-item {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.respuesta-faq {
+  background: #ffd600;
+  color: #232428;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin: 10px 0 18px 44px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  max-width: 90%;
 }

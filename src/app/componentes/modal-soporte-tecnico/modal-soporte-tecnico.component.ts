@@ -8,9 +8,15 @@ import { ModalController } from '@ionic/angular';
   standalone: false,
 })
 export class ModalSoporteTecnicoComponent {
+  preguntaActiva: number | null = null;
+
   constructor(private modalCtrl: ModalController) {}
 
   dismiss() {
     this.modalCtrl.dismiss();
+  }
+
+  mostrarRespuesta(indice: number) {
+    this.preguntaActiva = this.preguntaActiva === indice ? null : indice;
   }
 }
