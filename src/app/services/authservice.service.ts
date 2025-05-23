@@ -63,5 +63,22 @@ export class AuthserviceService {
     .then(() => console.log('Contraseña actualizada con éxito'))
     .catch(error => console.error('Error al cambiar contraseña:', error));
 }
-  
+  cambiarCorreo(nuevoCorreo: string): Promise<void> {
+  return this.afAuth.currentUser
+    .then(user => {
+      if (!user) {
+        throw new Error('No hay un usuario autenticado.');
+      }
+
+      // 🔹 Enviar correo de verificación antes de cambiar el email
+      return user.verifyBeforeUpdateEmail(nuevoCorreo)
+        .then(() => console.log(`Correo de verificación enviado a ${nuevoCorreo}. El usuario debe confirmarlo.`))
+        .catch(error => {
+          console.error('Error al enviar correo de verificación:', error);
+          return Promise.reject(error);
+        });
+    });
+}
+
+
 }
