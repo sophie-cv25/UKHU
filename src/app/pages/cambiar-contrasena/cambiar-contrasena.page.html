@@ -11,7 +11,6 @@
     <ion-title class="ion-text-center titulo-historial" color="warning">
       Cambiar Contraseña
     </ion-title>
-
   </ion-toolbar>
 </ion-header>
 
@@ -20,16 +19,25 @@
 
     <!-- Subtítulo -->
     <div class="subtitulo-historial">
-      La contraseña debe tener al menos 6
-      caracteres e incluir una combinación de
-      números, letras y caracteres especilaes
+      La contraseña debe tener al menos 6 caracteres e incluir una combinación de números, letras y caracteres especiales.
     </div>
 
     <!-- Información básica -->
     <div class="datos">
-      <app-input2 [labelText2]="'Contraseña Actual :'"></app-input2>
-      <app-input2 [labelText2]="'Contraseña Nueva : '"></app-input2>
-      <app-input2 [labelText2]="'Repetir contraseña : '"></app-input2>
+      <ion-item>
+        <ion-label>Contraseña Actual:</ion-label>
+        <ion-input type="password" [(ngModel)]="contrasenaActual"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Contraseña Nueva:</ion-label>
+        <ion-input type="password" [(ngModel)]="nuevaContrasena"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Repetir Contraseña:</ion-label>
+        <ion-input type="password" [(ngModel)]="repetirContrasena"></ion-input>
+      </ion-item>
     </div>
 
     <!-- Botón olvidaste contraseña -->
@@ -37,11 +45,12 @@
       Olvidaste tu contraseña
     </ion-button>
 
-    <!-- Botón cerrar sesión -->
+    <!-- Botón cambiar contraseña -->
     <ion-button
       color="success"
       shape="round"
       class="boton-personalizado"
+      (click)="cambiarContrasena()"
     >
       Cambiar Contraseña
     </ion-button>

@@ -52,5 +52,16 @@ export class AuthserviceService {
         throw error;
       });
   }
+  cambiarContrasena(nuevaContrasena: string): Promise<void> {
+  return this.afAuth.currentUser
+    .then(user => {
+      if (!user) {
+        throw new Error('No hay un usuario autenticado.');
+      }
+      return user.updatePassword(nuevaContrasena);
+    })
+    .then(() => console.log('Contraseña actualizada con éxito'))
+    .catch(error => console.error('Error al cambiar contraseña:', error));
+}
   
 }
