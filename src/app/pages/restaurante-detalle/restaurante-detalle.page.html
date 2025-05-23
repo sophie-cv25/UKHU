@@ -1,16 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>restaurante-detalle</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="none" class="toolbar-custom">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/buscar">
+        <ion-icon name="arrow-back" slot="icon-only" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">restaurante-detalle</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-button expand="block" (click)="comoLlegar()">
-  Cómo llegar
-</ion-button>
+<ion-content [fullscreen]="true" class="detalle-content">
+  <div class="restaurante-header">
+    <img [src]="restaurante?.logoUrl || 'assets/icon/Perfil.svg'" alt="Logo" class="logo-restaurante" />
+    <div class="restaurante-info">
+      <h2 class="nombre-restaurante">{{ restaurante?.nombre }}</h2>
+      <div class="restaurante-rating">
+        <ion-icon name="star" color="danger"></ion-icon>
+        <span>{{ restaurante?.rating || '5.0' }}</span>
+        <span class="num-reviews">Leer reseñas</span>
+      </div>
+      <div class="restaurante-detalles-btn">
+        <span>{{ restaurante?.categoria }}</span> · 
+        <span>{{ restaurante?.zona }}</span> · 
+        <span>{{ restaurante?.distancia || '500 m' }}</span>
+        <ion-button class="como-llegar-btn" fill="solid" (click)="comoLlegar()">
+          Cómo llegar
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="semanal-banner">
+    <span> EMANAL MISION SEMANAL MISION SEMANA</span>
+  </div>
+
+  <div class="menu-lista">
+    <div class="menu-card" *ngFor="let plato of restaurante?.menu">
+      <img [src]="plato.imagen" alt="{{ plato.nombre }}" class="menu-img-card" />
+      <div class="menu-info-card">
+        <div class="menu-nombre">{{ plato.nombre }}</div>
+        <div class="menu-descripcion">{{ plato.descripcion }}</div>
+        <div class="menu-precio">{{ plato.precio | currency:'BOB':'symbol':'1.0-0' }}</div>
+      </div>
+    </div>
+  </div>
 </ion-content>
