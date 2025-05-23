@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { HistorialPageRoutingModule } from './historial-routing.module';
 import { HistorialPage } from './historial.page';
 import { SharedModule } from 'src/app/modulos/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { SharedModule } from 'src/app/modulos/shared/shared.module';
     FormsModule,
     IonicModule,
     HistorialPageRoutingModule,
-    SharedModule
+    SharedModule,
+    TranslateModule
   ],
   declarations: [HistorialPage]
 })

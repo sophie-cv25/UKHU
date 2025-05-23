@@ -9,7 +9,7 @@
 
     <!-- Título centrado -->
     <ion-title class="ion-text-center titulo-configuracion" color="danger">
-      Configuraciones
+      {{ 'configuracion_titulo' | translate }}
     </ion-title>
 
     <!-- Campanita -->
@@ -30,18 +30,16 @@
         fill="clear" 
         color="light"
         (click)="abrirSoporteTecnico()">
-        Soporte Técnico
+        {{ 'soporte_tecnico' | translate }}
       </ion-button>
 
       <ion-button class="boton-configuracion" expand="block" fill="clear" color="light">
-        Preferencias de la App
+        {{ 'preferencias_app' | translate }}
       </ion-button>
 
       <ion-button expand="block" fill="clear" color="primary">
-        Cambiar Contraseña
+        {{ 'cambiar_contrasena' | translate }}
       </ion-button>
     </div>
   </div> 
-
-
 </ion-content>

@@ -5,13 +5,16 @@ import { IonicModule } from '@ionic/angular';
 import { ConfiguracionPageRoutingModule } from './configuracion-routing.module';
 import { ConfiguracionPage } from './configuracion.page';
 import { SharedModule } from 'src/app/modulos/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
+TranslateModule
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     ConfiguracionPageRoutingModule,
-    SharedModule
+    SharedModule,
+    TranslateModule
   ],
   declarations: [ConfiguracionPage]
 })

@@ -9,7 +9,7 @@
 
     <!-- Título centrado -->
     <ion-title class="ion-text-center titulo-historial" color="warning">
-      Historial
+      {{ 'historial_titulo' | translate }}
     </ion-title>
 
     <!-- Campanita -->
@@ -20,12 +20,13 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content color="primary" class="fondo" [fullscreen]="true">
   <div class="contenedor-historial">
 
     <!-- Subtítulo -->
     <div class="subtitulo-historial">
-      Restaurantes recién visitados
+      {{ 'historial_subtitulo' | translate }}
     </div>
 
     <!-- Lista de historial en tarjetas -->

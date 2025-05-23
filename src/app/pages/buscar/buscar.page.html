@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Buscar Restaurantes</ion-title>
+    <ion-title>{{ 'buscar_restaurantes_titulo' | translate }}</ion-title>
   </ion-toolbar>
   
   <ion-searchbar 
     [(ngModel)]="searchTerm"
     (ionFocus)="activarBusqueda()"
     (ionInput)="buscarRestaurantes()"
-    placeholder="Buscar restaurantes...">
+    [placeholder]="'buscar_restaurantes_placeholder' | translate">
   </ion-searchbar>
 </ion-header>
 
@@ -25,41 +25,43 @@
       <ion-content>
         <ion-header>
            <ion-toolbar>
-              <ion-title>Resultados de búsqueda</ion-title>
+              <ion-title>{{ 'resultados_busqueda' | translate }}</ion-title>
               <ion-buttons slot="end">
-                <ion-button (click)="toggleFiltros()">Filtros</ion-button>
+                <ion-button (click)="toggleFiltros()">{{ 'boton_filtros' | translate }}</ion-button>
               </ion-buttons>
             </ion-toolbar>
           </ion-header>
 
           <!-- Lista de filtros (se muestra solo cuando 'mostrarFiltros' es true) -->
-          <!-- ...dentro de tu ion-list de filtros... -->
           <ion-list *ngIf="mostrarFiltros">
             <ion-item *ngFor="let categoria of categorias" (click)="filtrarPorCategoria(categoria)">
               <ion-label>{{ categoria }}</ion-label>
             </ion-item>
 
             <ion-item-divider color="light">
-              <ion-label>Zonas</ion-label>
+              <ion-label>{{ 'zonas_label' | translate }}</ion-label>
             </ion-item-divider>
             <ion-item *ngFor="let zona of zonas" (click)="filtrarPorZona(zona)">
               <ion-label>{{ zona }}</ion-label>
             </ion-item>
           </ion-list>
 
-<ion-searchbar placeholder="Buscar restaurantes..." [(ngModel)]="searchTerm" (ionInput)="buscarRestaurantes()"></ion-searchbar>
+          <ion-searchbar 
+            [placeholder]="'buscar_restaurantes_placeholder' | translate" 
+            [(ngModel)]="searchTerm" 
+            (ionInput)="buscarRestaurantes()">
+          </ion-searchbar>
 
-<ion-list>
-  <ion-item *ngFor="let restaurante of restaurantesFiltrados" (click)="irARestaurante(restaurante)">
-    <app-card-2 [restaurante]="restaurante"></app-card-2>
-  </ion-item>
-</ion-list>
-
-
+          <ion-list>
+            <ion-item *ngFor="let restaurante of restaurantesFiltrados" (click)="irARestaurante(restaurante)">
+              <app-card-2 [restaurante]="restaurante"></app-card-2>
+            </ion-item>
+          </ion-list>
       </ion-content>
     </ng-template>
   </ion-modal>
 </ion-content>
+
 <ion-footer>
   <app-tab-bar></app-tab-bar>
 </ion-footer>

@@ -1,6 +1,8 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
-    <ion-title class="ion-text-center" color="warning">Editar Perfil</ion-title>
+    <ion-title class="ion-text-center" color="warning">
+      {{ 'editar_perfil_titulo' | translate }}
+    </ion-title>
     <ion-buttons slot="start">
       <ion-button routerLink="/perfil">
         <ion-icon name="arrow-back-sharp"></ion-icon>
@@ -13,23 +15,23 @@
   <div class="contenedor-editar-perfil">
     <div class="formulario-editar">
       <ion-item>
-        <ion-label position="floating">Correo</ion-label>
+        <ion-label position="floating">{{ 'editar_perfil_correo' | translate }}</ion-label>
         <ion-input [(ngModel)]="userData.email"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
+        <ion-label position="floating">{{ 'editar_perfil_nombre' | translate }}</ion-label>
         <ion-input [(ngModel)]="userData.nombre"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Usuario</ion-label>
+        <ion-label position="floating">{{ 'editar_perfil_usuario' | translate }}</ion-label>
         <ion-input [(ngModel)]="userData.nombreUsuario"></ion-input>
       </ion-item>
     </div>
 
     <ion-button expand="block" color="success" (click)="guardarCambios()">
-      Guardar Cambios
+      {{ 'editar_perfil_guardar' | translate }}
     </ion-button>
   </div>
 </ion-content>
