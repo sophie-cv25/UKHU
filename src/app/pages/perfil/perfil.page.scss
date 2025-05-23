@@ -14,6 +14,17 @@
   --padding-end: 16px;
 }
 
+ion-title {
+  font-family: var(--fuente-h2);
+  font-size: var(--tamaño-h2);
+  margin: 0; /* Para evitar el espacio por defecto de h2 */
+  text-align: center;
+}
+
+header{
+  font-family: var(--fuente-h2);
+  font-size: var(--tamaño-h2);
+}
 
 .contenedor-perfil {
   display: flex;
@@ -21,8 +32,7 @@
   align-items: center;       // Centra horizontalmente
   justify-content: center;   // Centra verticalmente
   text-align: center;
-  height: 100%;
-  padding: 16px;
+  margin-top: 20px;
 }
 .info-basica {
   align-self: stretch; // Hace que ocupe todo el ancho disponible
@@ -59,4 +69,8 @@
   object-fit: contain;
   filter: none;
   /* Cambia el color del SVG usando el atributo fill si es SVG inline, o coloreado desde el archivo si es externo */
+}
+
+.grafico-placeholder{
+  margin-top: 50px;
 }

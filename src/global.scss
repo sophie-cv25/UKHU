@@ -36,11 +36,44 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 //@import "@ionic/angular/css/palettes/dark.system.css"; // 
 
-
-// @font-face {
-//     font-family: 'Moncerrat';
-//     src: url('./assets/fonts/Moncerrat')
-
-// }
-
 @import "~leaflet/dist/leaflet.css";
+
+@font-face {
+  font-family: 'Montserrath1';
+  src: url('./assets/fonts/static/Montserrat-ExtraBold.ttf') format('truetype')
+}
+@font-face {
+  font-family: 'Montserrath2';
+  src: url('./assets/fonts/static/Montserrat-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Montserrath3-h4';
+  src: url('./assets/fonts/static/Montserrat-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Montserratp-small';
+  src: url('./assets/fonts/static/Montserrat-Regular.ttf') format('truetype');
+}
+
+:root{
+    --ion-font-family:'Montserratp-small';
+}
+
+ion-header {
+  padding-left: var(--margen-lateral);
+  padding-right: var(--margen-lateral);
+  padding-top: var(--margen-superior);
+
+}
+
+ion-content {
+  padding-left: var(--margen-lateral);
+  padding-right: var(--margen-lateral);
+  padding-top: var(--margen-superior);
+  padding-bottom: var(--margen-inferior);
+}
+
+ion-header::part(toolbar) {
+  contain: none !important;
+  overflow: visible !important;
+}

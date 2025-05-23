@@ -1,46 +1,120 @@
-/* Estilos generales */
-* {
-    font-family: 'Montserrat', sans-serif;
-}
 
 .fondo {
   --background: #1e1e2d;
+}
+
+/* Título */
+ion-title {
+  width: auto !important;
+  text-align: center;
+  flex: 1;
+  padding-top: 12px;
+  font-size: var(--tamaño-h2);
+  font-family: var(--fuente-h2);
+  white-space: normal;
+  padding-inline-start: 60px;
+}
+
+ion-toolbar {
+  min-height: 96px; /* o prueba con 72px si 80 es mucho */
+  position: relative;
 }
 
 .contenedor-historial {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 80px;
-}
-
-/* Título */
-.titulo-historial {
-  font-size: 20px;
-  font-weight: bold;
+  padding: 0 9px 80px 9px; /* solo a los lados y abajo */
 }
 
 /* Subtítulo */
 .subtitulo-historial {
   color: #575759;
-  font-size: 18px;
+  font-family: var(--fuente-h4);
+  font-size: var(--tamaño-p);
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.datos ion-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  border: none;
+  border-bottom: 2px solid #ffc107;
+  margin-bottom: 10px;
+  --highlight-height: 0;
+  border-radius: 0;
+  padding-bottom: 8px;
+
+}
+.datos ion-label {
+  font-family: var(--fuente-h4);
+  font-size: var(--tamaño-p);
+  color: white;
+  display: flex;
+  align-items: end;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.datos ion-input {
+  font-family: var(--fuente-h4);
+  font-size: var(--tamaño-p);
+  color: white;
+  text-align: right;
+  --padding-start: 0;
+  --padding-end: 0;
+  white-space: nowrap;
 }
 
 /* Botón de enlace */
 .boton-enlace {
   color: #E6E6E6;
   text-decoration: underline;
-  font-size: 12px;
+  font-family: var(--fuente-small);
+  font-size: var(--tamaño-small);
   font-weight: normal;
-  text-transform: none
+  padding-right: var(--margen-lateral);
+  text-transform: none;
+  margin-top: 1px;
+  margin-bottom: 4px;
 }
 
 /* Botón de acción */
 .boton-personalizado {
-  width: 100%;
+  font-family: var(--fuente-h2);
+  font-size: var(--tamaño-sanll);
+  width: 80%;
   font-size: 16px;
   font-weight: bold;
-  margin-top: 60px;
+  margin: 60px auto 0 auto; /* Top 60px, auto a los lados, 0 abajo */
+  display: block; /* Asegura que se comporte como bloque */
 }
+
+
+.datos{
+  font-family: var(--fuente-h4);
+  font-size: var(--tamaño-p);
+  width: 100%;
+  padding: 0 18px;
+  --inner-padding-end: 0;
+  --inner-padding-start: 0;
+  --padding-start: 0;
+
+}
+
+app-input2 {
+  margin-bottom: 30px; /* o el valor que desees */
+  display: block; /* asegura que ocupen una fila cada uno */
+  padding-left: 0px;
+  width: 100%;
+}
+
+.datos app-input2:last-child {
+  margin-bottom: 0;
+}
+

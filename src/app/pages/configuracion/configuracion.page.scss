@@ -20,7 +20,6 @@
 }
 
 .boton-configuracion {
-  width: 100%;
   border: 2px solid #FEC530;
   border-radius: 12px;
   font-size: 16px;
@@ -29,12 +28,14 @@
   color: #fff;
   background-color: transparent;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0 10px;
   
   /* Alineación a la izquierda */
   display: flex;
   justify-content: flex-start;
   text-align: left;
-  padding-left: 16px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 .botones-configuracion ion-button:first-child {
@@ -45,10 +46,15 @@
 .botones-configuracion ion-button:last-child {
     width: 90%;
     font-size: 16px;
-    background-color: #FEC530; /* Fondo amarillo */
-    color: #121212; /* Texto oscuro para contraste */
-    border-radius: 50px; /* Bordes totalmente redondeados */
+    background-color: #FEC530;
+    color: #121212;
+    border-radius: 50px;
     text-transform: capitalize;
     font-weight: normal;
-    align-self: center; 
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-weight: bold; 
+    font-size: var(--tamaño-p);
 }

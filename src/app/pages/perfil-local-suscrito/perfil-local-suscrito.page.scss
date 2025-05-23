@@ -9,6 +9,12 @@
 //   font-weight: 700; // Bold
 //   font-size: 24px; // Puedes ajustar el tamaño si lo quieres más grande
 // }
+ion-title {
+  font-family: var(--fuente-h2);
+  font-size: var(--tamaño-h2);
+  margin: 0; /* Para evitar el espacio por defecto de h2 */
+  text-align: center;
+}
 
 .boton-personalizado {
   --background: #fec530;
