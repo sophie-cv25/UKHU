@@ -1,6 +1,21 @@
 {
-  "titulo_cambiar_contrasena": "Cambiar Contraseña",
+  "perfil_titulo": "Perfil",
+  "perfil_icono": "Icono de perfil",
+  "boton_editar": "Editar",
+  "boton_historial": "Historial",
+  "perfil_nombre": "Nombre: ",
+  "perfil_usuario": "Usuario: ",
+  "grafico_acumulacion": "Gráfico de la acumulación de puntos o nivel",
+  "boton_cerrar_sesion": "Cerrar sesión",
+  "titulo_app": "UKHU",
+  "cerca_tuyo": "Cerca tuyo",
+  "recien_visitados": "Recién visitados",
+  "mejores_rankeados": "Mejores rankeados",
+  "cambiar_contrasena_titulo": "Cambiar Contraseña",
+  "subtitulo_cambiar_contrasena": "La contraseña debe tener al menos 6 caracteres e incluir una combinación de números, letras y caracteres especiales.",
   "contraseña_actual": "Contraseña Actual:",
   "contraseña_nueva": "Contraseña Nueva:",
-  "repetir_contraseña": "Repetir Contraseña:"
+  "repetir_contraseña": "Repetir Contraseña:",
+  "boton_olvidaste_contrasena": "Olvidaste tu contraseña",
+  "boton_cambiar_contrasena": "Cambiar Contraseña"
 }

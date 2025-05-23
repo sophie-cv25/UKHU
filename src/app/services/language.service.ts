@@ -5,17 +5,15 @@ import { TranslateService } from '@ngx-translate/core';
   providedIn: 'root'
 })
 export class LanguageService {
-  constructor(private translate: TranslateService) {}
+  constructor(private translateService: TranslateService) {}
 
   cargarIdioma() {
-    const idiomaGuardado = localStorage.getItem('idioma') || 'es';
-    this.translate.setDefaultLang(idiomaGuardado);
-    this.translate.use(idiomaGuardado); // ✅ Aplicar el idioma guardado
+    const idioma = localStorage.getItem('idioma') || 'es'; // ✅ Cargar idioma guardado o español por defecto
+    this.translateService.use(idioma); // ✅ Aplicar idioma global
   }
 
   cambiarIdioma(idioma: string) {
-    this.translate.setDefaultLang(idioma);
-    this.translate.use(idioma);
-    localStorage.setItem('idioma', idioma); // ✅ Guarda el idioma seleccionado
+    this.translateService.use(idioma); // ✅ Cambiar idioma en tiempo real
+    localStorage.setItem('idioma', idioma); // ✅ Guardar idioma en localStorage
   }
 }

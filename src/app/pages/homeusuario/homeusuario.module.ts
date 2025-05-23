@@ -8,6 +8,7 @@ import { SharedModule } from 'src/app/modulos/shared/shared.module';
 import { register } from 'swiper/element/bundle';
 register();
 import { TabBarComponent } from 'src/app/componentes/tab-bar/tab-bar.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { TabBarComponent } from 'src/app/componentes/tab-bar/tab-bar.component';
     HomeusuarioPageRoutingModule,
     SharedModule,
     TabBarComponent,
+    TranslateModule
   ],
   declarations: [HomeusuarioPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

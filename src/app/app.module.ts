@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy , RouterModule} from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
-// Para hacer llamadas http
-import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 // Para utilizar formularios reactivos
 import { ReactiveFormsModule } from '@angular/forms';
@@ -20,11 +17,16 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 // Para manejar traducciones
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-//  Función para cargar los archivos de traducción
-export function HttpLoaderFactory(http: HttpClient) {
+// Nueva forma de manejar HTTP Client
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+
+
+// 🔹 Función para cargar los archivos de traducción
+export function HttpLoaderFactory(http: any) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
@@ -34,7 +36,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule,
     ReactiveFormsModule,
     // Para cargar Firebase
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -52,7 +53,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    TranslateService,
+    provideHttpClient(withInterceptorsFromDi()) 
   ],
   bootstrap: [AppComponent],
 })

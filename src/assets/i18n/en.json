@@ -1,6 +1,21 @@
 {
-  "titulo_cambiar_contrasena": "Change Password",
+  "perfil_titulo": "Profile",
+  "perfil_icono": "Profile icon",
+  "boton_editar": "Edit",
+  "boton_historial": "History",
+  "perfil_nombre": "Name: ",
+  "perfil_usuario": "Username: ",
+  "grafico_acumulacion": "Accumulation chart of points or level",
+  "boton_cerrar_sesion": "Log out",
+  "titulo_app": "UKHU",
+  "cerca_tuyo": "Near you",
+  "recien_visitados": "Recently visited",
+  "mejores_rankeados": "Top rated",
+  "cambiar_contrasena_titulo": "Change Password",
+  "subtitulo_cambiar_contrasena": "The password must be at least 6 characters long and include a combination of numbers, letters, and special characters.",
   "contraseña_actual": "Current Password:",
   "contraseña_nueva": "New Password:",
-  "repetir_contraseña": "Repeat Password:"
+  "repetir_contraseña": "Repeat Password:",
+  "boton_olvidaste_contrasena": "Forgot your password?",
+  "boton_cambiar_contrasena": "Change Password"
 }

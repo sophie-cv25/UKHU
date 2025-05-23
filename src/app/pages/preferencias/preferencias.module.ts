@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { PreferenciasPageRoutingModule } from './preferencias-routing.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { PreferenciasPage } from './preferencias.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { PreferenciasPage } from './preferencias.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    PreferenciasPageRoutingModule
+    PreferenciasPageRoutingModule,
+    TranslateModule
   ],
   declarations: [PreferenciasPage]
 })
