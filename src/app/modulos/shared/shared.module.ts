@@ -12,6 +12,8 @@ import { Modal1Component } from 'src/app/componentes/modal1/modal1.component';
 import { Modal2Component } from 'src/app/componentes/modal2/modal2.component';
 import { ModalSoporteTecnicoComponent } from 'src/app/componentes/modal-soporte-tecnico/modal-soporte-tecnico.component';
 import { CardResenasComponent } from 'src/app/componentes/card-resenas/card-resenas.component';
+import { CodigoModalComponent } from 'src/app/componentes/codigo-modal/codigo-modal.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { CardResenasComponent } from 'src/app/componentes/card-resenas/card-rese
     Modal1Component,
     Modal2Component,
     ModalSoporteTecnicoComponent,
-    CardResenasComponent
+    CardResenasComponent,
+    CodigoModalComponent
   ],
   exports:[
     Input1Component,
@@ -37,12 +40,15 @@ import { CardResenasComponent } from 'src/app/componentes/card-resenas/card-rese
   Modal1Component,
   Modal2Component,
   ModalSoporteTecnicoComponent,
-  CardResenasComponent
+  CardResenasComponent,
+  CodigoModalComponent,
+  FormsModule
 ],
   imports: [
     CommonModule,
     IonicModule.forRoot(),
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class SharedModule { }

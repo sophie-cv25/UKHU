@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ingresa el código</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p>Código generado: <strong>{{ codigoGenerado }}</strong></p>
+  <p>Tiempo restante: <strong>{{ tiempoRestante }}</strong> segundos</p>
+
+  <ion-item>
+    <ion-label position="stacked">Código</ion-label>
+    <ion-input
+      [(ngModel)]="codigo"
+      maxlength="8"
+      type="text"
+      placeholder="Ingresa el código"
+      (ionInput)="onInput($event)">
+    </ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="validateCode()" [disabled]="codigo.length !== 8">Validar</ion-button>
+</ion-content>

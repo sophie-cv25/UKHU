@@ -2,6 +2,7 @@ import { Injectable, Injector, runInInjectionContext } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import { FieldValue, arrayUnion } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -72,4 +73,41 @@ export class DatabaseService {
         .valueChanges({ idField: 'id' });
     });
   }
+
+  // 📌 Guardar código usado en la subcolección "codigos-usados"
+  saveCodigoUsado(codigo: string, usuarioEmail: string, usuarioNombre: string, restauranteUid: string, nombreRestaurante: string): Promise<void> {
+  return runInInjectionContext(this.injector, async () => {
+    const restauranteRef = this.firestore.collection('restaurantes').doc(restauranteUid);
+    const codigosUsadosRef = restauranteRef.collection('codigos-usados');
+
+    await codigosUsadosRef.add({
+      codigo,
+      usuario_email: usuarioEmail,
+      usuario_nombre: usuarioNombre,
+      restaurante_id: restauranteUid, // Ahora usamos el UID real
+      nombre_restaurante: nombreRestaurante,
+      fecha_uso: new Date().toISOString()
+    });
+
+    console.log('Código guardado correctamente en codigos-usados.');
+  });
+}
+
+saveHistorialVisita(usuarioId: string, restauranteId: string, nombreRestaurante: string): Promise<void> {
+  return runInInjectionContext(this.injector, async () => {
+    console.log(`✅ Guardando historial en el usuario: ${usuarioId}`);
+
+    const usuarioRef = this.firestore.collection('users').doc(usuarioId); // ✅ Usamos `usuarioId`
+    const historialRef = usuarioRef.collection('historial');
+
+    await historialRef.add({
+      restaurante_id: restauranteId,
+      nombre_restaurante: nombreRestaurante,
+      fecha_visita: new Date().toISOString()
+    });
+
+    console.log(`📌 Historial guardado correctamente en el usuario ${usuarioId}.`);
+  });
+}
+
 }

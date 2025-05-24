@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class AuthserviceService {
   constructor(
     private afAuth: AngularFireAuth,
-    private http: HttpClient
+    private http: HttpClient,
   ) {}
 
   registrar(email: string, password: string) {
@@ -35,13 +35,25 @@ export class AuthserviceService {
   }
 
   iniciarSesion(email: string, password: string) {
-    return this.afAuth.signInWithEmailAndPassword(email, password)
-      .then(userCredential => userCredential.user)
-      .catch(error => {
-        console.error('Error al iniciar sesión:', error);
-        throw error;
-      });
-  }
+  return this.afAuth.signInWithEmailAndPassword(email, password)
+    .then(userCredential => {
+      const user = userCredential.user;
+      if (user) {
+        localStorage.setItem('isLoggedIn', 'true');  // Guardar estado de sesión
+        localStorage.setItem('userData', JSON.stringify({
+          email: user.email,
+          nombre: user.displayName || email.split('@')[0] // Si no hay nombre, usar el email
+        }));
+        console.log('Sesión iniciada y datos guardados en localStorage.');
+        return user;
+      }
+      return null;
+    })
+    .catch(error => {
+      console.error('Error al iniciar sesión:', error);
+      throw error;
+    });
+}
 
   recuperarPassword(email: string) {
     return this.afAuth.sendPasswordResetEmail(email)
@@ -80,6 +92,10 @@ export class AuthserviceService {
           });
       });
   }
+
+  isLoggedIn(): Promise<boolean> {
+  return this.afAuth.authState.pipe().toPromise().then(user => !!user);
+}
 
   //  Generar código y enviarlo por email (SIN Firestore)
   enviarCodigoPorEmail(email: string, codigo: string) {
