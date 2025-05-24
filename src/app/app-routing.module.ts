@@ -119,7 +119,11 @@ const routes: Routes = [
   {
     path: 'onboardingf',
     loadChildren: () => import('./pages/onboardingf/onboardingf.module').then( m => m.OnboardingfPageModule)
+  },  {
+    path: 'gamificacion',
+    loadChildren: () => import('./pages/gamificacion/gamificacion.module').then( m => m.GamificacionPageModule)
   },
+
 
  
 

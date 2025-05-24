@@ -1,0 +1,46 @@
+ion-header {
+  --background: transparent;
+  background: transparent;
+  box-shadow: none;
+
+  .header-background {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  ion-toolbar {
+    --background: transparent;
+    background: transparent;
+    --border-width: 0;
+    box-shadow: none;
+  }
+
+  &::before,
+  &::after {
+    background: transparent !important;
+  }
+
+  ion-searchbar {
+    --background: #2c2c2c;
+    --border-radius: 25px;
+    --color: #ffffff;
+    --placeholder-color: #f84b5f;
+    --icon-color: #f84b5f;
+    padding: 8px 16px;
+
+    .searchbar-input-container {
+      background: var(--background);
+      border-radius: var(--border-radius);
+    }
+
+    .searchbar-input {
+      padding-left: 10px !important;
+      color: var(--color);
+    }
+
+    .searchbar-clear-button,
+    .searchbar-search-icon {
+      color: var(--icon-color);
+    }
+  }
+}
