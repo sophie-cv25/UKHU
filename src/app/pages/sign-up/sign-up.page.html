@@ -1,34 +1,72 @@
 
+<ion-content class="login-content" fullscreen>
+  <div class="top-bg">
+    <h2 class="title-signin">{{ 'registro_titulo' | translate }}</h2>
+  </div>
 
-<ion-content class="ion-padding">
-  <form (submit)="registrarUsuario()">
-    <ion-item>
-      <ion-label position="floating">{{ 'registro_nombre' | translate }}</ion-label>
-      <ion-input [(ngModel)]="nombre" name="nombre" type="text" required></ion-input>
-    </ion-item>
+  <div class="login-box">
+    <form (submit)="registrarUsuario()">
+      <ion-item lines="none" class="custom-input">
+        <ion-input
+          [(ngModel)]="nombre"
+          name="nombre"
+          type="text"
+          placeholder="Nombre:"
+          required
+        ></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">{{ 'registro_apellido' | translate }}</ion-label>
-      <ion-input [(ngModel)]="apellido" name="apellido" type="text" required></ion-input>
-    </ion-item>
+      <ion-item lines="none" class="custom-input">
+        <ion-input
+          [(ngModel)]="apellido"
+          name="apellido"
+          type="text"
+          placeholder="Apellido:"
+          required
+        ></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">{{ 'registro_correo' | translate }}</ion-label>
-      <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
-    </ion-item>
+      <ion-item lines="none" class="custom-input">
+        <ion-input
+          [(ngModel)]="email"
+          name="email"
+          type="email"
+          placeholder="Email:"
+          required
+        ></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">{{ 'registro_contrasena' | translate }}</ion-label>
-      <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
-    </ion-item>
+      <ion-item lines="none" class="custom-input">
+        <ion-input
+          [(ngModel)]="password"
+          name="password"
+          type="password"
+          placeholder="Password:"
+          required
+        ></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">{{ 'registro_confirmar_contrasena' | translate }}</ion-label>
-      <ion-input [(ngModel)]="confirmPassword" name="confirmPassword" type="password" required></ion-input>
-    </ion-item>
+      <ion-item lines="none" class="custom-input">
+        <ion-input
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          placeholder="Confirm Password:"
+          required
+        ></ion-input>
+      </ion-item>
 
-    <ion-button expand="full" type="submit">
-      {{ 'registro_boton' | translate }}
-    </ion-button>
-  </form>
+      <ion-button expand="block" class="btn-login" type="submit">Sign up</ion-button>
+
+      <div class="social-icons">
+        <ion-icon name="logo-facebook"></ion-icon>
+        <ion-icon name="logo-google"></ion-icon>
+        <ion-icon name="logo-apple"></ion-icon>
+      </div>
+
+      <div class="footer-links">
+        <a href="/sign-in">Sign In</a>
+      </div>
+    </form>
+  </div>
 </ion-content>

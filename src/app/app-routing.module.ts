@@ -95,9 +95,30 @@ const routes: Routes = [
   {
     path: 'sign-up-comercio',
     loadChildren: () => import('./pages/sign-up-comercio/sign-up-comercio.module').then( m => m.SignUpComercioPageModule)
-  },  {
+  },
+  {
     path: 'menu-local',
     loadChildren: () => import('./pages/menu-local/menu-local.module').then( m => m.MenuLocalPageModule)
+  },
+  {
+    path: 'bienvenida',
+    loadChildren: () => import('./pages/bienvenida/bienvenida.module').then( m => m.BienvenidaPageModule)
+  },
+  {
+    path: 'onboarding1',
+    loadChildren: () => import('./pages/onboarding1/onboarding1.module').then( m => m.Onboarding1PageModule)
+  },
+  {
+    path: 'onboarding2',
+    loadChildren: () => import('./pages/onboarding2/onboarding2.module').then( m => m.Onboarding2PageModule)
+  },
+  {
+    path: 'onboarding3',
+    loadChildren: () => import('./pages/onboarding3/onboarding3.module').then( m => m.Onboarding3PageModule)
+  },
+  {
+    path: 'onboardingf',
+    loadChildren: () => import('./pages/onboardingf/onboardingf.module').then( m => m.OnboardingfPageModule)
   },
 
  

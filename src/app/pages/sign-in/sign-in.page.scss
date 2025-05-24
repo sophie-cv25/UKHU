@@ -3,11 +3,14 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  max-height: 852px;
+  // max-height: 852px; // Puedes dejar esto si tu diseño está optimizado para una altura máxima específica
+  // Si quieres que se adapte a cualquier altura, podrías quitarlo.
+
+  height: 100%; // <-- ¡AÑADIDO/MODIFICADO! Asegura que ion-content ocupe el 100% de la altura del viewport.
+  overflow: hidden; // <-- ¡AÑADIDO! Esto oculta cualquier contenido que se desborde, eliminando la barra de scroll.
 
   .top-bg {
-
-    height: 400px;
+    height: 400px; // Altura fija de la parte superior, como la tenías
     border-bottom-left-radius: 60px;
     border-bottom-right-radius: 60px;
     background-image: url('../../../assets/images/Logo1.png');
@@ -21,23 +24,27 @@
       bottom: 50px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 24px;
-      font-weight: bold;
+      font-size: 30px;
+      font-weight: bolder;
       color: #000;
       z-index: 10;
     }
   }
 
   .login-box {
-    flex: 1;
+    flex: 1; // Mantén esto, ayuda a que la caja negra ocupe el espacio restante
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     background-color: #121212;
     padding: 30px 20px 40px;
+    padding-top: 60px;
+
     border-radius: 50px 50px 0 0;
-    margin-top: -40px;
-    min-height: calc(100% - 210px); // Ajusta según .top-bg
+    margin-top: 30px;
+    // min-height: calc(100% - 210px); // <-- Puedes mantener esto si funciona bien con 'height: 100%' y 'overflow: hidden'
+    // o si quieres que la caja negra siempre tenga un tamaño mínimo garantizado.
+    // Si causa problemas de scroll, puedes probar a eliminarlo.
     text-align: center;
 
     ion-item {
@@ -54,7 +61,7 @@
     .custom-input {
       background: white;
       border-radius: 30px;
-      margin-bottom: 15px;
+      margin-bottom: 25px;
       padding: 5px 15px;
 
       ion-input {
@@ -64,6 +71,7 @@
     }
 
     .forgot-password {
+      // Este parece ser de la pantalla de Sign In, no de Sign Up
       text-align: right;
       margin: 5px 0 20px;
 
@@ -74,6 +82,7 @@
     }
 
     .btn-login {
+      // También puede llamarse .btn-signup en la pantalla de Sign Up
       --background: #ffc425;
       --color: #000000;
       border-radius: 25px;
@@ -85,7 +94,7 @@
       display: flex;
       justify-content: center;
       gap: 20px;
-      font-size: 1.6rem;
+      font-size: 37px; // Aquí puedes ajustar el tamaño de los íconos si lo deseas (ej. 2.2rem)
       color: #ff4b5c;
       margin-bottom: 20px;
     }
@@ -94,6 +103,8 @@
       display: flex;
       justify-content: space-between;
       font-size: 0.9rem;
+      margin-top: auto; // Puedes añadir esto aquí para empujar el footer hacia abajo si hay espacio extra en la caja.
+      // Si no quieres que se estire, déjalo como estaba.
 
       a {
         color: #ff4b5c;

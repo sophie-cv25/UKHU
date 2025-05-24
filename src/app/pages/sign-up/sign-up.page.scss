@@ -1,0 +1,131 @@
+.login-content {
+  --background: #ffc425; // Fondo amarillo base para toda la pantalla
+  display: flex;
+  flex-direction: column; // Para que los hijos se apilen verticalmente
+  height: 100%; // Asegura que ion-content ocupe toda la altura de la pantalla
+  justify-content: flex-start; // Empieza los elementos desde el tope
+
+  .top-bg {
+    // Este div ahora solo contendrá la imagen de fondo y el título.
+    // Ya no lo vamos a posicionar de forma absoluta para no "romper" el flujo.
+    width: 100%;
+    // Ajusta esta altura para controlar cuánto espacio vertical ocupará la parte superior
+    // y cómo se verá el logo. Prueba con 30vh, 35vh, 40vh.
+    height: 200px; // <-- ¡VALOR CLAVE! Ajusta esto para el tamaño del logo/fondo
+    
+    background-image: url('../../../assets/images/Logo1.png');
+    background-size: cover; // Cubre el área, recortando si es necesario
+    background-repeat: no-repeat;
+    background-position: center; // Centra la imagen de fondo
+    
+    // No necesitamos los border-radius aquí ya que la .login-box los cubrirá
+    // y el fondo amarillo es el de ion-content.
+
+    position: relative; // Para posicionar el título 'Sign Up' dentro de este div
+    overflow: hidden; // Recorta cualquier parte de la imagen que se desborde si el logo es más grande que la altura
+    
+    .title-signin {
+      text-align: center;
+      font-weight: bolder;
+      font-size: 30px;
+      color: #000;
+      
+      // Posicionamiento para el título "Sign Up" dentro de .top-bg
+      position: absolute;
+      width: 100%;
+      // Ajusta la posición del título dentro de la parte superior
+      // top: 50%; podría ser muy bajo si el logo es grande.
+      // Prueba con valores en % o px para subirlo.
+      top: 50%; // <-- Ajusta esto para subir/bajar el "Sign Up"
+      left: 0;
+      transform: translateY(-50%); // Esto ayuda a centrar verticalmente si usas top:50%
+      // Si usas top: 30%, es posible que no necesites transform: translateY(-50%)
+      // Prueba con y sin, y ajusta 'top'.
+
+      z-index: 2; // Asegura que el texto esté encima del logo
+    }
+  }
+
+  .login-box {
+    background-color: #121212;
+    // Esto es CRÍTICO: un margin-top negativo.
+    // Hará que la caja de login se superponga a .top-bg.
+    // El valor debe ser la cantidad que quieres que se superponga.
+    // Ej. Si top-bg es 35vh y quieres que login-box se suba 10vh,
+    // entonces su margen superior efectivo sería 35vh - 10vh = 25vh.
+    // O puedes pensar que quieres que la caja suba 10vh.
+    margin-top: 5vh; // <-- ¡VALOR CLAVE! Ajusta esto para la superposición
+  
+    padding: 30px 40px;
+    padding-bottom: 50px;
+    border-top-left-radius: 40px; // Solo borde superior izquierdo
+    border-top-right-radius: 40px; // Solo borde superior derecho
+    border-bottom-left-radius: 0px; // Mantener radios inferiores si te gusta
+    border-bottom-right-radius: 0px; // Mantener radios inferiores si te gusta
+    text-align: center;
+    z-index: 1; // Asegura que esta caja esté por encima del fondo amarillo
+    position: relative; // Necesario para que z-index funcione correctamente
+
+    // Esto hará que la caja de login ocupe el espacio restante, y sea scrollable si es necesario.
+    flex-grow: 1; 
+    display: flex; // Para organizar el contenido interno
+    flex-direction: column; // Para que los campos se apilen
+    justify-content: space-between; // Distribuye el espacio entre los grupos de elementos
+    
+    // ... (El resto de tu SCSS para .login-box y sus hijos permanece igual)
+    ion-item {
+      --background: transparent;
+      --highlight-color-focused: transparent;
+      --inner-padding-end: 0px;
+      --inner-padding-start: 0px;
+      --padding-start: 0px;
+      --padding-end: 0px;
+      border: none;
+      box-shadow: none;
+    }
+
+    .custom-input {
+      background: white;
+      border-radius: 30px;
+      margin-bottom: 25px;
+      padding: 8px 15px;
+
+      ion-input {
+        color: #575759;
+        --padding-start: 10px;
+      }
+    }
+
+    .btn-login {
+      --background: #ffc425;
+      --color: #000000;
+      border-radius: 90px;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      padding-top: 50px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 32px;
+      color: #ff4b5c;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      margin-top: auto; // Empuja esto al final del login-box si hay espacio
+
+      a {
+        color: #ff4b5c;
+        text-decoration: none;
+      }
+    }
+
+  }
+}

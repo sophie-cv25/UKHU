@@ -1,0 +1,125 @@
+/* SCSS para la pantalla de Bienvenida (Logo arriba, Tarjeta amarilla con texto y botones abajo) */
+
+ion-app {
+  background-color: #191a1d;
+}
+
+ion-header {
+  display: none;
+}
+
+ion-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+
+  --background: #191a1d;
+  overflow: hidden;
+}
+
+.top-logo-area {
+  width: 100%;
+  text-align: center;
+  padding-top: 200px;
+  flex-grow: 1;
+  padding-bottom: 160px;
+
+  .app-logo {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+ion-card.welcome-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  min-height: 40vh;
+
+  background-color: #FDD100;
+  background-image: url('../../../assets/images/onbf.png');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+
+  box-shadow: none;
+  margin: 0;
+}
+
+ion-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 30px 20px 40px;
+  height: 100%;
+  text-align: left; /* Alinea todo el texto dentro de ion-card-content a la izquierda */
+}
+
+h1 {
+  color: #191a1d;
+  font-size: 2.5em;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 15px;
+  text-align: left; /* Alinea el título a la izquierda */
+  font-family: "Montserrath1";
+}
+
+p {
+  color: #191a1d;
+  font-size: 1.1em;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  text-align: left; /* Alinea el párrafo a la izquierda */
+  padding: 0;
+  font-family: "Montserratp-small";
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; /* Alinea los botones a la izquierda */
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+  gap: 15px;
+}
+
+.sign-in-button {
+  --background: #191a1d;
+  --color: #fff;
+  font-weight: bold;
+  font-size: 1.1em;
+  font-family: "Montserratp-small";
+  height: 50px;
+  width: 48%;
+  --border-radius: 30px;
+}
+
+.sign-up-button {
+  --background: #ffff;
+  --color: #191a1d;
+  --border-color: #ffff;
+  font-family: "Montserratp-small";
+  --border-width: 2px;
+  font-weight: bold;
+  font-size: 1.1em;
+  height: 50px;
+  width: 48%;
+  --border-radius: 30px;
+}

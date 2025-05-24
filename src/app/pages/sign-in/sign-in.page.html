@@ -26,7 +26,7 @@
       </ion-item>
 
       <div class="forgot-password">
-        <a routerLink="/forgot-password">{{ 'login_olvidaste_contrasena' | translate }}</a>
+        <a routerLink="/forgot-pasword">{{ 'login_olvidaste_contrasena' | translate }}</a>
       </div>
 
       <ion-button expand="block" class="btn-login" type="submit">
@@ -41,7 +41,7 @@
 
       <div class="footer-links">
         <a [routerLink]="['/signin-comercio']">Login Comercio</a>
-        <a href="#">{{ 'login_registro' | translate }}</a>
+        <a [routerLink]="['/sign-up']">{{ 'login_registro' | translate }}</a>
       </div>
     </form>
   </div>

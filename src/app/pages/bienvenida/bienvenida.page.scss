@@ -1,0 +1,87 @@
+/* Estilos globales */
+body {
+  margin: 0;
+  background-color: #191A1D;
+  font-family: Arial, sans-serif;
+}
+
+/* Ionic: Se asegura que ion-content tenga el fondo correcto */
+ion-content {
+  --background: #191A1D;
+}
+
+/* Contenedor principal */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #191A1D;
+  /*   overflow: hidden; */
+
+  /* Imagen central "UKHU" */
+  .ukhu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .ukhu-img {
+      width: 350px !important; // Intenta con 200vw, 300vw, 400vw hasta que se note
+      height: auto !important; // Mantener la proporción
+      max-width: none !important; // ¡CRÍTICO! Esto anula el `max-width: 100%` del `normalize.scss`
+      max-height: none !important; // Asegura que ninguna altura máxima la limite
+      object-fit: contain !important; // Puedes probar con 'contain', 'fill', o 'none'.
+      display: block !important;
+    }
+  }
+
+  /* Botón "Saltar" */
+  .footer-links {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+
+    a {
+      display: inline-block;
+      font-weight: lighter;
+      font-size: 18px; // Fuente agrandada
+      padding: 12px 24px; // Mayor área clickeable
+      text-decoration: none;
+      color: #ffcc00;
+      border: none; // Se eliminan los bordes
+      background-color: transparent;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #ffd633;
+      }
+    }
+  }
+
+  /* Elementos decorativos */
+  .decorative {
+    position: absolute;
+
+    &.top-right {
+      top: 0;
+      right: 0;
+
+      .decor-img {
+        width: 120px; // Aumentado el tamaño de la imagen decorativa
+        height: auto;
+        display: block;
+      }
+    }
+
+    &.bottom-left {
+      bottom: 0;
+      left: 0;
+
+      .decor-img {
+        width: 120px; // Aumentado el tamaño de la imagen decorativa
+        height: auto;
+        display: block;
+      }
+    }
+  }
+}

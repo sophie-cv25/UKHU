@@ -1,0 +1,64 @@
+ion-app {
+  background-color: #191a1d !important; // Fondo del contenedor principal
+
+  ion-content {
+    height: 100vh !important;
+    --background: transparent; // Permite que se vea el fondo definido en ion-app
+
+    /* 
+      Forzamos al contenedor interno (scroll) a usar flexbox. 
+      El pseudo-elemento ::part(scroll) es la forma recomendada en Ionic para estilizar la parte interna del ion-content.
+    */
+    ::part(scroll) {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-end !important;
+      align-items: center !important;
+      padding: 0 !important;  // Eliminamos el padding interno para que no se desordene la posición
+    }
+
+    .top-content-area {
+      flex: 1;
+      padding-top: 450px; // Se respeta tal y como lo indicaste
+    }
+
+    .bottom-visual-container {
+      position: relative;
+      width: 100%; // Asegura que la imagen ocupe todo el ancho
+      text-align: center; 
+      
+
+      .visual-background-image {
+        width: 100%; // La imagen se adapta al ancho completo
+        height: auto;
+        display: block;
+      }
+
+      .bottom-card {
+        position: absolute;       // Se posiciona sobre la imagen
+        bottom: 20px;             // Pequeño margen desde el fondo del contenedor
+        left: 47%;
+        transform: translateX(-50%);
+        width: 100%;
+        background: transparent !important; // Sin fondo para que se vea la imagen de fondo
+        padding: 20px;
+        // Se omite border-radius para evitar inconsistencia visual sobre la imagen
+        box-shadow: none !important;
+        
+
+        h1 {
+          color: #ffc107;
+          font-size: 30px;
+          margin-bottom: 10px;
+          font-weight: bolder;
+        }
+
+        p {
+          color: #fff;
+          font-size: 18px;
+          font-weight: lighter;
+        }
+      }
+    }
+  }
+}
