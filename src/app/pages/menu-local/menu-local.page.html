@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true" class="detalle-content">
+  <div class="restaurante-header">
+    <img [src]="userData?.logoUrl || 'assets/icon/Perfil.svg'" alt="Logo" class="logo-restaurante" />
+    <div class="restaurante-info">
+      <h2 class="nombre-restaurante">{{ userData?.nombre }}</h2>
+    </div>
+  </div>
+
+  <!-- 🔹 Botón para agregar un nuevo platillo -->
+  <ion-button expand="block" color="success" (click)="agregarPlatillo()">
+    <ion-icon slot="start" name="add"></ion-icon>
+    Agregar Platillo
+  </ion-button>
+
+  <div class="menu-lista">
+    <div class="menu-card" *ngFor="let plato of menu; let i = index">
+      <img [src]="plato.imagen || 'assets/default-image.png'" alt="{{ plato.nombre }}" class="menu-img-card" />
+      <div class="menu-info-card">
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input [(ngModel)]="plato.nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Descripción</ion-label>
+          <ion-textarea [(ngModel)]="plato.descripcion"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Imagen (URL)</ion-label>
+          <ion-input [(ngModel)]="plato.imagen"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Precio</ion-label>
+          <ion-input type="number" [(ngModel)]="plato.precio"></ion-input>
+        </ion-item>
+        <div class="acciones-menu">
+          <ion-button color="primary" (click)="guardarPlatillo()">Guardar</ion-button>
+          <ion-button color="danger" fill="clear" (click)="eliminarPlatillo(i)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

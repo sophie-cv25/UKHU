@@ -95,7 +95,11 @@ const routes: Routes = [
   {
     path: 'sign-up-comercio',
     loadChildren: () => import('./pages/sign-up-comercio/sign-up-comercio.module').then( m => m.SignUpComercioPageModule)
+  },  {
+    path: 'menu-local',
+    loadChildren: () => import('./pages/menu-local/menu-local.module').then( m => m.MenuLocalPageModule)
   },
+
  
 
 
