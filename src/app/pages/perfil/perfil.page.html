@@ -12,17 +12,19 @@
 <ion-content color="primary" class="fondo" [fullscreen]="true">
   <style>
     ::ng-deep .info-basica ion-item ion-input .native-input {
-      transform: translateY(13px); /* Baja un poco el texto del input */
+      transform: translateY(13px);
     }
   </style>
 
   <div class="contenedor-perfil">
     <!-- Imagen de perfil con marco amarillo -->
     <div class="avatar-unico">
-     <img src="assets/icon/Perfilnegro.svg" alt="{{ 'perfil_icono' | translate }}" />
+      <img [src]="'assets/icon/' + (userData?.iconoPerfil || 'Perfilnegro.svg')"
+           alt="Avatar"
+           class="avatar-unico-img" />
     </div>
 
-     <!-- Botones Editar / Historial -->
+    <!-- Botones Editar / Historial -->
     <div class="botones-perfil">
       <ion-button color="success" shape="round" size="small" class="boton-personalizado" routerLink="/edit-perfilc">
         {{ 'boton_editar' | translate }}
@@ -37,18 +39,15 @@
         <ion-label>{{ 'perfil_nombre' | translate }}</ion-label>
         <ion-input [(ngModel)]="userData.nombre" name="nombre" type="text" readonly></ion-input>
       </ion-item>
-
       <ion-item>
         <ion-label>{{ 'perfil_usuario' | translate }}</ion-label>
         <ion-input [(ngModel)]="userData.nombreUsuario" name="nombreUsuario" type="text" readonly></ion-input>
       </ion-item>
     </div>
-
     <!-- Gráfico (placeholder) -->
     <div class="grafico-placeholder">
       {{ 'grafico_acumulacion' | translate }}<br />
     </div>
-
     <!-- Botón cerrar sesión -->
     <ion-button color="success" shape="round" class="boton-personalizado boton-cerrar-sesion" (click)="cerrarSesion()">
       {{ 'boton_cerrar_sesion' | translate }}
@@ -59,4 +58,3 @@
 <ion-footer>
   <app-tab-bar></app-tab-bar>
 </ion-footer>
-

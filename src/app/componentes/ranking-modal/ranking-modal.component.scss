@@ -1,0 +1,65 @@
+ion-content {
+  --background: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centra verticalmente */
+  min-height: 100vh;
+}
+
+.rating-card {
+  background: #FFD233;
+  border-radius: 22px;
+  box-shadow: 0 8px 24px 0 rgba(0,0,0,0.15);
+  width: 340px;
+  max-width: 95vw;
+  margin: 0 auto; /* solo auto, sin margin-top */
+  margin-top: 25vh;
+  padding: 38px 0 36px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stars-container {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.stars-container ion-icon {
+  font-size: 38px;
+  color: #111;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.1s;
+}
+
+.stars-container ion-icon:hover,
+.stars-container ion-icon:active {
+  color: #333;
+  transform: scale(1.15);
+}
+
+.rating-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  color: #111;
+  margin-bottom: 26px;
+  margin-top: 0;
+  text-align: center;
+}
+
+ion-button.rating-btn {
+  --background: #222 !important;
+  --color: #fff !important;
+  --border-radius: 22px !important;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  width: 180px;
+  margin: 0 auto 0 auto;
+  display: block;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.08);
+}

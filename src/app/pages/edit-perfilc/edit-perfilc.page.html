@@ -13,17 +13,34 @@
 
 <ion-content color="primary" class="fondo" [fullscreen]="true">
   <div class="contenedor-editar-perfil">
+
+    <!-- Selector de icono de perfil -->
+<div class="selector-icono-perfil">
+  <ion-button fill="solid" size="small" color="success" (click)="anteriorIcono()" class="flecha-avatar">
+    <ion-icon name="chevron-back-sharp"></ion-icon>
+  </ion-button>
+  <img [src]="'assets/icon/' + iconosPerfil[iconoSeleccionado]"
+       [alt]="iconosPerfil[iconoSeleccionado]"
+       class="icono-perfil-seleccionado" />
+  <ion-button fill="solid" size="small" color="success" (click)="siguienteIcono()" class="flecha-avatar">
+    <ion-icon name="chevron-forward-sharp"></ion-icon>
+  </ion-button>
+</div>
+    <div style="text-align:center;margin-bottom:12px;">
+      <ion-button shape="round" color="success" size="small" (click)="guardarIconoSeleccionado()">
+        Listo
+      </ion-button>
+    </div>
+
     <div class="formulario-editar">
       <ion-item>
         <ion-label position="floating">{{ 'editar_perfil_correo' | translate }}</ion-label>
         <ion-input [(ngModel)]="userData.email"></ion-input>
       </ion-item>
-
       <ion-item>
         <ion-label position="floating">{{ 'editar_perfil_nombre' | translate }}</ion-label>
         <ion-input [(ngModel)]="userData.nombre"></ion-input>
       </ion-item>
-
       <ion-item>
         <ion-label position="floating">{{ 'editar_perfil_usuario' | translate }}</ion-label>
         <ion-input [(ngModel)]="userData.nombreUsuario"></ion-input>
@@ -35,3 +52,4 @@
     </ion-button>
   </div>
 </ion-content>
+

@@ -5,13 +5,7 @@
   height: 100%;
 }
 
-ion-header,
-ion-toolbar {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-  color: #ffd600;
-}
+
 
 ion-title {
   font-size: 2rem;
@@ -36,6 +30,7 @@ ion-content.ion-padding {
   box-shadow: 0 6px 24px 0 rgba(30,30,30,0.12);
   padding: 2.5rem 1.2rem 2.2rem 1.2rem;
   margin: auto;
+  margin-top: 25vh;
   width: 90vw;
   max-width: 340px;
   text-align: center;
@@ -99,3 +94,6 @@ ion-button {
   margin-top: 1.7rem;
   margin-bottom: 0.4rem;
 }
+
+
+

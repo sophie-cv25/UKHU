@@ -1,0 +1,22 @@
+.selector-icono-perfil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px 0 10px 0;
+}
+
+.flecha-avatar {
+  --background: #FFD600 !important;
+  --color: #000 !important;
+  --box-shadow: none !important;
+  margin: 0 12px !important;
+  padding: 0 !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  border-radius: 15% !important;
+  font-size: 16px !important;
+  --border-radius: 15% !important;
+}
+.flecha-avatar ion-icon {
+  font-size: 32px !important;
+}

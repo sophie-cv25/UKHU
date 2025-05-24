@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -10,32 +11,27 @@ import { LanguageService } from 'src/app/services/language.service';
   standalone: false
 })
 export class PerfilPage implements OnInit {
-  userData: any;
-  idioma: string = 'es'; //  Idioma por defecto
+  userData: any = {};
+  idioma: string = 'es';
 
   constructor(private router: Router, private translateService: TranslateService, private languageService: LanguageService) {}
 
-
   ngOnInit() {
-    // Recuperar datos de localStorage al cargar la página
     const storedUserData = localStorage.getItem('userData');
     if (storedUserData) {
       this.userData = JSON.parse(storedUserData);
-      console.log('Datos del usuario cargados en Perfil:', this.userData);
     } else {
-      console.error('No hay datos del usuario en localStorage.');
+      this.userData = {};
     }
-
-    //  Cargar el idioma guardado o establecer español por defecto
     this.idioma = localStorage.getItem('idioma') || 'es';
     this.translateService.use(this.idioma);
   }
 
   cerrarSesion() {
-    localStorage.clear(); // Borra todos los datos del usuario en localStorage
-    console.log('Sesión cerrada. Se eliminaron los datos de localStorage.');
-    this.router.navigate(['/sign-in']); // Redirige a la pantalla de inicio de sesión correctamente
+    localStorage.clear();
+    this.router.navigate(['/sign-in']);
   }
+
 
   cambiarIdioma(event: any) {
   const idiomaSeleccionado = event.detail?.value; // ✅ Extraer el valor correctamente
