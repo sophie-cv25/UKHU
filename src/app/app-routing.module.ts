@@ -59,7 +59,8 @@ const routes: Routes = [
   {
     path: 'cambiar-contrasena',
     loadChildren: () => import('./pages/cambiar-contrasena/cambiar-contrasena.module').then( m => m.CambiarContrasenaPageModule)
-  },  {
+  },
+  {
     path: 'configuracion',
     loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
   },
@@ -95,6 +96,7 @@ const routes: Routes = [
     path: 'sign-up-comercio',
     loadChildren: () => import('./pages/sign-up-comercio/sign-up-comercio.module').then( m => m.SignUpComercioPageModule)
   },
+ 
 
 
 

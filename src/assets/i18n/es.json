@@ -56,5 +56,14 @@
   "registro_ubicacion": "Ubicación",
   "registro_zona": "Zona",
   "registro_coordenadas": "Coordenadas",
-  "boton_registrar": "Registrar comercio"
+  "boton_registrar": "Registrar comercio",
+
+  "editar_comercio_titulo": "Editar información del comercio",
+  "editar_comercio_correo": "Correo electrónico",
+  "editar_comercio_referencia": "Número de contacto",
+  "editar_comercio_descripcion": "Descripción del comercio",
+  "editar_comercio_horario": "Horario de atención",
+  "editar_comercio_guardar": "Guardar Cambios",
+  "horario_apertura": "Hora de apertura",
+  "horario_cierre": "Hora de cierre"
 }

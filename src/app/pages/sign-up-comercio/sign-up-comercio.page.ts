@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'; // 🔹 Importamos Router
 import { AuthserviceService } from 'src/app/services/authservice.service';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -13,14 +14,21 @@ export class SignUpComercioPage {
   mail: string = '';
   password: string = '';
   confirmPassword: string = '';
-  referencia: string = ''; 
+  referencia: string = ''; // 🔹 Teléfono como string
   tipoComida: string = '';
   descripcion: string = '';
   ubicacion: string = '';
   zona: string = '';
   coordenadas: string = '';
 
-  constructor(private authService: AuthserviceService, private db: DatabaseService) {}
+  menu: { [key: string]: { descripcion: string; imagen: string; nombre: string; precio: number } } = {}; // 🔹 Mapa en lugar de array
+  horarioAtencion: { [key: string]: { apertura: string; cierre: string } } = {}; // 🔹 Mapa vacío para futuras ediciones
+
+  constructor(
+    private authService: AuthserviceService,
+    private db: DatabaseService,
+    private router: Router // 🔹 Agregamos el Router
+  ) {}
 
   validarEmail(email: string): boolean {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -62,7 +70,7 @@ export class SignUpComercioPage {
           const latitud = parseFloat(coordsArray[0].trim());
           const longitud = parseFloat(coordsArray[1].trim());
 
-          // 🔹 Construimos la estructura del comercio
+          // 🔹 Construimos la estructura del comercio con menú y horario vacío
           const comercioData = {
             uid: user.uid,
             nombre: this.nombre,
@@ -74,12 +82,18 @@ export class SignUpComercioPage {
             zona: this.zona,
             latitud: latitud,
             longitud: longitud,
-            menu: []
+            menu: {}, // 🔹 Mapa vacío para el menú
+            horarioAtencion: {} // 🔹 Mapa vacío para el horario, listo para futuras ediciones
           };
 
           // 🔹 Guardamos el comercio en Firestore
           return this.db.updateFireStoreDocument('restaurantes', user.uid, comercioData)
-            .then(() => console.log('Comercio guardado en Firestore'))
+            .then(() => {
+              console.log('Comercio guardado en Firestore');
+
+              // 🔹 Redireccionamos al signin-comercio
+              this.router.navigate(['/signin-comercio']);
+            })
             .catch(err => console.error('Error guardando comercio:', err));
         }
         return null;

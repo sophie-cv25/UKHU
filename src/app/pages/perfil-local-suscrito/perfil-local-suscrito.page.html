@@ -35,7 +35,7 @@
         shape="round"
         size="small"
         class="boton-personalizado"
-        routerLink="/Editar"
+        routerLink="/editar-local"
       >
         Editar
       </ion-button>
@@ -49,13 +49,18 @@
       </ion-item>
 
       <ion-item>
-        <ion-label position="stacked">Gmail:</ion-label>
+        <ion-label position="stacked">Correo electrónico:</ion-label>
         <ion-text>{{ emailLocal }}</ion-text>
       </ion-item>
 
       <ion-item>
-        <ion-label position="stacked">Horarios de Atención:</ion-label>
-        <ion-text>{{ horarioApertura }} - {{ horarioCierre }}</ion-text>
+        <ion-label position="stacked">Horario de Atención:</ion-label>
+        <ion-text *ngIf="horarioApertura && horarioCierre">
+          {{ horarioApertura }} - {{ horarioCierre }}
+        </ion-text>
+        <ion-text *ngIf="!horarioApertura || !horarioCierre">
+          No especificado
+        </ion-text>
       </ion-item>
     </div>
 

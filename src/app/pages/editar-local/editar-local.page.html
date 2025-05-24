@@ -1,13 +1,51 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>editar-local</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center" color="warning">
+      {{ 'editar_comercio_titulo' | translate }}
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/perfil-local-suscrito">
+        <ion-icon name="arrow-back-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">editar-local</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content color="primary" class="fondo" [fullscreen]="true">
+  <div class="contenedor-editar-comercio">
+    <div class="formulario-editar">
+      <ion-item>
+        <ion-label>{{ 'editar_comercio_correo' | translate }}</ion-label>
+        <ion-text>{{ userData.mail }}</ion-text> <!-- 🔹 Muestra el valor actual -->
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'editar_comercio_referencia' | translate }}</ion-label>
+        <ion-text>{{ userData.referencia }}</ion-text> <!-- 🔹 Muestra el valor actual -->
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>{{ 'editar_comercio_descripcion' | translate }}</ion-label>
+        <ion-text>{{ userData.descripcion }}</ion-text> <!-- 🔹 Muestra el valor actual -->
+      </ion-item>
+
+
+      <div *ngIf="userData.horarioAtencion">
+        <ion-item>
+          <ion-label>{{ 'horario_apertura' | translate }}</ion-label>
+          <ion-input [(ngModel)]="userData.horarioAtencion.apertura" type="time"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>{{ 'horario_cierre' | translate }}</ion-label>
+          <ion-input [(ngModel)]="userData.horarioAtencion.cierre" type="time"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+
+    <ion-button expand="block" color="success" (click)="guardarCambios()">
+      {{ 'editar_comercio_guardar' | translate }}
+    </ion-button>
+  </div>
 </ion-content>

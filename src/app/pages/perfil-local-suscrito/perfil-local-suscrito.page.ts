@@ -23,10 +23,10 @@ export class PerfilLocalSuscritoPage implements OnInit {
       this.nombreLocal = datos.nombre || 'No disponible';
       this.emailLocal = datos.mail || 'No disponible';
 
-      // 🔹 Extraemos apertura y cierre desde el objeto "horario"
-      if (datos.horario) {
-        this.horarioApertura = datos.horario.apertura || 'No especificado';
-        this.horarioCierre = datos.horario.cierre || 'No especificado';
+      // 🔹 Extraemos apertura y cierre desde el objeto "horarioAtencion"
+      if (datos.horarioAtencion) {
+        this.horarioApertura = datos.horarioAtencion.apertura || 'No especificado';
+        this.horarioCierre = datos.horarioAtencion.cierre || 'No especificado';
       } else {
         this.horarioApertura = 'No especificado';
         this.horarioCierre = 'No especificado';
