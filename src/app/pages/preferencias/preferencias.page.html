@@ -1,15 +1,64 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Preferencias</ion-title>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="custom-title">Configuraciones</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-    <div class="selector-idioma">
-      <ion-select [value]="idioma" (ionChange)="cambiarIdioma($event)">
-            <ion-select-option value="es">🇪🇸 {{ 'idioma_espanol' | translate }}</ion-select-option>
-            <ion-select-option value="en">🇺🇸 {{ 'idioma_ingles' | translate }}</ion-select-option>
-      </ion-select>
+<ion-content class="custom-content" fullscreen>
+  <div class="main-preferences-box">
+    <!-- Barrita amarilla clickeable (antes era ::before, ahora es div real) -->
+    <div 
+      class="barra-cerrar"
+      (click)="cerrarYRedirigir()"
+      title="Cerrar"
+      style="cursor:pointer;"
+    ></div>
 
+    <div class="box-header">
+      <span class="box-title">Preferencias de la App</span>
+      <!-- Botón de cerrar/redirigir -->
+      <ion-button
+        fill="clear"
+        class="close-btn"
+        (click)="cerrarYRedirigir()"
+        style="margin:0; padding:0;"
+      >
+        <ion-icon name="close-outline" class="close-icon"></ion-icon>
+      </ion-button>
     </div>
+    <div class="selector-idioma">
+      <label class="subtitle">Idioma</label>
+      <div class="subtitle-desc">Selecciona tu idioma favorito.</div>
+      <ion-select [value]="idioma" (ionChange)="cambiarIdioma($event)" class="custom-select">
+        <ion-select-option value="es">🇪🇸 {{ 'idioma_espanol' | translate }}</ion-select-option>
+        <ion-select-option value="en">🇺🇸 {{ 'idioma_ingles' | translate }}</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="toggles-section">
+      <div class="toggle-row">
+        <span>Activar Notificaciones</span>
+        <ion-toggle
+          [(ngModel)]="notificaciones"
+          color="warning"
+          class="custom-toggle"
+        ></ion-toggle>
+      </div>
+      <div class="toggle-row">
+        <span>Modo Oscuro</span>
+        <ion-toggle
+          [(ngModel)]="modoOscuro"
+          color="warning"
+          class="custom-toggle"
+        ></ion-toggle>
+      </div>
+    </div>
+  </div>
 </ion-content>

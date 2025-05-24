@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalSoporteTecnicoComponent } from '../../componentes/modal-soporte-tecnico/modal-soporte-tecnico.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-configuracion',
@@ -9,7 +10,10 @@ import { ModalSoporteTecnicoComponent } from '../../componentes/modal-soporte-te
   standalone: false
 })
 export class ConfiguracionPage {
-  constructor(private modalCtrl: ModalController) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private router: Router
+  ) {}
 
   async abrirSoporteTecnico() {
     const modal = await this.modalCtrl.create({
@@ -19,5 +23,9 @@ export class ConfiguracionPage {
       cssClass: 'modal-soporte-sheet'
     });
     await modal.present();
+  }
+
+  abrirPreferencias() {
+    this.router.navigate(['/preferencias']);
   }
 }
