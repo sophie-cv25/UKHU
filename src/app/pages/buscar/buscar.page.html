@@ -1,8 +1,4 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>{{ 'buscar_restaurantes_titulo' | translate }}</ion-title>
-  </ion-toolbar>
-  
   <ion-searchbar 
     [(ngModel)]="searchTerm"
     (ionFocus)="activarBusqueda()"
@@ -19,7 +15,6 @@
     [idDestino]="destino?.id"
   ></app-map>
   
-  <!-- Modal con el listado de restaurantes -->
   <ion-modal #modal [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
     <ng-template>
       <ion-content>
@@ -32,7 +27,6 @@
             </ion-toolbar>
           </ion-header>
 
-          <!-- Lista de filtros (se muestra solo cuando 'mostrarFiltros' es true) -->
           <ion-list *ngIf="mostrarFiltros">
             <ion-item *ngFor="let categoria of categorias" (click)="filtrarPorCategoria(categoria)">
               <ion-label>{{ categoria }}</ion-label>

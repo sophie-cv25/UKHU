@@ -31,7 +31,6 @@ export class RestauranteDetallePage implements OnInit {
     if (id) {
       this.databaseService.getDocumentById('restaurantes', id).subscribe((doc) => {
         if (doc.payload.exists) {
-          // Incluye el id en el objeto restaurante
           this.restaurante = { id, ...doc.payload.data() };
         }
       });
@@ -44,23 +43,23 @@ export class RestauranteDetallePage implements OnInit {
         queryParams: {
           latitud: this.restaurante.latitud,
           longitud: this.restaurante.longitud,
-          id: this.restaurante.id
+          id: this.restaurante.id,
+          abrirCodigo: 1,
+          nombreRestaurante: this.restaurante.nombre
         }
       });
     }
   }
 
-    goBack() {
+  goBack() {
     this.location.back();
   }
 
    async abrirModalCodigo() {
-  // Verifica si el usuario está logueado usando localStorage
   const isLoggedRaw = localStorage.getItem('isLoggedIn');
-  const isLogged = isLoggedRaw === 'true'; // Validación sencilla
+  const isLogged = isLoggedRaw === 'true';
 
   if (!isLogged) {
-    console.log('⚠️ Usuario NO logueado');
     const alert = await this.alertCtrl.create({
       header: 'Atención',
       message: 'Necesitas iniciar sesión para poder ingresar el código',
@@ -70,9 +69,7 @@ export class RestauranteDetallePage implements OnInit {
     return;
   }
 
-  // Verifica si hay un restaurante seleccionado
   if (!this.restaurante || !this.restaurante.id || !this.restaurante.nombre) {
-    console.error('❌ Error: No se encontró la información del restaurante.');
     const alert = await this.alertCtrl.create({
       header: 'Error',
       message: 'No se encontró información del restaurante.',
@@ -82,26 +79,15 @@ export class RestauranteDetallePage implements OnInit {
     return;
   }
 
-  console.log(`✅ Restaurante seleccionado: ${this.restaurante.nombre}, ID: ${this.restaurante.id}`);
-
-  // Obtener datos del usuario desde localStorage
   const userDataRaw = localStorage.getItem('userData');
-  console.log('🔎 Revisando userData en localStorage:', userDataRaw);
-
   if (!userDataRaw) {
-    console.error('❌ Error: No se encontró userData en localStorage.');
     return;
   }
-
   const userData = JSON.parse(userDataRaw);
-  const usuarioId = userData.id || ''; // ✅ Obtener el ID correcto del usuario
+  const usuarioId = userData.id || '';
   const usuarioEmail = userData.email || '';
   const usuarioNombre = userData.nombre || '';
-
-  console.log(`✅ Usuario logueado: ${usuarioNombre}, ID: ${usuarioId}, Email: ${usuarioEmail}`);
-
   if (!usuarioId) {
-    console.error('❌ Error: No se encontró el ID del usuario en userData.');
     const alert = await this.alertCtrl.create({
       header: 'Error',
       message: 'No se encontró información del usuario.',
@@ -110,41 +96,25 @@ export class RestauranteDetallePage implements OnInit {
     await alert.present();
     return;
   }
-
-  // Crear el modal pasando los datos correctos
-  console.log('🛠️ Creando modal con datos:', {
-    restauranteId: this.restaurante.id,
-    nombreRestaurante: this.restaurante.nombre,
-    usuarioId: usuarioId,
-    usuarioEmail: usuarioEmail,
-    usuarioNombre: usuarioNombre
-  });
-
   const modal = await this.modalCtrl.create({
     component: CodigoModalComponent,
     componentProps: {
-      restauranteId: this.restaurante.id,   // ✅ Pasamos el ID correcto del restaurante
-      nombreRestaurante: this.restaurante.nombre, // ✅ Pasamos el nombre correcto del restaurante
-      usuarioId: usuarioId, // ✅ Pasamos el ID correcto del usuario
+      restauranteId: this.restaurante.id,
+      nombreRestaurante: this.restaurante.nombre,
+      usuarioId: usuarioId,
       usuarioEmail: usuarioEmail,
       usuarioNombre: usuarioNombre
     },
     backdropDismiss: false
   });
-
   await modal.present();
-
-  // Cierra el modal después de 5 minutos (300000 ms)
   const timeout = setTimeout(() => {
     modal.dismiss(null, 'timeout');
   }, 300000);
-
   const { data, role } = await modal.onWillDismiss();
   clearTimeout(timeout);
-
   if (data && role !== 'timeout') {
-    console.log('📌 Código ingresado:', data);
+    // Aquí puedes manejar data si necesitas
   }
 }
-
 }

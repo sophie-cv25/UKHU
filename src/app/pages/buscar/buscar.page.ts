@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonModal } from '@ionic/angular';
+import { IonModal, ModalController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/services/database.service';
 import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
+import { CodigoModalComponent } from 'src/app/componentes/codigo-modal/codigo-modal.component';
 
 @Component({
   selector: 'app-buscar',
@@ -26,23 +27,53 @@ export class BuscarPage implements OnInit {
     id?: string
   } | null = null;
 
-  constructor(private databaseService: DatabaseService, private navCtrl: NavController, private route: ActivatedRoute) { }
+  constructor(
+    private databaseService: DatabaseService,
+    private navCtrl: NavController,
+    private route: ActivatedRoute,
+    private modalCtrl: ModalController // <-- Importante para abrir el modal de código
+  ) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       if (params['latitud'] && params['longitud'] && params['id']) {
-        // Entró desde "Cómo llegar"
         this.destino = {
           latitud: parseFloat(params['latitud']),
           longitud: parseFloat(params['longitud']),
           id: params['id']
         };
       } else {
-        // Entró desde el tab bar
         this.destino = null;
       }
       this.cargarRestaurantes();
+
+      // MOSTRAR EL MODAL DE CODIGO SI LLEGA LA SEÑAL
+      if (params['abrirCodigo']) {
+        this.abrirCodigoModal(params);
+      }
     });
+  }
+
+  async abrirCodigoModal(params: any) {
+    const restauranteId = params['id'] || params['restauranteId'];
+    const nombreRestaurante = params['nombreRestaurante'] || '';
+    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    const usuarioId = userData.id || '';
+    const usuarioEmail = userData.email || '';
+    const usuarioNombre = userData.nombre || '';
+
+    const modal = await this.modalCtrl.create({
+      component: CodigoModalComponent,
+      componentProps: {
+        restauranteId,
+        nombreRestaurante,
+        usuarioId,
+        usuarioEmail,
+        usuarioNombre,
+      },
+      backdropDismiss: false
+    });
+    await modal.present();
   }
 
   cargarRestaurantes() {
@@ -52,10 +83,8 @@ export class BuscarPage implements OnInit {
       this.zonas = [...new Set(this.restaurantes.map(restaurante => restaurante.zona))];
 
       if (this.destino && this.destino.id) {
-        // Solo el restaurante seleccionado
         this.restaurantesFiltrados = this.restaurantes.filter(r => r.id === this.destino!.id);
       } else {
-        // Todos los restaurantes
         this.restaurantesFiltrados = this.restaurantes;
       }
     });
@@ -77,26 +106,26 @@ export class BuscarPage implements OnInit {
   }
 
   filtrarPorCategoria(categoria: string) {
-  this.restaurantesFiltrados = this.restaurantes.filter(restaurante => restaurante.categoria === categoria);
-  this.mostrarFiltros = false; // Cierra los filtros
-}
+    this.restaurantesFiltrados = this.restaurantes.filter(restaurante => restaurante.categoria === categoria);
+    this.mostrarFiltros = false;
+  }
 
-filtrarPorZona(zona: string) {
-  this.restaurantesFiltrados = this.restaurantes.filter(restaurante => restaurante.zona === zona);
-  this.mostrarFiltros = false; // Cierra los filtros
-}
+  filtrarPorZona(zona: string) {
+    this.restaurantesFiltrados = this.restaurantes.filter(restaurante => restaurante.zona === zona);
+    this.mostrarFiltros = false;
+  }
 
   buscarRestaurantes() {
-  if (!this.busquedaActiva) return; 
-  if (this.searchTerm.trim() === '') {
-    this.restaurantesFiltrados = this.restaurantes;
-  } else {
-    const term = this.searchTerm.toLowerCase();
-    this.restaurantesFiltrados = this.restaurantes.filter((restaurante) =>
-      restaurante.nombre?.toLowerCase().includes(term) ||
-      restaurante.categoria?.toLowerCase().includes(term) ||
-      restaurante.zona?.toLowerCase().includes(term) // <-- Filtra por zona también
-    );
+    if (!this.busquedaActiva) return; 
+    if (this.searchTerm.trim() === '') {
+      this.restaurantesFiltrados = this.restaurantes;
+    } else {
+      const term = this.searchTerm.toLowerCase();
+      this.restaurantesFiltrados = this.restaurantes.filter((restaurante) =>
+        restaurante.nombre?.toLowerCase().includes(term) ||
+        restaurante.categoria?.toLowerCase().includes(term) ||
+        restaurante.zona?.toLowerCase().includes(term)
+      );
+    }
   }
-}
 }

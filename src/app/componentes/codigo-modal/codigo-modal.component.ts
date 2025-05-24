@@ -10,11 +10,12 @@ import { NavParams } from '@ionic/angular';
   standalone: false,
 })
 export class CodigoModalComponent implements OnInit {
+  codigoDigits: string[] = ["", "", "", "", ""]; // Para 5 dígitos
   codigo: string = '';
   codigoGenerado: string = '';
   tiempoRestante: number = 300;
   timerInterval: any;
-  usuarioId: string = '';  // ✅ Agregamos `usuarioId` explícitamente
+  usuarioId: string = '';
   usuarioEmail: string = '';
   usuarioNombre: string = '';
   restauranteId: string = '';
@@ -27,28 +28,33 @@ export class CodigoModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log('🔎 Recibiendo datos en el modal desde `RestauranteDetallePage`:', this.navParams.data);
-
-    this.usuarioId = this.navParams.get('usuarioId');  // ✅ Recibe el ID correcto del usuario
+    // Recibe los datos del modal
+    this.usuarioId = this.navParams.get('usuarioId');
     this.usuarioEmail = this.navParams.get('usuarioEmail');
     this.usuarioNombre = this.navParams.get('usuarioNombre');
     this.restauranteId = this.navParams.get('restauranteId');
     this.nombreRestaurante = this.navParams.get('nombreRestaurante');
-
-    console.log(`✅ Datos del usuario en el modal: ID: ${this.usuarioId}, Nombre: ${this.usuarioNombre}, Email: ${this.usuarioEmail}`);
-    console.log(`✅ Restaurante seleccionado en el modal: ID: ${this.restauranteId}, Nombre: ${this.nombreRestaurante}`);
-
-    this.generateCode(); // Generar código al abrir el modal
+    this.generateCode();
   }
 
-  onInput(event: any): void {
-    this.codigo = this.codigo.slice(0, 8);
+  onDigitInput(event: any, idx: number) {
+    const value = event.target.value;
+    if (value.length > 1) {
+      this.codigoDigits[idx] = value.slice(0, 1);
+    }
+    // Mover al siguiente input si escribe
+    if (value && idx < 4) {
+      const next = document.querySelectorAll('.codigo-digit')[idx + 1] as HTMLInputElement;
+      if (next) next.focus();
+    }
+    // Actualiza el código completo
+    this.codigo = this.codigoDigits.join('');
   }
 
   generateCode(): void {
-    this.codigoGenerado = Math.random().toString(36).substring(2, 10).toUpperCase();
+    // Genera código de 5 caracteres
+    this.codigoGenerado = Math.random().toString(36).substring(2, 7).toUpperCase();
     const timestamp = Date.now();
-
     localStorage.setItem('codigoTemporal', JSON.stringify({ codigo: this.codigoGenerado, timestamp }));
     this.startExpirationTimer();
   }
@@ -60,7 +66,6 @@ export class CodigoModalComponent implements OnInit {
         clearInterval(this.timerInterval);
         return;
       }
-
       const elapsedTime = (Date.now() - storedData.timestamp) / 1000;
       this.tiempoRestante = Math.max(0, 300 - elapsedTime);
 
@@ -73,32 +78,31 @@ export class CodigoModalComponent implements OnInit {
   }
 
   validateCode(): void {
-    console.log('📌 Validando código ingresado:', this.codigo);
-
     const storedData = JSON.parse(localStorage.getItem('codigoTemporal') || '{}');
-
     if (!storedData.codigo || !storedData.timestamp) {
       alert('No hay un código activo.');
       return;
     }
-
     if (this.tiempoRestante <= 0) {
       alert('El código ha expirado. Solicita uno nuevo.');
       return;
     }
-
     if (this.codigo === storedData.codigo) {
-      console.log(`✅ Código correcto. Guardando historial en el usuario: ${this.usuarioId}`);
-
       this.databaseService.saveCodigoUsado(this.codigo, this.usuarioEmail, this.usuarioNombre, this.restauranteId, this.nombreRestaurante);
       this.databaseService.saveHistorialVisita(this.usuarioId, this.restauranteId, this.nombreRestaurante);
-
       localStorage.removeItem('codigoTemporal');
       clearInterval(this.timerInterval);
       alert('Código validado correctamente. ¡Gracias por tu visita!');
       this.modalCtrl.dismiss();
     } else {
       alert('Código incorrecto. Intenta nuevamente.');
+    }
+  }
+
+  // Si tienes lógica para destruir el modal o limpiar intervalos:
+  ngOnDestroy() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
     }
   }
 }

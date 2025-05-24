@@ -5,19 +5,23 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <p>Código generado: <strong>{{ codigoGenerado }}</strong></p>
-  <p>Tiempo restante: <strong>{{ tiempoRestante }}</strong> segundos</p>
+  <div class="codigo-modal-box">
+    <h1>Ingresa el codigo</h1>
+    <div class="subtitulo">Ingresa el codigo que te muestra el local</div>
 
-  <ion-item>
-    <ion-label position="stacked">Código</ion-label>
-    <ion-input
-      [(ngModel)]="codigo"
-      maxlength="8"
-      type="text"
-      placeholder="Ingresa el código"
-      (ionInput)="onInput($event)">
-    </ion-input>
-  </ion-item>
+    <div class="codigo-inputs">
+      <input class="codigo-digit" maxlength="1" *ngFor="let idx of [0,1,2,3,4]; let i = index"
+             [(ngModel)]="codigoDigits[i]"
+             (input)="onDigitInput($event, i)" type="text" pattern="[0-9A-Za-z]*" autocomplete="off" />
+    </div>
 
-  <ion-button expand="block" (click)="validateCode()" [disabled]="codigo.length !== 8">Validar</ion-button>
+    <div class="info-extra">
+      <p>Código generado: <strong>{{ codigoGenerado }}</strong></p>
+      <p>Tiempo restante: <strong>{{ tiempoRestante }}</strong> segundos</p>
+    </div>
+
+    <ion-button expand="block" (click)="validateCode()" [disabled]="codigo.length !== 5">
+      Listo
+    </ion-button>
+  </div>
 </ion-content>

@@ -1,0 +1,101 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+ion-header,
+ion-toolbar {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  color: #ffd600;
+}
+
+ion-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #232323;
+  text-align: center;
+  margin: 0 auto 0 auto;
+}
+
+ion-content.ion-padding {
+  --background: rgba(0,0,0,0.06);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.codigo-modal-box {
+  background: #fff;
+  border-radius: 28px;
+  box-shadow: 0 6px 24px 0 rgba(30,30,30,0.12);
+  padding: 2.5rem 1.2rem 2.2rem 1.2rem;
+  margin: auto;
+  width: 90vw;
+  max-width: 340px;
+  text-align: center;
+  position: relative;
+}
+
+.codigo-modal-box h1 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: #232323;
+}
+
+.codigo-modal-box .subtitulo {
+  color: #5a5a5a;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.codigo-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.codigo-digit {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1.5px solid #e0e0e0;
+  text-align: center;
+  font-size: 2.1rem;
+  color: #232323;
+  background: #f7f7f7;
+  font-weight: 600;
+  outline: none;
+  transition: border-color .2s;
+}
+
+.codigo-digit:focus {
+  border-color: #ffd600;
+  background: #fffbe6;
+}
+
+.info-extra {
+  margin-top: 1.2rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+ion-button {
+  --background: #ffd600;
+  --background-hover: #ffe066;
+  --color: #232323;
+  border-radius: 18px;
+  height: 44px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-top: 1.7rem;
+  margin-bottom: 0.4rem;
+}
