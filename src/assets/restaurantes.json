@@ -3,6 +3,9 @@
     "nombre": "La Terraza",
     "descripcion": "Restaurante con una vista increíble y una selección de comida internacional.",
     "ubicacion": "Av. 16 de Julio, La Paz, Bolivia",
+    "latitud":-16.51030076014152,
+    "logitud":-68.1276598507285,
+    "mail":"laterraza@gmail.com",
     "categoria": "Internacional",
     "horario": {
       "apertura": "08:00",

@@ -91,6 +91,10 @@ const routes: Routes = [
     path: 'resenas',
     loadChildren: () => import('./pages/resenas/resenas.module').then( m => m.ResenasPageModule)
   },
+  {
+    path: 'sign-up-comercio',
+    loadChildren: () => import('./pages/sign-up-comercio/sign-up-comercio.module').then( m => m.SignUpComercioPageModule)
+  },
 
 
 

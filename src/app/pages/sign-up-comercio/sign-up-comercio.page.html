@@ -1,0 +1,77 @@
+<ion-content class="ion-padding">
+  <style>
+    ion-item {
+      --background: transparent;
+      --border-color: transparent;
+      border-bottom: 2px solid var(--ion-color-success); /* 🔹 Línea verde solo abajo */
+      display: flex;
+      align-items: center;
+    }
+
+    ion-label {
+      font-weight: 500;
+      white-space: nowrap; /* 🔹 Evita que los textos se dividan en varias líneas */
+    }
+
+    ion-input {
+      flex-grow: 1;
+      color: white !important;
+    }
+  </style>
+
+  <form (submit)="registrarComercio()">
+    <ion-item>
+      <ion-label position="floating">{{ 'registro_nombre' | translate }}</ion-label>
+      <ion-input [(ngModel)]="nombre" name="nombre" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{ 'registro_correo' | translate }}</ion-label>
+      <ion-input [(ngModel)]="mail" name="mail" type="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{ 'registro_contrasena' | translate }}</ion-label>
+      <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{ 'registro_confirmar_contrasena' | translate }}</ion-label>
+      <ion-input [(ngModel)]="confirmPassword" name="confirmPassword" type="password" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{ 'registro_referencia' | translate }}</ion-label>
+      <ion-input [(ngModel)]="referencia" name="referencia" type="tel" required></ion-input> <!-- 🔹 Número de teléfono -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{ 'registro_tipo_comida' | translate }}</ion-label>
+      <ion-input [(ngModel)]="tipoComida" name="tipoComida" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{ 'registro_descripcion' | translate }}</ion-label>
+      <ion-input [(ngModel)]="descripcion" name="descripcion" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{ 'registro_ubicacion' | translate }}</ion-label>
+      <ion-input [(ngModel)]="ubicacion" name="ubicacion" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{ 'registro_zona' | translate }}</ion-label>
+      <ion-input [(ngModel)]="zona" name="zona" type="text" required></ion-input>
+    </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'registro_coordenadas' | translate }}</ion-label>
+        <ion-input [(ngModel)]="coordenadas" name="coordenadas" type="text" placeholder="-16.51, -68.12"></ion-input>
+      </ion-item>
+
+    <ion-button expand="full" type="submit">
+      {{ 'boton_registrar' | translate }}
+    </ion-button>
+  </form>
+</ion-content>

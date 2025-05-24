@@ -48,11 +48,22 @@ export class DatabaseService {
   }
 
   // Actualizar un documento
-  updateFireStoreDocument(collection: string, uid: string, data: any) {
-    return runInInjectionContext(this.injector, () => {
-      return this.firestore.collection(collection).doc(uid).update(data);
-    });
-  }
+ updateFireStoreDocument(collection: string, uid: string, data: any) {
+  return runInInjectionContext(this.injector, async () => {
+    const docRef = this.firestore.collection(collection).doc(uid);
+
+    const docSnapshot = await docRef.get().toPromise();
+    
+    // 🔹 Verificamos que `docSnapshot` existe antes de acceder a `.exists`
+    if (docSnapshot && docSnapshot.exists) {
+      return docRef.update(data); // ✅ Si el documento existe, actualiza
+    } else {
+      return docRef.set(data); // ✅ Si no existe, lo crea
+    }
+  });
+}
+
+
 
   // Eliminar un documento
   deleteFireStoreDocument(collection: string, id: string): Promise<void> {
@@ -74,7 +85,7 @@ export class DatabaseService {
     });
   }
 
-  // 📌 Guardar código usado en la subcolección "codigos-usados"
+  //  Guardar código usado en la subcolección "codigos-usados"
   saveCodigoUsado(codigo: string, usuarioEmail: string, usuarioNombre: string, restauranteUid: string, nombreRestaurante: string): Promise<void> {
   return runInInjectionContext(this.injector, async () => {
     const restauranteRef = this.firestore.collection('restaurantes').doc(restauranteUid);
@@ -106,7 +117,7 @@ saveHistorialVisita(usuarioId: string, restauranteId: string, nombreRestaurante:
       fecha_visita: new Date().toISOString()
     });
 
-    console.log(`📌 Historial guardado correctamente en el usuario ${usuarioId}.`);
+    console.log(`Historial guardado correctamente en el usuario ${usuarioId}.`);
   });
 }
 
