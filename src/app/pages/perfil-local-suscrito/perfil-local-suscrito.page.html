@@ -5,11 +5,9 @@
         <ion-icon name="arrow-back" slot="icon-only" color="warning"></ion-icon>
       </ion-button>
     </ion-buttons>
-
     <ion-title class="ion-text-center titulo-configuracion" color="danger">
-      Perfil
+      Perfil del Local
     </ion-title>
-
     <ion-buttons slot="end">
       <ion-button fill="clear">
         <ion-icon name="notifications" slot="icon-only" color="warning"></ion-icon>
@@ -20,15 +18,16 @@
 
 <ion-content color="primary" class="fondo" [fullscreen]="true">
   <div class="contenedor-perfil">
-   
-    <!-- Imagen de perfil con marco amarillo -->
+    <!-- Si hay imagen, solo esa; si no, el SVG -->
     <div class="avatar-marcado">
       <div class="circulo-amarillo">
-        <img src="assets/icon/Perfil.svg" alt="Icono de perfil" />
+        <img *ngIf="imageLink; else svgAvatar" [src]="imageLink" alt="Imagen del local" />
+        <ng-template #svgAvatar>
+          <img [src]="'assets/icon/' + (userData?.iconoPerfilLocal || 'Perfilnegro.svg')" alt="Avatar del local" />
+        </ng-template>
       </div>
     </div>
 
-    <!-- Botón Editar -->
     <div class="botones-perfil">
       <ion-button
         color="success"
@@ -41,18 +40,23 @@
       </ion-button>
     </div>
 
-    <!-- Información del local -->
     <div class="info-basica">
       <ion-item>
         <ion-label position="stacked">Nombre del local:</ion-label>
         <ion-text>{{ nombreLocal }}</ion-text>
       </ion-item>
-
       <ion-item>
         <ion-label position="stacked">Correo electrónico:</ion-label>
         <ion-text>{{ emailLocal }}</ion-text>
       </ion-item>
-
+      <ion-item>
+        <ion-label position="stacked">Referencia:</ion-label>
+        <ion-text>{{ referencia }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Descripción:</ion-label>
+        <ion-text>{{ descripcion }}</ion-text>
+      </ion-item>
       <ion-item>
         <ion-label position="stacked">Horario de Atención:</ion-label>
         <ion-text *ngIf="horarioApertura && horarioCierre">
@@ -62,22 +66,17 @@
           No especificado
         </ion-text>
       </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Imagen de Google:</ion-label>
+        <ion-text *ngIf="imageLink">
+          <a [href]="imageLink" target="_blank">{{ imageLink }}</a>
+        </ion-text>
+        <ion-text *ngIf="!imageLink">
+          No asignada
+        </ion-text>
+      </ion-item>
     </div>
 
-    <!-- Botones adicionales -->
-    <div class="botones">
-      <ion-button color="primary">
-        <ion-icon slot="start" name="diamond"></ion-icon>
-        Suscripción
-      </ion-button>
-
-      <ion-button color="primary">
-        <ion-icon slot="start" name="settings"></ion-icon>
-        Configuración
-      </ion-button>
-    </div>
-
-    <!-- Botón cerrar sesión -->
     <ion-button color="success" shape="round" class="boton-personalizado boton-cerrar-sesion" (click)="cerrarSesion()">
       Cerrar sesión
     </ion-button>

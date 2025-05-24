@@ -1,0 +1,124 @@
+/* Centrado y tamaño para la selección de avatar */
+.selector-icono-perfil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px; /* Espacio entre botones y avatar */
+  margin-bottom: 10px;
+}
+
+/* Botones de flecha pequeños, cuadrados y alineados verticalmente al centro */
+.selector-icono-perfil ion-button {
+  --padding-start: 0px;
+  --padding-end: 0px;
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --border-radius: 10px;
+  min-width: 36px;
+  min-height: 36px;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+/* Avatar SVG seleccionado centrado y con fondo */
+.selector-icono-perfil img.icono-perfil-seleccionado {
+  width: 90px;
+  height: 90px;
+  margin: 0 8px;
+  border-radius: 50%;
+  background: #232428;
+  object-fit: contain;
+  display: block;
+}
+
+/* Opciones de avatar en otras partes (por si las usas) */
+.avatar-options {
+  display: flex;
+  gap: 12px;
+  margin: 10px 0;
+  justify-content: center;
+  align-items: center;
+  background: #232428;
+}
+
+.avatar-svg-option {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  object-fit: contain;
+  background: #232428;
+}
+
+.avatar-svg-option.selected {
+  border: 2.5px solid #fec530;
+  box-shadow: 0 0 8px #fec530a1;
+}
+
+.avatar-options ion-button {
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fondo general oscuro */
+ion-content.fondo {
+  --background: #232428;
+}
+
+/* Círculo amarillo para el avatar, pero con fondo oscuro si quieres */
+.circulo-amarillo {
+  background: #232428 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  margin: 18px auto 8px auto;
+}
+
+/* Centrado general para botones personalizados */
+.boton-personalizado {
+  margin: 0 auto 8px auto;
+  display: block;
+}
+
+.boton-cerrar-sesion {
+  margin: 16px auto 0 auto;
+  display: block;
+}
+
+/* Centrado para el contenedor principal del perfil */
+.contenedor-perfil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Centrado para la sección del avatar en perfil */
+.avatar-marcado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Centrado para los botones debajo del avatar */
+.botones-perfil {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}

@@ -1,8 +1,6 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
-    <ion-title class="ion-text-center" color="warning">
-      {{ 'editar_comercio_titulo' | translate }}
-    </ion-title>
+    <ion-title class="ion-text-center" color="warning">Editar Local</ion-title>
     <ion-buttons slot="start">
       <ion-button routerLink="/perfil-local-suscrito">
         <ion-icon name="arrow-back-sharp"></ion-icon>
@@ -13,39 +11,57 @@
 
 <ion-content color="primary" class="fondo" [fullscreen]="true">
   <div class="contenedor-editar-comercio">
+
+
+    <!-- Selector de icono con flechas -->
+    <div class="selector-icono-perfil">
+      <ion-button fill="solid" size="small" color="success" (click)="anteriorIcono()" class="flecha-avatar">
+        <ion-icon name="chevron-back-sharp"></ion-icon>
+      </ion-button>
+      <img [src]="'assets/icon/' + iconosPerfilLocal[iconoSeleccionado]"
+           [alt]="iconosPerfilLocal[iconoSeleccionado]"
+           class="icono-perfil-seleccionado" />
+      <ion-button fill="solid" size="small" color="success" (click)="siguienteIcono()" class="flecha-avatar">
+        <ion-icon name="chevron-forward-sharp"></ion-icon>
+      </ion-button>
+    </div>
+
+    <!-- Aquí el resto de tu formulario, ejemplo: -->
     <div class="formulario-editar">
       <ion-item>
-        <ion-label>{{ 'editar_comercio_correo' | translate }}</ion-label>
-        <ion-text>{{ userData.mail }}</ion-text> <!-- 🔹 Muestra el valor actual -->
+        <ion-label>Link imagen Google:</ion-label>
+        <ion-input [(ngModel)]="userData.imageLink" placeholder="Pega aquí el link directo de la imagen"></ion-input>
       </ion-item>
-
       <ion-item>
-        <ion-label>{{ 'editar_comercio_referencia' | translate }}</ion-label>
-        <ion-text>{{ userData.referencia }}</ion-text> <!-- 🔹 Muestra el valor actual -->
+        <ion-label>Nombre del local:</ion-label>
+        <ion-input [(ngModel)]="userData.nombre" type="text"></ion-input>
       </ion-item>
-
-
       <ion-item>
-        <ion-label>{{ 'editar_comercio_descripcion' | translate }}</ion-label>
-        <ion-text>{{ userData.descripcion }}</ion-text> <!-- 🔹 Muestra el valor actual -->
+        <ion-label>Correo electrónico:</ion-label>
+        <ion-input [(ngModel)]="userData.mail" type="email"></ion-input>
       </ion-item>
-
-
+      <ion-item>
+        <ion-label>Referencia:</ion-label>
+        <ion-input [(ngModel)]="userData.referencia" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Descripción:</ion-label>
+        <ion-input [(ngModel)]="userData.descripcion" type="text"></ion-input>
+      </ion-item>
       <div *ngIf="userData.horarioAtencion">
         <ion-item>
-          <ion-label>{{ 'horario_apertura' | translate }}</ion-label>
+          <ion-label>Horario apertura:</ion-label>
           <ion-input [(ngModel)]="userData.horarioAtencion.apertura" type="time"></ion-input>
         </ion-item>
-
         <ion-item>
-          <ion-label>{{ 'horario_cierre' | translate }}</ion-label>
+          <ion-label>Horario cierre:</ion-label>
           <ion-input [(ngModel)]="userData.horarioAtencion.cierre" type="time"></ion-input>
         </ion-item>
       </div>
     </div>
 
     <ion-button expand="block" color="success" (click)="guardarCambios()">
-      {{ 'editar_comercio_guardar' | translate }}
+      Guardar
     </ion-button>
   </div>
 </ion-content>

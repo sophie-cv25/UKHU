@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ViewWillEnter } from '@ionic/angular';
 
 @Component({
   selector: 'app-perfil-local-suscrito',
@@ -7,23 +8,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./perfil-local-suscrito.page.scss'],
   standalone: false
 })
-export class PerfilLocalSuscritoPage implements OnInit {
-  nombreLocal: string = '';
-  emailLocal: string = '';
-  horarioApertura: string = '';
-  horarioCierre: string = '';
+export class PerfilLocalSuscritoPage implements OnInit, ViewWillEnter {
+  nombreLocal = '';
+  emailLocal = '';
+  referencia = '';
+  descripcion = '';
+  horarioApertura = '';
+  horarioCierre = '';
+  imageLink = '';
+  userData: any = {};
 
-  constructor(private router: Router) {} // 🔹 Se inyecta el `Router` aquí
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    const userData = localStorage.getItem('userData');
+    this.cargarDatos();
+  }
 
-    if (userData) {
-      const datos = JSON.parse(userData);
+  ionViewWillEnter() {
+    this.cargarDatos();
+  }
+
+  cargarDatos() {
+    const storedUserData = localStorage.getItem('userData');
+    if (storedUserData) {
+      const datos = JSON.parse(storedUserData);
+      this.userData = datos;
       this.nombreLocal = datos.nombre || 'No disponible';
       this.emailLocal = datos.mail || 'No disponible';
-
-      // 🔹 Extraemos apertura y cierre desde el objeto "horarioAtencion"
+      this.referencia = datos.referencia || 'No disponible';
+      this.descripcion = datos.descripcion || 'No disponible';
+      this.imageLink = datos.imageLink || '';
       if (datos.horarioAtencion) {
         this.horarioApertura = datos.horarioAtencion.apertura || 'No especificado';
         this.horarioCierre = datos.horarioAtencion.cierre || 'No especificado';
@@ -35,9 +49,7 @@ export class PerfilLocalSuscritoPage implements OnInit {
   }
 
   cerrarSesion() {
-    localStorage.clear(); // 🔹 Borra todos los datos del usuario en localStorage
-    console.log('Sesión cerrada. Se eliminaron los datos de localStorage.');
-    
-    this.router.navigate(['/sign-in']); // 🔹 Redirige correctamente a la pantalla de inicio de sesión
+    localStorage.clear();
+    this.router.navigate(['/sign-in']);
   }
 }
