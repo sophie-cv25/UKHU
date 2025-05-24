@@ -23,7 +23,7 @@ export class BienvenidaPage implements OnInit, OnDestroy {
   startAutoTransition(): void {
     this.autoTransitionTimer = setInterval(() => {
       this.nextPage();
-    }, 3500);
+    }, 500);
   }
 
   // Navega a la siguiente pantalla
