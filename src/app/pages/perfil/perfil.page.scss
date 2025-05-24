@@ -13,13 +13,51 @@
   --padding-start: 16px;
   --padding-end: 16px;
 }
-
-ion-title {
+.ion-text-center{
   font-family: var(--fuente-h2);
   font-size: var(--tamaño-h2);
-  margin: 0; /* Para evitar el espacio por defecto de h2 */
-  text-align: center;
+  align-items: center;
 }
+
+.info-basica ion-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  border: none;
+  border-bottom: 2px solid #ffc107;
+  margin-bottom: 10px;
+  --highlight-height: 0;
+  border-radius: 0;
+  padding-bottom: 8px;
+
+}
+.info-basica ion-label {
+  font-family: var(--fuente-h4);
+  font-size: var(--tamaño-p);
+  color: white;
+  display: flex;
+  align-items: end;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.info-basica ion-input {
+  font-family: var(--fuente-h4);
+  font-size: var(--tamaño-p);
+  color: white;
+  --padding-start: 0;
+  --padding-end: 0;
+  white-space: nowrap;
+}
+
+::ng-deep .info-basica ion-input .native-input {
+  padding-left: 10px;
+  text-align: left;
+}
+
 
 header{
   font-family: var(--fuente-h2);
@@ -40,35 +78,26 @@ header{
   margin-top: 16px;    // Separación opcional del resto
   padding: 0 16px;     // Espaciado interno opcional
 }
+.botones-perfil{
+  font-weight: bold;
+  font-size: var(--tamaño-h4);
+}
+
 .boton-cerrar-sesion {
   width: 300px;
   margin-top: 24px;
 }
-.avatar-marcado {
+.avatar-unico {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.circulo-amarillo {
-  background-color: #FEC530;
-  border-radius: 50%;
-  width: 140px; /* Ícono más grande */
-  height: 140px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end; /* Ícono hacia abajo */
-  padding-bottom: 16px;
-  overflow: hidden;
-}
-
-.circulo-amarillo img {
-  width: 200px; /* Más grande */
-  height: 80px;
+.avatar-unico img {
+  width: 140px;
+  height: auto;
   object-fit: contain;
-  filter: none;
-  /* Cambia el color del SVG usando el atributo fill si es SVG inline, o coloreado desde el archivo si es externo */
 }
 
 .grafico-placeholder{

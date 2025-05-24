@@ -2,7 +2,7 @@
   <ion-toolbar color="primary">
     <ion-title class="ion-text-center" color="warning">{{ 'perfil_titulo' | translate }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button fill="clear" routerLink="/configuraciones">
+      <ion-button fill="clear" routerLink="/configuracion">
         <ion-icon name="settings-sharp" slot="icon-only" color="warning"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -11,34 +11,18 @@
 
 <ion-content color="primary" class="fondo" [fullscreen]="true">
   <style>
-    ion-item {
-      --background: transparent;
-      --border-color: transparent;
-      border-bottom: 2px solid var(--ion-color-success); /* 🔹 Línea verde debajo */
-      display: flex;
-      align-items: center;
-    }
-
-    ion-label {
-      font-weight: 500;
-      margin-right: 10px;
-    }
-
-    ion-input {
-      flex-grow: 1;
-      color: white !important; /* 🔹 Asegura que el texto del input sea blanco */
+    ::ng-deep .info-basica ion-item ion-input .native-input {
+      transform: translateY(13px); /* Baja un poco el texto del input */
     }
   </style>
 
   <div class="contenedor-perfil">
     <!-- Imagen de perfil con marco amarillo -->
-    <div class="avatar-marcado">
-      <div class="circulo-amarillo">
-        <img src="assets/icon/Perfil.svg" alt="{{ 'perfil_icono' | translate }}" />
-      </div>
+    <div class="avatar-unico">
+     <img src="assets/icon/Perfilnegro.svg" alt="{{ 'perfil_icono' | translate }}" />
     </div>
 
-    <!-- Botones Editar / Historial -->
+     <!-- Botones Editar / Historial -->
     <div class="botones-perfil">
       <ion-button color="success" shape="round" size="small" class="boton-personalizado" routerLink="/edit-perfilc">
         {{ 'boton_editar' | translate }}
@@ -47,7 +31,6 @@
         {{ 'boton_historial' | translate }}
       </ion-button>
     </div>
-
     <!-- Información básica con datos dinámicos -->
     <div class="info-basica">
       <ion-item>
@@ -61,11 +44,6 @@
       </ion-item>
     </div>
 
-    <!-- Botón para cambiar contraseña -->
-    <ion-button expand="block" fill="clear" color="primary" routerLink="/cambiar-contrasena">
-      {{ 'cambiar_contrasena' | translate }}
-    </ion-button>
-
     <!-- Gráfico (placeholder) -->
     <div class="grafico-placeholder">
       {{ 'grafico_acumulacion' | translate }}<br />
@@ -77,3 +55,8 @@
     </ion-button>
   </div>
 </ion-content>
+
+<ion-footer>
+  <app-tab-bar></app-tab-bar>
+</ion-footer>
+

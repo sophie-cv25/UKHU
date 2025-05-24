@@ -107,13 +107,6 @@ ion-toolbar {
 
 }
 
-app-input2 {
-  margin-bottom: 30px; /* o el valor que desees */
-  display: block; /* asegura que ocupen una fila cada uno */
-  padding-left: 0px;
-  width: 100%;
-}
-
 .datos app-input2:last-child {
   margin-bottom: 0;
 }
