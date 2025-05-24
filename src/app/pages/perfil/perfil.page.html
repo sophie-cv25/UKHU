@@ -2,7 +2,7 @@
   <ion-toolbar color="primary">
     <ion-title class="ion-text-center" color="warning">{{ 'perfil_titulo' | translate }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button fill="clear">
+      <ion-button fill="clear" routerLink="/configuraciones">
         <ion-icon name="settings-sharp" slot="icon-only" color="warning"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -10,6 +10,26 @@
 </ion-header>
 
 <ion-content color="primary" class="fondo" [fullscreen]="true">
+  <style>
+    ion-item {
+      --background: transparent;
+      --border-color: transparent;
+      border-bottom: 2px solid var(--ion-color-success); /* 🔹 Línea verde debajo */
+      display: flex;
+      align-items: center;
+    }
+
+    ion-label {
+      font-weight: 500;
+      margin-right: 10px;
+    }
+
+    ion-input {
+      flex-grow: 1;
+      color: white !important; /* 🔹 Asegura que el texto del input sea blanco */
+    }
+  </style>
+
   <div class="contenedor-perfil">
     <!-- Imagen de perfil con marco amarillo -->
     <div class="avatar-marcado">
@@ -23,23 +43,28 @@
       <ion-button color="success" shape="round" size="small" class="boton-personalizado" routerLink="/edit-perfilc">
         {{ 'boton_editar' | translate }}
       </ion-button>
-      <ion-button color="success" shape="round" size="small" class="boton-personalizado">
+      <ion-button color="success" shape="round" size="small" class="boton-personalizado" routerLink="/historial">
         {{ 'boton_historial' | translate }}
       </ion-button>
     </div>
 
-    <!-- Información básica con datos dinámicos (Usando ion-input) -->
+    <!-- Información básica con datos dinámicos -->
     <div class="info-basica">
       <ion-item>
-        <ion-label position="floating">{{ 'perfil_nombre' | translate }}</ion-label>
+        <ion-label>{{ 'perfil_nombre' | translate }}</ion-label>
         <ion-input [(ngModel)]="userData.nombre" name="nombre" type="text" readonly></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">{{ 'perfil_usuario' | translate }}</ion-label>
+        <ion-label>{{ 'perfil_usuario' | translate }}</ion-label>
         <ion-input [(ngModel)]="userData.nombreUsuario" name="nombreUsuario" type="text" readonly></ion-input>
       </ion-item>
     </div>
+
+    <!-- Botón para cambiar contraseña -->
+    <ion-button expand="block" fill="clear" color="primary" routerLink="/cambiar-contrasena">
+      {{ 'cambiar_contrasena' | translate }}
+    </ion-button>
 
     <!-- Gráfico (placeholder) -->
     <div class="grafico-placeholder">
@@ -50,6 +75,5 @@
     <ion-button color="success" shape="round" class="boton-personalizado boton-cerrar-sesion" (click)="cerrarSesion()">
       {{ 'boton_cerrar_sesion' | translate }}
     </ion-button>
-
   </div>
 </ion-content>
