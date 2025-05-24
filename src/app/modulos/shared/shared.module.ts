@@ -14,6 +14,7 @@ import { ModalSoporteTecnicoComponent } from 'src/app/componentes/modal-soporte-
 import { CardResenasComponent } from 'src/app/componentes/card-resenas/card-resenas.component';
 import { CodigoModalComponent } from 'src/app/componentes/codigo-modal/codigo-modal.component';
 import { FormsModule } from '@angular/forms';
+import { RankingModalComponent } from 'src/app/componentes/ranking-modal/ranking-modal.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     Modal2Component,
     ModalSoporteTecnicoComponent,
     CardResenasComponent,
-    CodigoModalComponent
+    CodigoModalComponent,
+    RankingModalComponent,
   ],
   exports:[
     Input1Component,
@@ -42,7 +44,8 @@ import { FormsModule } from '@angular/forms';
   ModalSoporteTecnicoComponent,
   CardResenasComponent,
   CodigoModalComponent,
-  FormsModule
+  FormsModule,
+  RankingModalComponent
 ],
   imports: [
     CommonModule,

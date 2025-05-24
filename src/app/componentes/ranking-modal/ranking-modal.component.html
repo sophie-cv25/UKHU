@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Rankea "{{ nombreRestaurante }}"</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>¿Cómo fue tu experiencia?</h2>
+
+  <div class="stars-container">
+    <ion-icon *ngFor="let estrella of [1,2,3,4,5]" 
+              name="{{ calificacionSeleccionada >= estrella ? 'star' : 'star-outline' }}" 
+              (click)="seleccionarCalificacion(estrella)">
+    </ion-icon>
+  </div>
+
+  <p *ngIf="calificacionSeleccionada">Has seleccionado {{ calificacionSeleccionada }} estrellas.</p>
+
+  <ion-button expand="block" (click)="enviarRanking()" [disabled]="!calificacionSeleccionada">
+    Enviar Ranking
+  </ion-button>
+</ion-content>

@@ -121,4 +121,20 @@ saveHistorialVisita(usuarioId: string, restauranteId: string, nombreRestaurante:
   });
 }
 
+guardarRankingRestaurante(usuarioId: string, restauranteId: string, calificacion: number): Promise<void> {
+  return runInInjectionContext(this.injector, async () => {
+    const restauranteRef = this.firestore.collection('restaurantes').doc(restauranteId);
+    const rankingsRef = restauranteRef.collection('rankings');
+
+    await rankingsRef.add({
+      usuario_id: usuarioId,
+      calificacion: calificacion,
+      fecha: new Date().toISOString()
+    });
+
+    console.log(`✅ Ranking guardado en Firestore: ${calificacion} estrellas para ${restauranteId}`);
+  });
+}
+
+
 }

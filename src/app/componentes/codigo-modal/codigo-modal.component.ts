@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/services/database.service';
 import { NavParams } from '@ionic/angular';
+import { RankingModalComponent } from '../ranking-modal/ranking-modal.component';
 
 @Component({
   selector: 'app-codigo-modal',
@@ -94,9 +95,27 @@ export class CodigoModalComponent implements OnInit {
       clearInterval(this.timerInterval);
       alert('Código validado correctamente. ¡Gracias por tu visita!');
       this.modalCtrl.dismiss();
+      
+      this.abrirRankingModal();
+
     } else {
       alert('Código incorrecto. Intenta nuevamente.');
     }
+  }
+  async abrirRankingModal() {
+    console.log(`🎯 Abriendo ranking para ${this.nombreRestaurante}, Usuario: ${this.usuarioNombre}`);
+
+    const modal = await this.modalCtrl.create({
+      component: RankingModalComponent,  // ✅ Ahora usamos `RankingModalComponent`
+      componentProps: {
+        restauranteId: this.restauranteId,
+        nombreRestaurante: this.nombreRestaurante,
+        usuarioId: this.usuarioId
+      },
+      backdropDismiss: false  // Bloquear cierre sin rankear
+    });
+
+    await modal.present();
   }
 
   // Si tienes lógica para destruir el modal o limpiar intervalos:
