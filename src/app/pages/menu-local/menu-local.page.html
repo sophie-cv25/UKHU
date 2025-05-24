@@ -7,10 +7,7 @@
   </div>
 
   <!-- 🔹 Botón para agregar un nuevo platillo -->
-  <ion-button expand="block" color="success" (click)="agregarPlatillo()">
-    <ion-icon slot="start" name="add"></ion-icon>
-    Agregar Platillo
-  </ion-button>
+
 
   <div class="menu-lista">
     <div class="menu-card" *ngFor="let plato of menu; let i = index">
@@ -40,5 +37,10 @@
         </div>
       </div>
     </div>
+        <ion-button expand="block" color="success" (click)="agregarPlatillo()">
+    <ion-icon slot="start" name="add"></ion-icon>
+    Agregar Platillo
+  </ion-button>
   </div>
+
 </ion-content>

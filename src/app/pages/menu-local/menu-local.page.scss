@@ -1,0 +1,13 @@
+.detalle-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden; // 🔹 Evita cortes en el scroll
+}
+
+.menu-lista {
+  flex-grow: 1;
+  overflow-y: auto; // 🔹 Activa el desplazamiento
+  max-height: 70vh; // 🔹 Ajusta la altura para que el scroll funcione
+  padding-bottom: 20px;
+}

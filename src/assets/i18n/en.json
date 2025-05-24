@@ -46,7 +46,7 @@
   "login_comercio": "Comercio",
   "login_registro": "Registrarse",
   "registro_titulo": "Registro de comercio",
-  "registro_nombre": "Nombre del comercio",
+  "registro_nombre": "Nombre",
   "registro_correo": "Correo Electrónico",
   "registro_contrasena": "Contraseña",
   "registro_confirmar_contrasena": "Confirmar Contraseña",
