@@ -39,7 +39,7 @@
 
   <div class="menu-lista">
     <div class="menu-card" *ngFor="let plato of restaurante?.menu">
-      <img [src]="plato.imagen" alt="{{ plato.nombre }}" class="menu-img-card" />
+      <img [src]="plato.imagenes" alt="{{ plato.nombre }}" class="menu-img-card" />
       <div class="menu-info-card">
         <div class="menu-nombre">{{ plato.nombre }}</div>
         <div class="menu-descripcion">{{ plato.descripcion }}</div>

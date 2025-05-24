@@ -77,3 +77,12 @@ ion-header::part(toolbar) {
   contain: none !important;
   overflow: visible !important;
 }
+ion-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  border-bottom: 2px solid var(--ion-color-success); /* 🔹 Usa la variable de éxito */
+  border-radius: 0;
+  padding-bottom: 8px;
+}

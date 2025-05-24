@@ -1,0 +1,81 @@
+* {
+  border-color: transparent;
+}
+ion-content {
+  display: flex;
+align-items: center; /* 🔹 Centra los elementos horizontalmente */
+
+}
+
+.boton-personalizado {
+    margin-top: 266px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  --background: #fec530;
+  --color: #000;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  width: 200px;
+  border-radius: 50px;
+  padding: 12px 24px;
+  text-transform: none;
+  justify-content: center;
+}
+ion-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  border-bottom: 2px solid var(--ion-color-success); /* 🔹 Solo borde abajo con color success */
+  border-radius: 0;
+  padding-bottom: 8px;
+  width: 291px;
+}
+
+ion-item {
+  display: flex;
+  justify-content: center; /* 🔹 Centra los elementos horizontalmente */
+  align-items: center; /* 🔹 Asegura alineación vertical */
+  border-bottom: 2px solid var(--ion-color-success);
+  padding-bottom: 8px;
+  width: 291px;
+}
+
+ion-label {
+  flex: 0;
+  text-align: center; /* 🔹 Centra el texto del label */
+  width: 100%; /* 🔹 Asegura que ocupe todo el ancho del ion-item */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+
+ion-input {
+  flex: 1; /* 🔹 Ocupa el espacio restante para escribir */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #333;
+  --padding-start: 0;
+  --padding-end: 0;
+  background: transparent;
+  border: none;
+}
+
+p{
+  margin-left: auto;
+  margin-right: auto;
+  display: block; /* 🔹 Asegura que el elemento se comporte como bloque */
+  width: fit-content; /* 🔹 El ancho se ajusta automáticamente al contenido */
+    margin-bottom: 183px;
+    width: 312px;
+    margin-top: 73px;
+}
+form {
+  display: flex;
+  flex-direction: column; /* 🔹 Mantiene los elementos en una columna */
+  align-items: center; /* 🔹 Centra los elementos horizontalmente */
+
+}

@@ -1,22 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{ 'recuperar_contrasena_titulo' | translate }}</ion-title>
+
+<ion-header class="ion-no-border">
+  <ion-toolbar color="trasparent">
+    <!-- Flecha atrás -->
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/sign-in">
+        <ion-icon name="arrow-back" slot="icon-only" color="warning"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title class="ion-text-center titulo-configuracion" color="danger">
+      {{ 'Olvidé mi contraseña' | translate }}
+    </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <p>Ingresa tu e-mail para restablecer tu contraseña:</p>
   <form (submit)="recuperarPassword()">
     <ion-item>
-      <ion-label position="floating">{{ 'recuperar_contrasena_correo' | translate }}</ion-label>
+      <ion-label class="fixed-label">E-mail:</ion-label>
       <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
     </ion-item>
 
-    <ion-button expand="full" type="submit">
-      {{ 'recuperar_contrasena_enviar' | translate }}
+    <ion-button color="success" shape="round" size="small" class="boton-personalizado" type="submit">
+      {{ 'Enviar' | translate }}
     </ion-button>
   </form>
-
-  <ion-button expand="full" fill="outline" routerLink="/sign-in">
-    {{ 'recuperar_contrasena_volver' | translate }}
-  </ion-button>
 </ion-content>
