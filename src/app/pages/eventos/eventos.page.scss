@@ -19,11 +19,21 @@ ion-img {
   border-radius: 16px;
 }
 
-/* Para la imagen que debe conservar su altura natural */
-.img-natural {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 16px;
+.card-evento {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
+
+ion-img,
+.img-natural {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
