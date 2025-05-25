@@ -1,0 +1,35 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.fondo {
+  background-color: #191A1D;
+}
+
+.titulo-configuracion {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.toolbar-configuracion {
+  --background: #FEC530 !important;
+  --ion-toolbar-background: #FEC530 !important;
+  --color: #F84B5F;
+  color: #F84B5F;
+}
+
+ion-content {
+  --padding-start: 18px;
+  --padding-end: 18px;
+  --padding-top: 34px;
+  --padding-bottom: 44px;
+  background-color: #191A1D;
+}
+
+.contenedor-configuracion {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+}
