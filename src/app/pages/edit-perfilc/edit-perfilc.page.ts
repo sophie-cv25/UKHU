@@ -43,11 +43,13 @@ export class EditPerfilcPage implements OnInit {
   }
 
   guardarIconoSeleccionado() {
-    this.userData.iconoPerfil = this.iconosPerfil[this.iconoSeleccionado];
-    localStorage.setItem('userData', JSON.stringify(this.userData));
-    // Opcional: notificación visual
-    // alert('Icono de perfil actualizado.');
-  }
+  this.userData.iconoPerfil = this.iconosPerfil[this.iconoSeleccionado];
+  localStorage.setItem('userData', JSON.stringify(this.userData));
+  
+  // 
+  this.guardarCambios();
+}
+
 
   guardarCambios() {
     const storedUserData = localStorage.getItem('userData');
@@ -60,51 +62,37 @@ export class EditPerfilcPage implements OnInit {
       console.error('No se pudo actualizar: falta el UID del usuario.');
       return;
     }
-    const updatedData: any = {};
 
+    const updatedData: any = {};
+    let huboCambio = false;
+
+    // 🔹 Detectar cambios en los datos del usuario
     if (userData.email?.trim() && userData.email !== this.userData.email) {
       updatedData.email = this.userData.email;
+      huboCambio = true;
     }
     if (userData.nombre?.trim() && userData.nombre !== this.userData.nombre) {
       updatedData.nombre = this.userData.nombre;
+      huboCambio = true;
     }
     if (userData.nombreUsuario?.trim() && userData.nombreUsuario !== this.userData.nombreUsuario) {
       updatedData.nombreUsuario = this.userData.nombreUsuario;
+      huboCambio = true;
     }
-    // No se sube el iconoPerfil a Firebase
 
-    if (Object.keys(updatedData).length === 0) {
+    // 🔹 Detectar si el icono fue cambiado
+    if (this.userData.iconoPerfil && this.userData.iconoPerfil !== userData.icono) {
+      updatedData.icono = this.userData.iconoPerfil;
+      huboCambio = true;
+    }
+
+    // 🔹 Si no hubo cambios, no enviamos la actualización
+    if (!huboCambio) {
       console.log('No se realizaron cambios en el perfil.');
       return;
     }
 
-    if (updatedData.email) {
-      this.authService.cambiarCorreo(updatedData.email)
-        .then(() => {
-          alert(`Se ha enviado un correo de verificación a ${updatedData.email}. Debes confirmar el cambio antes de que se actualice en la aplicación.`);
-          this.actualizarCorreoEnFirestore(userData.uid, updatedData.email);
-        })
-        .catch(error => {
-          console.error('Error al actualizar correo en Firebase Authentication:', error);
-        });
-    } else {
-      this.actualizarPerfilEnFirestore(userData.uid, updatedData);
-    }
-  }
-
-  actualizarCorreoEnFirestore(uid: string, nuevoCorreo: string) {
-    this.dbService.getCollectionByCustomparam('users', 'uid', uid).pipe(take(1)).subscribe(userDataArray => {
-      if (!userDataArray || userDataArray.length === 0) {
-        console.error('Error: No se encontró el documento en Firestore.');
-        return;
-      }
-      const userDoc = userDataArray[0];
-      this.dbService.updateFireStoreDocument('users', userDoc.id, { email: nuevoCorreo })
-        .then(() => {
-          this.actualizarLocalStorage(uid, { email: nuevoCorreo });
-        })
-        .catch(error => console.error('Error al actualizar correo en Firestore:', error));
-    });
+    this.actualizarPerfilEnFirestore(userData.uid, updatedData);
   }
 
   actualizarPerfilEnFirestore(uid: string, updatedData: any) {
@@ -114,11 +102,19 @@ export class EditPerfilcPage implements OnInit {
         return;
       }
       const userDoc = userDataArray[0];
+
+      // 🔹 Verificar si el campo `icono` ya existe en el documento de Firebase
+      if ('icono' in userDoc && updatedData.icono === userDoc.icono) {
+        console.log("El campo 'icono' ya existe y no ha cambiado, no se realizan actualizaciones.");
+        return; // 🔹 Si ya existe y es el mismo, no hacemos nada
+      }
+
       this.dbService.updateFireStoreDocument('users', userDoc.id, updatedData)
         .then(() => {
+          console.log("Perfil actualizado correctamente en Firestore.");
           this.actualizarLocalStorage(uid, updatedData);
         })
-        .catch(error => console.error('Error al actualizar perfil en Firestore:', error));
+        .catch(error => console.error("Error al actualizar perfil en Firestore:", error));
     });
   }
 
@@ -129,4 +125,3 @@ export class EditPerfilcPage implements OnInit {
     localStorage.setItem('userData', JSON.stringify({ ...userData, ...updatedData }));
   }
 }
-
