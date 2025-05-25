@@ -209,5 +209,17 @@ getResenasPorRestaurante(restauranteId: string): Observable<any> {
   );
 }
 
+getHistorialDeUsuario(usuarioId: string): Observable<any[]> {
+  console.log(`🔎 Buscando historial en users/${usuarioId}/historial`);
+
+  return runInInjectionContext(this.injector, () => {
+    return this.firestore.collection(`users/${usuarioId}/historial`)
+      .valueChanges({ idField: 'id' });
+  }).pipe(
+    tap(data => console.log(`✅ Datos de historial obtenidos de Firebase:`, data))
+  );
+}
+
+
 
 }

@@ -1,0 +1,43 @@
+.tarjeta-historial {
+  background-color: #191A1D;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.icono-restaurante {
+  background-color: #facc15;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.info-restaurante {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-weight: 500;
+}
+
+.nombre-restaurante {
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+}
+
+.fecha-restaurante {
+  font-size: 0.8rem;
+  color: #999;
+  margin-left: auto;
+}
+
+.icono-restaurante ion-icon {
+  font-size: 25px;
+}

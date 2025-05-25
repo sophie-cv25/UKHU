@@ -15,6 +15,7 @@ import { CardResenasComponent } from 'src/app/componentes/card-resenas/card-rese
 import { CodigoModalComponent } from 'src/app/componentes/codigo-modal/codigo-modal.component';
 import { FormsModule } from '@angular/forms';
 import { RankingModalComponent } from 'src/app/componentes/ranking-modal/ranking-modal.component';
+import { HistorialCardComponent } from 'src/app/componentes/historial-card/historial-card.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { RankingModalComponent } from 'src/app/componentes/ranking-modal/ranking
     CardResenasComponent,
     CodigoModalComponent,
     RankingModalComponent,
+    HistorialCardComponent
   ],
   exports:[
     Input1Component,
@@ -45,7 +47,8 @@ import { RankingModalComponent } from 'src/app/componentes/ranking-modal/ranking
   CardResenasComponent,
   CodigoModalComponent,
   FormsModule,
-  RankingModalComponent
+  RankingModalComponent,
+  HistorialCardComponent
 ],
   imports: [
     CommonModule,

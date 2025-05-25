@@ -12,6 +12,14 @@ ion-title {
   font-weight: 700; // si quieres que diga "Historial" en negrita
 }
 
+ion-content {
+  --padding-start: 18px;
+  --padding-end: 18px;
+  --padding-top: 34px;
+  --padding-bottom: 44px;
+  background-color: #191A1D;
+}
+
 .contenedor-historial {
   padding: 1rem;
   font-family: 'Montserrat', sans-serif;
