@@ -15,6 +15,7 @@ import { AuthserviceService } from 'src/app/services/authservice.service';
 })
 export class RestauranteDetallePage implements OnInit {
   restaurante: any;
+  restauranteId: string = ''; // 🔹 Variable para almacenar el ID
 
   constructor(
     private route: ActivatedRoute,
@@ -27,39 +28,52 @@ export class RestauranteDetallePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.databaseService.getDocumentById('restaurantes', id).subscribe((doc) => {
+    this.restauranteId = this.route.snapshot.paramMap.get('id') || ''; // 🔹 Guarda el ID
+
+    console.log(`🆔 ID almacenado: ${this.restauranteId}`); // 🔹 Imprime el ID para depuración
+
+    if (this.restauranteId) {
+      this.databaseService.getDocumentById('restaurantes', this.restauranteId).subscribe((doc) => {
         if (doc.payload.exists) {
-          this.restaurante = { id, ...doc.payload.data() };
-          // 📌 Obtener el promedio de calificación del restaurante
-        // this.databaseService.getPromedioCalificacion(id).subscribe((promedio) => {
-        //   console.log(`🎯 Promedio obtenido de Firestore: ${promedio}`);
-        //   this.restaurante.rating = promedio;
-        // });
+          this.restaurante = { id: this.restauranteId, ...doc.payload.data() };
+          console.log(`✅ Restaurante cargado:`, this.restaurante);
         }
       });
+    } else {
+      console.error('⚠️ No se encontró un ID en la ruta.');
     }
   }
 
-  comoLlegar() {
-    const isLoggedRaw = localStorage.getItem('isLoggedIn');
-  const isLogged = isLoggedRaw === 'true';
-
-  if (!isLogged) {
-    this.alertCtrl.create({
-      header: 'Atención',
-      message: 'Necesitas iniciar sesión para ver la ubicación.',
-      buttons: ['OK']
-    }).then(alert => alert.present());
+  abrirResenas() {
+  if (!this.restauranteId) {
+    console.error('⚠️ No se encontró el ID del restaurante.');
     return;
   }
-    if (this.restaurante?.latitud && this.restaurante?.longitud && this.restaurante?.id) {
+
+  console.log(`📢 Navegando a reseñas con ID: ${this.restauranteId}`); // 🔹 Depuración
+
+  this.router.navigate(['/resenas', this.restauranteId]); // ✅ Redirección con el ID correcto
+}
+
+  comoLlegar() {
+    const isLoggedRaw = localStorage.getItem('isLoggedIn');
+    const isLogged = isLoggedRaw === 'true';
+
+    if (!isLogged) {
+      this.alertCtrl.create({
+        header: 'Atención',
+        message: 'Necesitas iniciar sesión para ver la ubicación.',
+        buttons: ['OK']
+      }).then(alert => alert.present());
+      return;
+    }
+
+    if (this.restaurante?.latitud && this.restaurante?.longitud) {
       this.router.navigate(['/buscar'], {
         queryParams: {
           latitud: this.restaurante.latitud,
           longitud: this.restaurante.longitud,
-          id: this.restaurante.id,
+          id: this.restauranteId, // 🔹 Aseguramos que el ID se pase correctamente
           abrirCodigo: 1,
           nombreRestaurante: this.restaurante.nombre
         }
@@ -71,66 +85,69 @@ export class RestauranteDetallePage implements OnInit {
     this.location.back();
   }
 
-   async abrirModalCodigo() {
-  const isLoggedRaw = localStorage.getItem('isLoggedIn');
-  const isLogged = isLoggedRaw === 'true';
+  async abrirModalCodigo() {
+    const isLoggedRaw = localStorage.getItem('isLoggedIn');
+    const isLogged = isLoggedRaw === 'true';
 
-  if (!isLogged) {
-    const alert = await this.alertCtrl.create({
-      header: 'Atención',
-      message: 'Necesitas iniciar sesión para poder ingresar el código',
-      buttons: ['OK']
-    });
-    await alert.present();
-    return;
-  }
+    if (!isLogged) {
+      const alert = await this.alertCtrl.create({
+        header: 'Atención',
+        message: 'Necesitas iniciar sesión para poder ingresar el código',
+        buttons: ['OK']
+      });
+      await alert.present();
+      return;
+    }
 
-  if (!this.restaurante || !this.restaurante.id || !this.restaurante.nombre) {
-    const alert = await this.alertCtrl.create({
-      header: 'Error',
-      message: 'No se encontró información del restaurante.',
-      buttons: ['OK']
-    });
-    await alert.present();
-    return;
-  }
+    if (!this.restaurante || !this.restaurante.id || !this.restaurante.nombre) {
+      const alert = await this.alertCtrl.create({
+        header: 'Error',
+        message: 'No se encontró información del restaurante.',
+        buttons: ['OK']
+      });
+      await alert.present();
+      return;
+    }
 
-  const userDataRaw = localStorage.getItem('userData');
-  if (!userDataRaw) {
-    return;
-  }
-  const userData = JSON.parse(userDataRaw);
-  const usuarioId = userData.id || '';
-  const usuarioEmail = userData.email || '';
-  const usuarioNombre = userData.nombre || '';
-  if (!usuarioId) {
-    const alert = await this.alertCtrl.create({
-      header: 'Error',
-      message: 'No se encontró información del usuario.',
-      buttons: ['OK']
+    const userDataRaw = localStorage.getItem('userData');
+    if (!userDataRaw) {
+      return;
+    }
+    const userData = JSON.parse(userDataRaw);
+    const usuarioId = userData.id || '';
+    const usuarioEmail = userData.email || '';
+    const usuarioNombre = userData.nombre || '';
+
+    if (!usuarioId) {
+      const alert = await this.alertCtrl.create({
+        header: 'Error',
+        message: 'No se encontró información del usuario.',
+        buttons: ['OK']
+      });
+      await alert.present();
+      return;
+    }
+
+    const modal = await this.modalCtrl.create({
+      component: CodigoModalComponent,
+      componentProps: {
+        restauranteId: this.restauranteId, // 🔹 Pasamos el ID almacenado
+        nombreRestaurante: this.restaurante.nombre,
+        usuarioId: usuarioId,
+        usuarioEmail: usuarioEmail,
+        usuarioNombre: usuarioNombre
+      },
+      backdropDismiss: false
     });
-    await alert.present();
-    return;
+
+    await modal.present();
+    const timeout = setTimeout(() => {
+      modal.dismiss(null, 'timeout');
+    }, 300000);
+
+    const { data, role } = await modal.onWillDismiss();
+    clearTimeout(timeout);
   }
-  const modal = await this.modalCtrl.create({
-    component: CodigoModalComponent,
-    componentProps: {
-      restauranteId: this.restaurante.id,
-      nombreRestaurante: this.restaurante.nombre,
-      usuarioId: usuarioId,
-      usuarioEmail: usuarioEmail,
-      usuarioNombre: usuarioNombre
-    },
-    backdropDismiss: false
-  });
-  await modal.present();
-  const timeout = setTimeout(() => {
-    modal.dismiss(null, 'timeout');
-  }, 300000);
-  const { data, role } = await modal.onWillDismiss();
-  clearTimeout(timeout);
-  if (data && role !== 'timeout') {
-    // Aquí puedes manejar data si necesitas
-  }
-}
+  
+
 }

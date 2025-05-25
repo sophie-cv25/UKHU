@@ -196,18 +196,14 @@ updateResenasEnRestaurante(restauranteId: string, nuevaResena: any): Promise<voi
   });
 }
 
-getResenasPorRestaurante(restauranteId: string): Observable<any> {
-  console.log(`🔎 Buscando reseñas en el documento: restaurantes/${restauranteId}`);
-  
-  return runInInjectionContext(this.injector, () => {
-    return this.firestore.collection('restaurantes')
-      .doc(restauranteId)
-      .valueChanges() as Observable<{ resenas?: any[] } | undefined>; // ✅ Tipado explícito
-  }).pipe(
-    tap((data) => console.log(`✅ Datos obtenidos desde Firebase:`, data)),
-    map((doc: { resenas?: any[] } | undefined) => doc?.resenas || []) // ✅ Extraemos el array de reseñas o devolvemos vacío si no hay
-  );
+getResenasPorRestaurante(restauranteId: string): Observable<any[]> {
+  return this.firestore.collection('resenas', ref => // 🔹 Cambiamos "reseñas" a "resenas"
+    ref.where('restauranteId', '==', restauranteId)
+  ).valueChanges();
 }
+
+
+
 
 getHistorialDeUsuario(usuarioId: string): Observable<any[]> {
   console.log(`🔎 Buscando historial en users/${usuarioId}/historial`);
