@@ -1,13 +1,163 @@
+// Fondo oscuro moderno
 .detalle-content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden; // 🔹 Evita cortes en el scroll
+  --background: #222125;
+  background: #222125;
+  min-height: 100vh;
+  padding: 0;
+  font-family: 'Montserrat', 'Arial', sans-serif;
 }
 
+// Header del restaurante
+.restaurante-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 24px 18px 12px 18px;
+  background: transparent;
+  .logo-restaurante {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #29262c;
+    border: 2px solid #ffcd38;
+    margin-right: 18px;
+  }
+  .restaurante-info {
+    flex: 1;
+    .nombre-restaurante {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+  }
+}
+
+// MENÚ LISTA
 .menu-lista {
-  flex-grow: 1;
-  overflow-y: auto; // 🔹 Activa el desplazamiento
-  max-height: 70vh; // 🔹 Ajusta la altura para que el scroll funcione
-  padding-bottom: 20px;
+  padding: 8px 10px 40px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.menu-card {
+  background: #29262c;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px 0 rgba(10,10,10,0.07);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  overflow: hidden;
+  min-height: 140px;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.menu-img-card {
+  width: 120px;
+  height: 100%;
+  object-fit: cover;
+  background: #222125;
+  border-right: 3px solid #ffcd38;
+  flex-shrink: 0;
+}
+
+.menu-info-card {
+  flex: 1;
+  padding: 12px 15px 12px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+
+  ion-item {
+    --background: transparent;
+    --color: #fff;
+    --border-color: #393846;
+    --highlight-color-focused: #ffcd38;
+    --highlight-color: #ffcd38;
+    font-size: 0.96rem;
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    --min-height: 34px;
+    --min-width: 0;
+    border-radius: 7px;
+    margin-bottom: 0;
+  }
+
+  ion-label {
+    color: #ffcd38;
+    font-size: 0.85rem;
+    letter-spacing: 0.01em;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+
+  ion-input,
+  ion-textarea {
+    color: #fff;
+    font-size: 1rem;
+    --placeholder-color: #b9b8be;
+    --placeholder-opacity: .7;
+  }
+
+  .acciones-menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 4px;
+    gap: 7px;
+    ion-button[color="primary"] {
+      --background: #ffcd38;
+      --color: #2a292e;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 16px;
+      padding: 0 18px;
+      box-shadow: 0 2px 8px 0 rgba(255,205,56,0.07);
+    }
+    ion-button[color="danger"] {
+      --color: #e94e4e;
+      --background: transparent;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+// Botón para agregar platillo
+ion-button[color="success"] {
+  --background: #ffcd38;
+  --color: #19181c;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 14px;
+  margin-top: 16px;
+  box-shadow: 0 2px 8px 0 rgba(255,205,56,0.08);
+  letter-spacing: 0.01em;
+}
+
+// Ajustes responsive
+@media (max-width: 600px) {
+  .menu-card {
+    flex-direction: column;
+    .menu-img-card {
+      width: 100%;
+      height: 160px;
+      border-right: none;
+      border-bottom: 3px solid #ffcd38;
+    }
+  }
+  .menu-info-card {
+    padding: 14px 10px 10px 10px;
+  }
+  .restaurante-header {
+    padding: 18px 8px 8px 8px;
+    .logo-restaurante {
+      width: 42px;
+      height: 42px;
+    }
+  }
 }
