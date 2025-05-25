@@ -1,28 +1,133 @@
-.contenedor-perfil {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra todos los hijos horizontalmente */
-  width: 100%;
+ion-title {
+  font-family: var(--fuente-h2);
+  font-size: var(--tamaño-h2);
+  margin: 0; /* Para evitar el espacio por defecto de h2 */
+  text-align: center;
 }
-
-.avatar-marcado {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra el círculo */
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.circulo-amarillo {
-  display: flex;
-  align-items: center;
+.boton-personalizado {
+  --background: #fec530;
+  --color: #000;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  width: 150px;
+  border-radius: 50px;
+  padding: 12px 24px;
+  text-transform: none;
   justify-content: center;
-  background: #fec530;
-  border-radius: 50%;
-  width: 180px;
-  height: 180px;
-  margin: 18px auto 8px auto;
+  --border-radius: 20px;
+  --padding-start: 16px;
+  --padding-end: 16px;
 }
+ .contenedor-perfil {
+  flex-direction: column;
+  align-items: center;       // Centra horizontalmente
+  justify-content: center;   // Centra verticalmente
+  text-align: center;
+  height: 100%;
+}
+
+.info-basica ion-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  border: none;
+  border-bottom: 2px solid #ffc107;
+  margin-bottom: 18px;
+  --highlight-height: 0;
+  border-radius: 0;
+  padding-bottom: 4px;
+  margin-left: 18px;
+  margin-right: 18px;
+}
+.info-basica {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-basica ion-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  border: none;
+  border-bottom: 2px solid #ffc107;
+  padding-bottom: 8px;
+}
+
+.info-basica ion-label {
+  font-family: var(--fuente-);
+  font-size: var(--tamaño-p);
+  color: white;
+  margin-top: 16px;
+}
+
+.info-basica ion-text {
+  font-family: var(--fuente-p);
+  font-size: var(--tamaño-p);
+  color: white;
+  margin-top: 4px;      /* si querés un pelín de espacio entre label y texto */
+}
+
+.botones {
+  display: flex;
+  justify-content: space-evenly; /* mejor distribución con espacio entre */
+  padding: 0 20px; /* margen interno a los lados */
+  box-sizing: border-box;
+  font-weight: 300;
+  margin-top: 20px;
+}
+
+.botones ion-button {
+  --background: transparent;
+  --color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: capitalize;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  padding: 0;
+  height: auto;
+  --padding-start: 0;
+  --padding-end: 0;
+  --ripple-color: transparent;
+  --box-shadow: none;
+  min-width: 100px; /* puedes ajustar según lo necesites */
+  overflow: visible; /* asegúrate que nada se corte */
+}
+
+.botones ion-button ion-icon {
+  background-color: #F84B5F;
+  border-radius: 50%;
+  padding: 8px;        /* antes 12px → círculo más pequeño */
+  font-size: 20px;     /* antes 20px → icono más pequeño */
+  margin-bottom: 8px;
+  color: #191A1D;
+  overflow: visible;
+  
+}
+.botones ion-button::part(native) {
+  overflow: visible;
+  padding: 0 !important;
+}
+
+
+.avatar-unico {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-unico img {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+.ion-no-border{
+  background-color: #191A1D;
+} 
 
 .botones-perfil {
   width: 100%;
@@ -32,22 +137,23 @@
   margin-bottom: 10px;
 }
 
-.boton-personalizado {
-  margin: 0 auto 8px auto;
-  display: block;
-}
-
 .boton-cerrar-sesion {
-  margin: 16px auto 0 auto;
-  display: block;
+  width: 200px;
+  margin-top: 24px;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0; /* elimina el padding general */
+  --padding-top: 1px;
+  --padding-bottom: 1px;
+  --padding-start: 12px;
+  --padding-end: 12px;
 }
 
 .info-basica{
 width: 100%;
-background-color: #232428;
+background-color: #191A1D;
 }
 
 .contenedor-perfil>img{
   border-radius: 50%;
 }
-

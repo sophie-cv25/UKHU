@@ -19,13 +19,13 @@
 <ion-content color="primary" class="fondo" [fullscreen]="true">
   <div class="contenedor-perfil">
     <!-- Si hay imagen, solo esa; si no, el SVG -->
-    <div class="avatar-marcado">
-      <div class="circulo-amarillo">
-        <img *ngIf="imageLink; else svgAvatar" [src]="imageLink" alt="Imagen del local" />
-        <ng-template #svgAvatar>
-          <img [src]="'assets/icon/' + (userData?.iconoPerfilLocal || 'Perfilnegro.svg')" alt="Avatar del local" />
-        </ng-template>
-      </div>
+    <div class="avatar unico">
+      
+      <img *ngIf="imageLink; else svgAvatar" [src]="imageLink" alt="Imagen del local" />
+      <ng-template #svgAvatar>
+        <img [src]="'assets/icon/' + (userData?.iconoPerfilLocal || 'Perfilnegro.svg')" alt="Avatar del local" />
+      </ng-template>
+      
     </div>
 
     <div class="botones-perfil">
@@ -77,7 +77,20 @@
       </ion-item>
     </div>
 
-    <ion-button color="success" shape="round" class="boton-personalizado boton-cerrar-sesion" (click)="cerrarSesion()">
+    <!-- Botones adicionales -->
+    <div class="botones">
+      <ion-button color="primary">
+        <ion-icon slot="start" name="diamond"></ion-icon>
+        Suscripción
+      </ion-button>
+
+      <ion-button color="primary">
+        <ion-icon slot="start" name="settings"></ion-icon>
+        Configuración
+      </ion-button>
+    </div>
+
+    <ion-button color="success" shape="round" class="boton-cerrar-sesion" (click)="cerrarSesion()">
       Cerrar sesión
     </ion-button>
   </div>
