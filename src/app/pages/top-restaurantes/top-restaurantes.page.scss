@@ -1,0 +1,80 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.fondo {
+  background-color: #191A1D;
+}
+
+.titulo-configuracion {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.toolbar-configuracion {
+  --color: #F84B5F;
+  color: #F84B5F;
+}
+
+ion-content {
+  --padding-start: 18px;
+  --padding-end: 18px;
+  --padding-top: 34px;
+  --padding-bottom: 44px;
+  background-color: #191A1D;
+}
+
+.contenedor-configuracion {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// ...existing code...
+
+.restaurante-card {
+  background: #FFC72C;
+  border-radius: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --inner-padding-end: 0;
+  --inner-padding-start: 0;
+}
+
+.restaurante-card ion-avatar {
+  min-width: 56px;
+  min-height: 56px;
+  margin-right: 16px;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #F84B5F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nombre-restaurante {
+  font-weight: 600;
+  font-size: 16px;
+  color: #191A1D;
+  flex: 1;
+  text-align: left;
+}
+
+.puntaje-restaurante {
+  font-weight: 700;
+  font-size: 18px;
+  color: #191A1D;
+  margin-left: 12px;
+  min-width: 40px;
+  text-align: right;
+}
+
+// ...existing code...

@@ -1,10 +1,39 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="toolbar-configuracion">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/homeusuario">
+        <ion-icon name="arrow-back" slot="icon-only" color="danger"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center titulo-configuracion" color="danger">
+      Ranking
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="notifications" slot="icon-only" color="danger"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <ion-list>
-  <ion-item *ngFor="let restaurante of topRestaurantes">
-    <ion-label>
-      <h2>{{ restaurante.nombre }}</h2>
-      <p>Rating: {{ restaurante.rating }}</p>
-    </ion-label>
-  </ion-item>
-</ion-list>
+  <ion-list lines="none">
+    <ion-item 
+      *ngFor="let restaurante of topRestaurantes" 
+      [routerLink]="'/restaurante-detalle/' + restaurante.id"
+      class="restaurante-card"
+    >
+      <ion-avatar slot="start">
+        <img [src]="restaurante.imagen || 'assets/imgs/default-restaurant.png'" alt="Logo restaurante">
+      </ion-avatar>
+      <ion-label class="nombre-restaurante">
+        {{ restaurante.nombre }}
+      </ion-label>
+      <div class="puntaje-restaurante">
+        {{ restaurante.rating }}
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>
