@@ -44,7 +44,7 @@ export class DejarResenaPage implements OnInit {
     this.databaseService.getDocumentById('restaurantes', this.restauranteId).subscribe(restauranteDoc => {
       if (restauranteDoc && restauranteDoc.payload.exists) {
         const data = restauranteDoc.payload.data();
-        this.resenas = data.resenas || []; // 🔹 Cargar reseñas existentes
+        this.resenas = data.resenas || []; // Cargar reseñas existentes
       } else {
         console.error('No se encontró el restaurante en Firestore.');
       }

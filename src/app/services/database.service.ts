@@ -152,7 +152,7 @@ getTopRestaurantes(limit: number = 5): Observable<any[]> {
     const snapshot = await resenasRef.get().toPromise();
     
     if (!snapshot || snapshot.empty) {
-      console.log('✅ La subcolección "resenas" no existe, creando...');
+      console.log(' La subcolección "resenas" no existe, creando...');
       
       // Crear un primer documento para inicializar la subcolección
       await resenasRef.doc('_init').set({ mensaje: 'Subcolección creada' });
@@ -160,7 +160,7 @@ getTopRestaurantes(limit: number = 5): Observable<any[]> {
 
     // 🔹 Ahora agregar la reseña
     await resenasRef.add(resena);
-    console.log(`✅ Reseña guardada correctamente en el restaurante ${restauranteId}.`);
+    console.log(` Reseña guardada correctamente en el restaurante ${restauranteId}.`);
   });
 }
 async ensureResenasSubcollection(restauranteId: string): Promise<void> {
@@ -172,13 +172,13 @@ async ensureResenasSubcollection(restauranteId: string): Promise<void> {
       // 🔹 Verificar si la subcolección `resenas` tiene documentos
       const snapshot = await resenasRef.get().toPromise();
       if (!snapshot || snapshot.empty) {
-        console.log('✅ La subcolección "resenas" no existe, creando...');
+        console.log(' La subcolección "resenas" no existe, creando...');
         
         await resenasRef.doc('_init').set({ mensaje: 'Subcolección creada' });
-        console.log('🔥 Subcolección "resenas" creada exitosamente.');
+        console.log(' Subcolección "resenas" creada exitosamente.');
       }
     } catch (error) {
-      console.error('⚠️ Error al crear la subcolección:', error);
+      console.error(' Error al crear la subcolección:', error);
     }
   });
 }
