@@ -37,7 +37,7 @@
       class="card"
       *ngFor="let restaurante of restaurantes"
       (click)="irADetalle(restaurante)">
-      <img [src]="restaurante.imagenes" alt="{{ restaurante.nombre }}">
+      <img [src]="restaurante.imagen" alt="{{ restaurante.nombre }}">
       <div>{{ restaurante.nombre }}</div>
     </div>
   </div>

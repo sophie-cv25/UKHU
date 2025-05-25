@@ -1,36 +1,59 @@
-ion-header {
-  --background: transparent;
-  background: transparent;
-  box-shadow: none;
+// Asegúrate de que el fondo del body y del ion-app sea transparente
+body,
+ion-app {
+  --ion-background-color: transparent !important;
+  background: transparent !important;
+}
 
+ion-header {
+  // Aseguramos que el ion-header en sí no tenga background ni sombra
+  --background: transparent !important; // Añadimos !important aquí también
+  background: transparent !important;
+  box-shadow: none !important; // Eliminamos cualquier sombra del header
+
+  // SOBRESCRIBE EL DIV.HEADER-BACKGROUND que Ionic inyecta
   .header-background {
-    background: transparent !important;
-    box-shadow: none !important;
+    background: transparent !important; // ¡Crucial! Forzar la transparencia
+    box-shadow: none !important; // Eliminar cualquier sombra
+    border: none !important; // Asegurarse de que no haya bordes
+    // display: none !important; // Comenta esta línea si no funciona y solo quieres transparencia
   }
 
   ion-toolbar {
-    --background: transparent;
-    background: transparent;
-    --border-width: 0;
-    box-shadow: none;
+    --background: transparent !important; // Añadimos !important
+    background: transparent !important;
+    --border-width: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    // Esto es un truco: A veces un z-index alto asegura que esté por encima de todo
+    z-index: 100 !important;
   }
 
+  // Pseudo-elementos si todavía se interponen
   &::before,
   &::after {
     background: transparent !important;
+    // display: none !important; // Comenta si solo quieres transparencia
   }
 
+  // Estilos para la ion-searchbar
   ion-searchbar {
-    --background: #2c2c2c;
-    --border-radius: 25px;
-    --color: #ffffff;
-    --placeholder-color: #f84b5f;
-    --icon-color: #f84b5f;
-    padding: 8px 16px;
+    --background: #2c2c2c; // Color de fondo de la barra de búsqueda
+    --border-radius: 25px; // Redondeo de las esquinas
+    --color: #ffffff; // Color del texto de entrada
+    --placeholder-color: #f84b5f; // Color del placeholder
+    --icon-color: #f84b5f; // Color de los iconos
+
+    // Padding de la searchbar dentro del header.
+    // Lo ponemos directamente aquí si el toolbar tiene 0 padding
+    padding: 8px 16px !important; // Ajusta este padding si necesitas más espacio arriba/abajo
 
     .searchbar-input-container {
       background: var(--background);
       border-radius: var(--border-radius);
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     .searchbar-input {
@@ -42,5 +65,34 @@ ion-header {
     .searchbar-search-icon {
       color: var(--icon-color);
     }
+
+    .searchbar-inner-container {
+      background: transparent !important;
+    }
   }
+}
+
+// Asegurarse de que el ion-content tenga un z-index bajo si el mapa es su hijo directo
+// y el header necesita estar encima.
+ion-content {
+  --background: transparent !important; // Fondo transparente para el contenido
+  background: transparent !important;
+  position: absolute; // Podría ser necesario para que el mapa ocupe todo el espacio
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0; // Asegura que esté por debajo del header
+}
+
+// Si tu mapa es un componente personalizado <app-map>,
+// asegúrate de que también ocupe todo el espacio y esté por debajo del header.
+app-map {
+  display: block; // Importante para que ocupe espacio si es un custom element
+  width: 100%;
+  height: 100%;
+  position: absolute; // Esto es crucial para que se extienda y esté por debajo del header
+  top: 0;
+  left: 0;
+  z-index: -1; // Asegura que esté por debajo de todo lo demás en ion-content
 }
