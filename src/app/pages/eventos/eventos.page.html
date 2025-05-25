@@ -1,14 +1,36 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Eventos</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <!-- Título centrado -->
+    <ion-title class="ion-text-center titulo-eventos" color="danger">
+      Eventos
+    </ion-title>
+
+    <!-- Campanita -->
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="notifications" slot="icon-only" color="warning"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Eventos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding" color="dark">
+  <!-- Card Evento 1 -->
+  <ion-card class="card-evento">
+    <img src="assets/icon/la-ruta-de-miguel.png" alt="La Ruta de Miguel" />
+  </ion-card>
+
+  <!-- Card Evento 2 -->
+  <ion-card class="card-evento">
+    <ion-img src="assets/icon/sophitas.png" alt="SOPHitas"></ion-img>
+  </ion-card>
+
+  <!-- Card Evento 3 (más alta, no se recorta) -->
+  <ion-card class="card-evento">
+    <img src="assets/icon/ukhu-caldos.png" alt="Ukhu Caldos" class="img-natural" />
+  </ion-card>
 </ion-content>
-<app-tab-bar></app-tab-bar>
+
+<ion-footer>
+  <app-tab-bar></app-tab-bar>
+</ion-footer>
