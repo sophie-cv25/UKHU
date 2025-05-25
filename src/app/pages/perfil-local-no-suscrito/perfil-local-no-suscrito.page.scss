@@ -1,13 +1,8 @@
-  @font-face {
-  font-family: 'Montserrat';
-  src: url('/assets/fonts/static/Montserrat-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
 ion-title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700; // Bold
-  font-size: 24px; // Puedes ajustar el tamaño si lo quieres más grande
+  font-family: var(--fuente-h2);
+  font-size: var(--tamaño-h2);
+  margin: 0; /* Para evitar el espacio por defecto de h2 */
+  text-align: center;
 }
 
 .boton-personalizado {
@@ -30,8 +25,6 @@ ion-title {
   align-items: center;       // Centra horizontalmente
   justify-content: center;   // Centra verticalmente
   text-align: center;
-  height: 100%;
-  padding: 16px;
 }
 
 .info-basica {
@@ -41,35 +34,29 @@ ion-title {
   padding: 0 16px;     // Espaciado interno opcional
 }
 .boton-cerrar-sesion {
-  width: 300px;
+  width: 200px;
   margin-top: 24px;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0; /* elimina el padding general */
+  --padding-top: 1px;
+  --padding-bottom: 1px;
+  --padding-start: 12px;
+  --padding-end: 12px;
 }
-.avatar-marcado {
+
+.avatar-unico {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
 }
 
-.circulo-amarillo {
-  background-color: #FEC530;
-  border-radius: 50%;
-  width: 140px; /* Ícono más grande */
-  height: 140px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end; /* Ícono hacia abajo */
-  padding-bottom: 16px;
-  overflow: hidden;
-}
-
-.circulo-amarillo img {
-  width: 200px; /* Más grande */
-  height: 80px;
+.avatar-unico img {
+  width: 100px;
+  height: auto;
   object-fit: contain;
-  filter: none;
-  /* Cambia el color del SVG usando el atributo fill si es SVG inline, o coloreado desde el archivo si es externo */
 }
+
 
 .botones {
   display: flex;
@@ -77,6 +64,7 @@ ion-title {
   padding: 0 20px; /* margen interno a los lados */
   box-sizing: border-box;
   font-weight: 300;
+  margin-top: 20px;
 }
 
 .botones ion-button {
@@ -101,10 +89,15 @@ ion-title {
 .botones ion-button ion-icon {
   background-color: #F84B5F;
   border-radius: 50%;
-  padding: 12px;
-  font-size: 20px;
+  padding: 8px;        /* antes 12px → círculo más pequeño */
+  font-size: 20px;     /* antes 20px → icono más pequeño */
   margin-bottom: 8px;
-  color: white;
+  color: #191A1D;
   overflow: visible;
+  
+}
+.botones ion-button::part(native) {
+  overflow: visible;
+  padding: 0 !important;
 }
 

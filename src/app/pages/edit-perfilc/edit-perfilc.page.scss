@@ -102,31 +102,6 @@ header{
   margin-top: 20px;
 }
 
-.boton-avatar {
-  color: #ffffff;
-  background: transparent;
-  text-transform: none;
-  font-family: var(--fuente-small);
-  font-size: var(--tamaño-small);
-  font-weight: normal;
-  position: relative;
-  display: inline-block;
-  /* Eliminamos casi todo el padding vertical y subimos el botón */
-  padding: 0 0 4px 0;
-  transform: translateY(-4px); /* sube todo el botón 4px */
-  margin: 8px 0;
-}
-
-.boton-avatar::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  /* Acercamos la línea al texto */
-  bottom: 9px;   /* 4px desde la base, ajusta para más o menos separación */
-  height: 1px;   /* grosor de la línea */
-  background-color: #ffffff;
-}
 .texto-derecha {
   color: #4d4d4e;               /* color plomo */
   font-family: var(--fuente-p); /* 'Montserrathp-small', sans-serif */
@@ -135,7 +110,6 @@ header{
   margin-bottom: 8px; 
   margin-left: 18px;          
 }
-
 
 .info-basica {
   align-self: stretch; // Hace que ocupe todo el ancho disponible
