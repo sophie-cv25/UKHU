@@ -1,9 +1,9 @@
 <div class="resena-card">
   <div class="resena-header">
     <ion-icon name="person-circle" class="avatar"></ion-icon>
-    <span class="nombre">{{ nombre }}</span>
+    <span class="nombre">{{ usuario }}</span> <!-- Ahora imprimimos "usuario" -->
     <span class="estrellas">
-      <ion-icon *ngFor="let star of [1,2,3,4,5]" name="star" class="estrella"></ion-icon>
+      <ion-icon *ngFor="let star of getStars()" [name]="star" class="estrella"></ion-icon>
     </span>
   </div>
   <div class="resena-texto">

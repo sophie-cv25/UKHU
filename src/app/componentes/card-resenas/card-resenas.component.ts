@@ -7,7 +7,11 @@ import { Component, Input } from '@angular/core';
   standalone: false
 })
 export class CardResenasComponent {
-  @Input() nombre: string = '';
+  @Input() usuario: string = ''; // Cambia "nombre" por "usuario"
   @Input() comentario: string = '';
-  // Si quieres que las estrellas sean dinámicas, agrega un input para la cantidad
+  @Input() rating: number = 0; // ⭐ Nuevo input para recibir el rating del usuario
+
+  getStars(): string[] {
+    return Array.from({ length: 5 }, (_, i) => (i < this.rating ? 'star' : 'star-outline'));
+  }
 }

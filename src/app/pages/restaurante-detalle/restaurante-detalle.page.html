@@ -16,7 +16,7 @@
       <div class="restaurante-rating">
         <ion-icon name="star" color="danger"></ion-icon>
         <span>{{ restaurante?.rating || '5.0' }}</span>
-        <span class="num-reviews">Leer reseñas</span>
+        <a class="num-reviews" [routerLink]="'/resenas/' + restaurante">Leer reseñas</a>
       </div>
       <div class="restaurante-detalles-btn">
         <span>{{ restaurante?.categoria }}</span> · 

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { FieldValue, arrayUnion } from 'firebase/firestore';
+import { map,tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -195,20 +196,18 @@ updateResenasEnRestaurante(restauranteId: string, nuevaResena: any): Promise<voi
   });
 }
 
+getResenasPorRestaurante(restauranteId: string): Observable<any> {
+  console.log(`🔎 Buscando reseñas en el documento: restaurantes/${restauranteId}`);
+  
+  return runInInjectionContext(this.injector, () => {
+    return this.firestore.collection('restaurantes')
+      .doc(restauranteId)
+      .valueChanges() as Observable<{ resenas?: any[] } | undefined>; // ✅ Tipado explícito
+  }).pipe(
+    tap((data) => console.log(`✅ Datos obtenidos desde Firebase:`, data)),
+    map((doc: { resenas?: any[] } | undefined) => doc?.resenas || []) // ✅ Extraemos el array de reseñas o devolvemos vacío si no hay
+  );
+}
 
-
-
-
-
-
-// NO DESCOMENTAR ESTA FUNCION (FUNCION CON ERROR), GRACIAS -GIANIS
-// addResenaToRestaurante(restauranteId: string, resena: any) {
-//   return this.firestore
-//     .collection('restaurantes')
-//     .doc(restauranteId)
-//     .collection('resenas')
-//     .add(resena);
-// }
-// PIPIPIPIPIPI
 
 }

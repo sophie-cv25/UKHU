@@ -86,8 +86,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/editar-local/editar-local.module').then( m => m.EditarLocalPageModule)
   },
   {
-    path: 'resenas',
-    loadChildren: () => import('./pages/resenas/resenas.module').then( m => m.ResenasPageModule)
+   path: 'resenas/:restauranteId', // ✅ Agregamos el parámetro restauranteId
+    loadChildren: () => import('./pages/resenas/resenas.module').then(m => m.ResenasPageModule)
   },
   {
     path: 'sign-up-comercio',

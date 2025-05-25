@@ -26,6 +26,10 @@ export class DejarResenaPage implements OnInit {
     // Obtener el ID del restaurante desde la URL
     this.restauranteId = this.route.snapshot.paramMap.get('id') || '';
 
+    // ✅ Guardamos el restauranteId en localStorage para que ResenasPage pueda recuperarlo
+  localStorage.setItem('restauranteId', this.restauranteId);
+
+
     // Obtener datos del usuario desde `localStorage`
     const userData = localStorage.getItem('userData');
     if (userData) {
@@ -101,6 +105,6 @@ export class DejarResenaPage implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/resenas']);
+     this.router.navigate([`/resenas/${this.restauranteId}`]); // ✅ Corrección
   }
 }

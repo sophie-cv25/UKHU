@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="toolbar-configuracion">
     <ion-buttons slot="start">
-      <ion-button fill="clear" routerLink="/perfil">
+      <ion-button fill="clear" routerLink="/homeusuario">
         <ion-icon name="arrow-back" slot="icon-only" color="danger"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -20,7 +20,13 @@
 
 <ion-content class="contenedor-configuracion fondo">
   <app-card-resenas
-    nombre="Gianis"
-    comentario="El pollo estaba rico las papas secas">
+    *ngFor="let resena of resenas$ | async"
+    [usuario]="resena.usuario"
+    [comentario]="resena.comentario"
+    [rating]="resena.rating">
   </app-card-resenas>
 </ion-content>
+
+
+
+
