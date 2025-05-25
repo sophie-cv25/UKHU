@@ -1,6 +1,22 @@
 <ion-header>
- <ion-toolbar>
-    <ion-title>UKHU</ion-title>
+  <ion-toolbar class="tolbaar">
+    <div class="header-personalizado">
+      <!-- Logo a la izquierda -->
+      <img src="assets/icon/logo.svg" alt="Logo" class="logo-header" />
+
+      <div class="header-derecha">
+        <!-- Rectángulo con 500 -->
+        <div class="puntos">
+          500
+        </div>
+
+        <!-- Campanita con texto -->
+        <div class="notificacion">
+          <ion-icon name="notifications" class="campana"></ion-icon>
+          <span>Notificaciones</span>
+        </div>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -42,6 +58,7 @@
     </div>
   </div>
 </ion-content>
+
 <ion-footer>
   <app-tab-bar></app-tab-bar>
 </ion-footer>

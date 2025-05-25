@@ -1,16 +1,64 @@
 $rojo-ukhu: #ff5e5e;
 $amarillo-card: #fec530;
-$azul-oscuro: #111;
+$azul-oscuro: #191A1D;
 $gris-texto: #fff8;
 
+
+.header-personalizado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #191A1D;
+}
+
+.logo-header {
+  width: 60px; /* más grande */
+  height: auto;
+}
+
+.header-derecha {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.puntos {
+  background-color: #F84B5F;
+  color:#191A1D;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.notificacion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #F84B5F;
+  font-size: 12px;
+}
+
+.notificacion .campana {
+  font-size: 28px; /* más grande */
+}
+
+ion-toolbar {
+  --background: #191A1D;       /* Color de fondo igual al fondo de la página */
+  --border-color: transparent; /* Elimina borde */
+  --box-shadow: none;          /* Elimina sombra */
+  box-shadow: none !important; /* Por si algún estilo global lo fuerza */
+  border-bottom: none !important;
+}
+
 .home-usuario {
-  background: $azul-oscuro;
+  background-color: #191A1D;
   min-height: 100vh;
   padding-bottom: 60px;
 }
 
 ion-header, ion-toolbar {
-  background: $azul-oscuro !important;
+  background-color: #191A1D !important;
   color: #fff !important;
   border: none;
   box-shadow: none;
@@ -21,14 +69,18 @@ ion-title {
   font-size: 1.3rem;
   letter-spacing: 1px;
 }
-
+ion-content::part(scroll) {
+  background-color: #191A1D !important;
+}
+ 
 .section-title {
-  color: $rojo-ukhu;
-  font-size: 1.2rem;
+  font-family: var(--fuente-h2);
+  font-size: var(--tamaño-h2);
   font-weight: bold;
-  margin: 24px 0 12px 12px;
+  color: #F84B5F;
+  margin: 24px 18px 12px 18px;
   letter-spacing: 1px;
-  text-align: center; // <-- centra el texto
+  text-align: center;
 }
 
 swiper-container {
@@ -109,4 +161,14 @@ swiper-container {
     min-width: 0;
     max-width: 100%;
   }
+}
+
+app-tab-bar {
+  display: block;
+  background-color: #191A1D;
+  height: 60px; /* o el tamaño que necesites */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
 }
