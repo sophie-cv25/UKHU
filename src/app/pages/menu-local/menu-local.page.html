@@ -6,9 +6,6 @@
     </div>
   </div>
 
-  <!-- 🔹 Botón para agregar un nuevo platillo -->
-
-
   <div class="menu-lista">
     <div class="menu-card" *ngFor="let plato of menu; let i = index">
       <img [src]="plato.imagen || 'assets/default-image.png'" alt="{{ plato.nombre }}" class="menu-img-card" />
@@ -37,10 +34,9 @@
         </div>
       </div>
     </div>
-        <ion-button expand="block" color="success" (click)="agregarPlatillo()">
-    <ion-icon slot="start" name="add"></ion-icon>
-    Agregar Platillo
-  </ion-button>
+    <ion-button expand="block" color="success" (click)="agregarPlatillo()">
+      <ion-icon slot="start" name="add"></ion-icon>
+      Agregar Platillo
+    </ion-button>
   </div>
-
 </ion-content>
