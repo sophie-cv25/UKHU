@@ -1,6 +1,7 @@
 // Estilos globales de la página (fondo)
 ion-content {
-  --background: #1a1a1a; // Fondo oscuro para toda la página
+  --background: #191a1d; // Fondo oscuro para toda la página
+  padding-top: 20px;
 }
 
 // Header
@@ -17,9 +18,10 @@ ion-header {
 
     .title-centered {
       text-align: center; // Centra el título
-      color: #ffffff; // Color del texto del título
-      font-weight: bold;
-      font-size: 1.2rem;
+      color: #F84B5F; // Color del texto del título
+      font-weight: bolder;
+      font-size: 24px;
+      font-family: 'Montserrath2';
     }
 
     ion-buttons {
@@ -27,7 +29,7 @@ ion-header {
         --padding-end: 15px; // Ajusta el padding si el icono está muy pegado al borde
       }
       ion-icon {
-        color: #f7707d; // Color de la campana
+        color: #F84B5F; // Color de la campana
       }
     }
   }
@@ -42,11 +44,11 @@ ion-header {
 // Tarjeta de Puntos LLajua
 .points-card {
   background: #f74d61; // Fondo inferior de la tarjeta (Rosa rojizo)
-  border-radius: 15px; // Bordes redondeados
+  border-radius: 15px; // Bordes redondeados (YA LO TIENE)
   overflow: hidden; // Para que el contenido interno respete el border-radius
   margin-bottom: 20px; // Espacio debajo de la tarjeta
   position: relative; // Para posicionar el card-background-top
-  height: 200px; // Altura fija para la tarjeta, ajusta si es necesario
+  height: 300px; // Altura fija para la tarjeta, ajusta si es necesario
   display: flex;
   flex-direction: column;
   justify-content: flex-end; // Empuja el contenido hacia abajo
@@ -59,7 +61,7 @@ ion-header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 65%; // Ajusta para controlar cuánto amarillo se ve
+    height: 50%; // Ajusta para controlar cuánto amarillo se ve
     border-radius: 15px 15px 0 0; // Solo las esquinas superiores redondeadas
     z-index: 0; // Asegura que esté detrás del contenido
   }
@@ -73,23 +75,27 @@ ion-header {
     // Opcional: padding-top: 50px;
 
     .llajua-text {
-      font-size: 2.8rem; // Tamaño grande para "LLAJUA"
-      font-weight: bold;
-      color: #333333; // Color oscuro para "LLAJUA"
+      font-size: 40px; // Tamaño grande para "LLAJUA"
+      font-family: 'Montserrath1';
+      font-weight: bolder;
+      color: #191A1D; // Color oscuro para "LLAJUA"
       margin: 0;
       line-height: 1; // Elimina espacio extra
     }
 
     .points-progress {
-      font-size: 1.2rem; // Tamaño para "250/500"
-      color: #333333; // Color oscuro
+      font-size: 15px; // Tamaño para "250/500"
+      font-weight: normal;
+      color: #191A1D; // Color oscuro
+      font-family: 'Montserratp-small';
       margin-top: 5px;
       margin-bottom: 0;
     }
 
     .points-label {
-      font-size: 0.9rem; // Tamaño para "Puntos acumulados"
-      color: #ffffff; // Color blanco
+      font-size: 15px; // Tamaño para "Puntos acumulados"
+      color: #191A1D; // Color blanco
+      font-family: 'Montserratp-small';
       margin-top: 10px;
     }
   }
@@ -99,34 +105,49 @@ ion-header {
 .action-button {
   --background: transparent; // El botón en sí es transparente, la imagen es el fondo
   --background-activated: rgba(255, 255, 255, 0.2); // Efecto al presionar
-  --border-radius: 15px; // Bordes redondeados
+  --border-radius: 15px; // Bordes redondeados (YA LO TIENE)
   height: 150px; // Altura fija para los botones, ajusta si es necesario
   margin-bottom: 15px; // Espacio entre los botones
-  position: relative; // Para posicionar el texto
+  position: relative; // Para posicionar el texto y el pseudo-elemento
   display: flex;
   justify-content: center; // Centra horizontalmente el texto
   align-items: center; // Centra verticalmente el texto
-  overflow: hidden; // Asegura que el background-image respete el border-radius
+  overflow: hidden; // Asegura que el background-image y el pseudo-elemento respeten el border-radius
+
+  // Pseudo-elemento para la imagen de fondo con opacidad.
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6; // Opacidad del 60% para la imagen.
+    z-index: 0; // Asegura que esté detrás del texto del botón
+    border-radius: 15px; // <--- AQUI: Añadimos border-radius al pseudo-elemento
+  }
 
   .button-text {
     position: relative; // Para que el texto esté encima de la imagen
-    z-index: 1; // Asegura que el texto esté por encima
-    color: #ffffff; // Color del texto
-    font-size: 1.8rem; // Tamaño del texto
-    font-weight: bold;
+    z-index: 1; // Asegura que el texto esté por encima del pseudo-elemento
+    color: #ffd740; // Texto amarillo
+    font-family: 'Montserrath2';
+    font-size: 24px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); // Sombra para que el texto resalte
   }
 
-  // Estilos específicos para el fondo de cada botón
+  // Estilos específicos para el fondo de cada botón.
   &.missions-button {
-    background-image: url('../../../assets/images/misiones.png'); // Ruta a tu imagen de misiones
-    background-size: cover; // Cubre todo el área del botón
-    background-position: center; // Centra la imagen
+    &::before {
+      background-image: url('../../../assets/images/misiones.png');
+    }
   }
 
   &.rewards-button {
-    background-image: url('../../../assets/images/recompensa.png'); // Ruta a tu imagen de recompensas
-    background-size: cover;
-    background-position: center;
+    &::before {
+      background-image: url('../../../assets/images/recompensa.png');
+    }
   }
 }

@@ -129,6 +129,14 @@ const routes: Routes = [
     path: 'top-restaurantes',
     loadChildren: () => import('./pages/top-restaurantes/top-restaurantes.module').then( m => m.TopRestaurantesPageModule)
   },
+  {
+    path: 'misiones',
+    loadChildren: () => import('./pages/misiones/misiones.module').then( m => m.MisionesPageModule)
+  },
+  {
+    path: 'recompensas',
+    loadChildren: () => import('./pages/recompensas/recompensas.module').then( m => m.RecompensasPageModule)
+  },
 
 
  

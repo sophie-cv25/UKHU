@@ -1,0 +1,114 @@
+ion-content {
+  --background: #1a1a1a; // Fondo oscuro
+}
+
+ion-header {
+  --background: transparent;
+  background: transparent;
+  box-shadow: none;
+
+  ion-toolbar {
+    --background: transparent;
+    background: transparent;
+    --border-width: 0;
+    box-shadow: none;
+
+    ion-back-button {
+      --color: #f7707d; // Color de la flecha hacia atrás (rosa rojizo)
+    }
+
+    .title-centered {
+      text-align: center;
+      color: #f7707d; // Título "Recompensas" en rosa rojizo
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    ion-buttons {
+      ion-button {
+        --padding-end: 15px; // Ajusta el padding si el icono está muy pegado al borde
+      }
+    }
+  }
+}
+
+.section-title {
+  color: #ffd740; // Color para "Descuentos" (amarillo)
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 25px; // Espacio superior
+  margin-bottom: 20px; // Espacio inferior
+}
+
+.rewards-carousel { /* Este selector ya no se usa si estás usando swiper-container directamente, pero lo dejo por si acaso */
+  height: 420px;
+  padding-bottom: 30px;
+
+  // Estilos para los puntos del pager
+  .swiper-pagination-bullet {
+    background: #444444 !important; // Color de los puntos inactivos (gris oscuro)
+    opacity: 1 !important; // Asegura que sean visibles
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #f7707d !important; // Color del punto activo (rosa rojizo)
+  }
+}
+
+/* Nota: el .rewards-grid que tenías ya no es necesario con swiper-container, lo elimino para no confundir. */
+
+
+.reward-card {
+  --background: #2c2c2c;
+  border-radius: 15px;
+  min-width: 250px;
+  flex-shrink: 0;
+  margin-bottom: 20px;
+  /* scroll-snap-align: start; <- Esto lo maneja swiper-slide ahora */
+  overflow: hidden;
+  height: 380px;
+
+  .reward-image-container {
+    width: 100%;
+    height: 60%; /* Puedes ajustar este valor si quieres que la imagen ocupe más o menos del card */
+    background: #ffd740;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    img {
+      width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
+      height: 100%; /* La imagen ocupa el 100% de la altura del contenedor */
+      object-fit: cover; /* La imagen se ajusta para cubrir completamente el contenedor, recortando si es necesario */
+      /* Si prefieres que la imagen se ajuste sin recortar, pero pueda dejar espacios en blanco, usa: object-fit: contain; */
+    }
+  }
+
+  .reward-details {
+    padding: 15px;
+    text-align: center;
+    color: #ffffff;
+
+    .reward-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0 0 5px;
+    }
+
+    .reward-cost {
+      font-size: 0.9rem;
+      color: #f7707d;
+      font-weight: bold;
+      margin: 0 0 10px;
+    }
+
+    .reward-description {
+      font-size: 0.8rem;
+      color: #aaaaaa;
+      margin: 0;
+      line-height: 1.4;
+    }
+  }
+}

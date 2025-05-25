@@ -1,0 +1,99 @@
+/* Estilos generales para la página */
+ion-content {
+  --background: #1a1a1a; // Fondo oscuro para la página (el color de siempre)
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+}
+
+/* Estilos para el encabezado */
+ion-header {
+  --background: transparent;
+  background: transparent;
+  box-shadow: none;
+
+  ion-toolbar {
+    --background: transparent;
+    background: transparent;
+    --border-width: 0;
+    box-shadow: none;
+    display: flex; // Usar flexbox para alinear mejor los elementos
+    align-items: center; // Centrar verticalmente
+
+    ion-back-button {
+      --color: #f7707d; // Color de la flecha hacia atrás (rosa rojizo)
+      font-size: 1.5rem; // Tamaño de la flecha
+      margin-left: 10px; // Espacio a la izquierda de la flecha
+      z-index: 10; // Asegurarse de que esté por encima del título si se solapan
+    }
+
+    .header-title { // Clase para el título "¡Trabaja con nosotros!"
+      flex-grow: 1; // Permite que el título ocupe el espacio restante
+      text-align: center; // Centrar el texto del título
+      color: #ffd740; // Color del título (amarillo)
+      font-weight: bold;
+      font-size: 1.3rem; // Título más pequeño
+      padding-right: 40px; // Ajuste para que el título no se superponga con el botón de retroceso
+      padding-left: 0; // Eliminar padding por defecto del ion-title
+    }
+  }
+}
+
+/* Estilos para el contenedor principal del formulario */
+form {
+  background: #2c2c2c; // Fondo gris oscuro para el contenedor del formulario
+  border-radius: 15px;
+  padding: 25px 20px; // Padding interno para los elementos del formulario
+  margin-top: 30px; // Espacio superior para separar del título
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); // Sombra sutil
+}
+
+/* Descripción del formulario */
+.form-description {
+  color: #aaaaaa; // Color gris claro para el texto de descripción
+  font-size: 0.9rem;
+  text-align: justify;
+  margin-bottom: 30px; // Espacio inferior antes de los inputs
+  line-height: 1.4;
+}
+
+/* Estilos para ion-item (líneas y etiquetas) */
+ion-item {
+  --background: transparent !important; // Fondo transparente
+  --border-color: transparent !important; // Borde por defecto transparente
+  border-bottom: 2px solid #ffd740 !important; /* Línea inferior amarilla */
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  margin-bottom: 15px; // Menos espacio entre cada campo de entrada para que se junten más
+  --highlight-background: transparent; // Eliminar el resaltado por defecto al enfocar
+  align-items: flex-start; // Alinea la etiqueta arriba
+}
+
+ion-label {
+  color: #aaaaaa; // Color de las etiquetas (gris claro)
+  font-weight: 500;
+  white-space: nowrap; // Evita que los textos de las etiquetas se dividan
+  font-size: 0.95rem; // Tamaño de fuente para las etiquetas
+  margin-bottom: 2px; // ¡Menos espacio entre el label y la línea/input!
+}
+
+ion-input {
+  --color: #ffffff !important; // Color del texto de entrada (blanco)
+  --placeholder-color: #777777 !important; // Color del placeholder
+  --placeholder-opacity: 0.8 !important;
+  font-size: 1rem;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important; // ¡Quita padding inferior para que la línea suba más!
+}
+
+/* Estilos para el botón de Enviar */
+ion-button[type="submit"] {
+  --background: #ffd740; // Color de fondo del botón (amarillo)
+  --color: #1a1a1a; // Color del texto del botón (negro)
+  --border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  height: 50px;
+  margin-top: 30px; // Espacio superior desde el último input
+}

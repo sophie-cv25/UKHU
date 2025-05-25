@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title class="title-centered">Control de puntos</ion-title>
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="showNotifications()">
         <ion-icon name="notifications-outline" size="large"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -19,11 +19,11 @@
     </div>
   </div>
 
-  <ion-button expand="block" class="action-button missions-button">
+  <ion-button expand="block" class="action-button missions-button" (click)="goToMissions()">
     <span class="button-text">Misiones</span>
   </ion-button>
 
-  <ion-button expand="block" class="action-button rewards-button">
+  <ion-button expand="block" class="action-button rewards-button" (click)="goToRewards()">
     <span class="button-text">Recompensas</span>
   </ion-button>
 

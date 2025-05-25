@@ -1,3 +1,9 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/ruta-anterior"></ion-back-button> </ion-buttons>
+    <ion-title class="header-title">¡Trabaja con nosotros!</ion-title> </ion-toolbar>
+</ion-header>
 <ion-content class="ion-padding">
   <style>
     ion-item {
@@ -20,6 +26,9 @@
   </style>
 
   <form (submit)="registrarComercio()">
+    <p class="form-description">
+      Completa los siguientes campos con los datos de tu local para que podamos mostrarlo en nuestra plataforma de manera eficiente.
+    </p>
     <ion-item>
       <ion-label position="floating">{{ 'registro_nombre' | translate }}</ion-label>
       <ion-input [(ngModel)]="nombre" name="nombre" type="text" required></ion-input>

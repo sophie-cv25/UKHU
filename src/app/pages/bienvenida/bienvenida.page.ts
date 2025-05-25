@@ -34,7 +34,7 @@ export class BienvenidaPage implements OnInit, OnDestroy {
     } else {
       clearInterval(this.autoTransitionTimer);
       // Cuando se han mostrado todas las pantallas, redirige a la página final (por ejemplo, /home)
-      this.router.navigate(['/home']);
+      this.router.navigate(['/onboardingf']);
     }
   }
 
