@@ -119,9 +119,18 @@ const routes: Routes = [
   {
     path: 'onboardingf',
     loadChildren: () => import('./pages/onboardingf/onboardingf.module').then( m => m.OnboardingfPageModule)
-  },  {
+  },
+  {
     path: 'gamificacion',
     loadChildren: () => import('./pages/gamificacion/gamificacion.module').then( m => m.GamificacionPageModule)
+  },
+  {
+  path: 'dejar-resena/:id',
+  loadChildren: () => import('./pages/dejar-resena/dejar-resena.module').then( m => m.DejarResenaPageModule)
+},
+  {
+    path: 'top-restaurantes',
+    loadChildren: () => import('./pages/top-restaurantes/top-restaurantes.module').then( m => m.TopRestaurantesPageModule)
   },
 
 

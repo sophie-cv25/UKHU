@@ -150,7 +150,7 @@ ion-select.custom-select {
 ion-toggle.custom-toggle {
   --handle-background: var(--main-yellow);
   --handle-background-checked: var(--main-bg);
-  --background: #111
+  --background: var(var(--main-yellow));
   --background-checked: var(--main-yellow);
   --border-radius: 12px;
   --handle-width: 18px;

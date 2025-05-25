@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="goBack()">
+        <ion-icon name="arrow-back" slot="icon-only" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="titulo-resena">Escribe una reseña</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="notifications" slot="icon-only" style="color:#e64980; font-size: 1.5em;"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="fondo-resena">
+  <div class="caja-resena">
+    <ion-item lines="none" color="warning" class="input-resena">
+      <ion-label position="stacked">Escribe tu reseña :</ion-label>
+      <ion-input
+        [(ngModel)]="comentario"
+        placeholder="Opcional"
+        maxlength="250"
+        type="text">
+      </ion-input>
+    </ion-item>
+    <ion-button expand="block" class="btn-enviar" (click)="enviarResena()">Enviar</ion-button>
+  </div>
+</ion-content>

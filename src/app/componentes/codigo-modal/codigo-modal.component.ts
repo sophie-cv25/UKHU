@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/services/database.service';
 import { NavParams } from '@ionic/angular';
 import { RankingModalComponent } from '../ranking-modal/ranking-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-codigo-modal',
@@ -25,7 +26,8 @@ export class CodigoModalComponent implements OnInit {
   constructor(
     private modalCtrl: ModalController,
     private databaseService: DatabaseService,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -116,6 +118,12 @@ export class CodigoModalComponent implements OnInit {
     });
 
     await modal.present();
+    // Espera a que el modal de ranking se cierre
+  const { role } = await modal.onWillDismiss();
+
+  // Después de rankear, redirige a dejar-resena con el id del restaurante
+  this.router.navigate(['/dejar-resena', this.restauranteId]);
+
   }
 
   // Si tienes lógica para destruir el modal o limpiar intervalos:

@@ -32,12 +32,28 @@ export class RestauranteDetallePage implements OnInit {
       this.databaseService.getDocumentById('restaurantes', id).subscribe((doc) => {
         if (doc.payload.exists) {
           this.restaurante = { id, ...doc.payload.data() };
+          // 📌 Obtener el promedio de calificación del restaurante
+        // this.databaseService.getPromedioCalificacion(id).subscribe((promedio) => {
+        //   console.log(`🎯 Promedio obtenido de Firestore: ${promedio}`);
+        //   this.restaurante.rating = promedio;
+        // });
         }
       });
     }
   }
 
   comoLlegar() {
+    const isLoggedRaw = localStorage.getItem('isLoggedIn');
+  const isLogged = isLoggedRaw === 'true';
+
+  if (!isLogged) {
+    this.alertCtrl.create({
+      header: 'Atención',
+      message: 'Necesitas iniciar sesión para ver la ubicación.',
+      buttons: ['OK']
+    }).then(alert => alert.present());
+    return;
+  }
     if (this.restaurante?.latitud && this.restaurante?.longitud && this.restaurante?.id) {
       this.router.navigate(['/buscar'], {
         queryParams: {
