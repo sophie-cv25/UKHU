@@ -20,3 +20,153 @@
 .flecha-avatar ion-icon {
   font-size: 32px !important;
 }
+
+.boton-personalizado {
+  --background: #fec530;
+  --color: #000;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  width: 150px;
+  border-radius: 50px;
+  padding: 12px 24px;
+  text-transform: none;
+  justify-content: center;
+  --border-radius: 20px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+}
+.ion-text-center{
+  font-family: var(--fuente-h2);
+  font-size: var(--tamaño-h2);
+  align-items: center;
+}
+
+.formulario-editar ion-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  border: none;
+  border-bottom: 2px solid #ffc107;
+  margin-bottom: 18px;
+  --highlight-height: 0;
+  border-radius: 0;
+  padding-bottom: 8px;
+  margin-left: 18px;
+  margin-right: 18px;
+}
+.formulario-editar ion-label {
+  font-family: var(--fuente-h4);
+  font-size: var(--tamaño-p);
+   flex: 1;               /* ocupa un 50% aprox. dependiendo de cuántos inputs tengas */
+  margin-right: 16px;    /* espacio entre label e input */
+  color: white;
+  display: flex;
+  align-items: end;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.formulario-editar ion-input {
+  font-family: var(--fuente-h4);
+  font-size: var(--tamaño-p);
+  color: white;
+  --padding-start: 0;
+  --padding-end: 0;
+  white-space: nowrap;
+}
+
+::ng-deep .formulario-editar ion-input .native-input {
+  padding-left: 10px;
+  position: relative;
+  top: 12px;   /* baja 4px */
+  left: 4px;  /* desplaza 4px a la derecha */
+  text-align: left;
+}
+
+
+header{
+  font-family: var(--fuente-h2);
+  font-size: var(--tamaño-h2);
+}
+
+.contenedor-perfil {
+  flex-direction: column;
+  align-items: center;       // Centra horizontalmente
+  justify-content: center;   // Centra verticalmente
+  text-align: center;
+  margin-left: 18px;
+  margin-right: 18px;
+  margin-top: 20px;
+}
+
+.boton-avatar {
+  color: #ffffff;
+  background: transparent;
+  text-transform: none;
+  font-family: var(--fuente-small);
+  font-size: var(--tamaño-small);
+  font-weight: normal;
+  position: relative;
+  display: inline-block;
+  /* Eliminamos casi todo el padding vertical y subimos el botón */
+  padding: 0 0 4px 0;
+  transform: translateY(-4px); /* sube todo el botón 4px */
+  margin: 8px 0;
+}
+
+.boton-avatar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* Acercamos la línea al texto */
+  bottom: 9px;   /* 4px desde la base, ajusta para más o menos separación */
+  height: 1px;   /* grosor de la línea */
+  background-color: #ffffff;
+}
+.texto-derecha {
+  color: #4d4d4e;               /* color plomo */
+  font-family: var(--fuente-p); /* 'Montserrathp-small', sans-serif */
+  font-size: var(--tamaño-p);   /* 16px */
+  text-align: left;            
+  margin-bottom: 8px; 
+  margin-left: 18px;          
+}
+
+
+.info-basica {
+  align-self: stretch; // Hace que ocupe todo el ancho disponible
+  text-align: left;    // Alinea el texto a la izquierda
+  margin-top: 16px;    // Separación opcional del resto
+  padding: 0 16px;     // Espaciado interno opcional
+}
+.botones-perfil{
+  font-weight: bold;
+  font-size: var(--tamaño-h4);
+}
+.guardar {
+  --border-radius: 100px;     /* bordes redondeados */
+  padding: 12px 24px;        /* espacio interno */
+  display: block;            /* para que margin auto funcione */
+  margin: 80px auto;         /* 20px arriba y abajo, auto a los lados */
+  font-weight: bold;
+}
+
+.avatar-unico {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-unico img {
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+.grafico-placeholder{
+  margin-top: 50px;
+}
