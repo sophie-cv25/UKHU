@@ -143,6 +143,50 @@ getTopRestaurantes(limit: number = 5): Observable<any[]> {
     ).valueChanges({ idField: 'id' });
   });
 }
+  addResenaToRestaurante(restauranteId: string, resena: any): Promise<void> {
+  return runInInjectionContext(this.injector, async () => {
+    const restauranteRef = this.firestore.collection('restaurantes').doc(restauranteId);
+    const resenasRef = restauranteRef.collection('resenas');
+
+    // 🔹 Verifica si `snapshot` es undefined antes de acceder a `empty`
+    const snapshot = await resenasRef.get().toPromise();
+    
+    if (!snapshot || snapshot.empty) {
+      console.log('✅ La subcolección "resenas" no existe, creando...');
+      
+      // Crear un primer documento para inicializar la subcolección
+      await resenasRef.doc('_init').set({ mensaje: 'Subcolección creada' });
+    }
+
+    // 🔹 Ahora agregar la reseña
+    await resenasRef.add(resena);
+    console.log(`✅ Reseña guardada correctamente en el restaurante ${restauranteId}.`);
+  });
+}
+async ensureResenasSubcollection(restauranteId: string): Promise<void> {
+  return runInInjectionContext(this.injector, async () => {
+    try {
+      const restauranteRef = this.firestore.collection('restaurantes').doc(restauranteId);
+      const resenasRef = restauranteRef.collection('resenas');
+
+      // 🔹 Verificar si la subcolección `resenas` tiene documentos
+      const snapshot = await resenasRef.get().toPromise();
+      if (!snapshot || snapshot.empty) {
+        console.log('✅ La subcolección "resenas" no existe, creando...');
+        
+        await resenasRef.doc('_init').set({ mensaje: 'Subcolección creada' });
+        console.log('🔥 Subcolección "resenas" creada exitosamente.');
+      }
+    } catch (error) {
+      console.error('⚠️ Error al crear la subcolección:', error);
+    }
+  });
+}
+
+
+
+
+
 
 // NO DESCOMENTAR ESTA FUNCION (FUNCION CON ERROR), GRACIAS -GIANIS
 // addResenaToRestaurante(restauranteId: string, resena: any) {

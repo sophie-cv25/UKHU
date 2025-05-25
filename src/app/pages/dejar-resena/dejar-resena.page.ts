@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
-import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,6 +13,8 @@ export class DejarResenaPage implements OnInit {
   comentario: string = '';
   restauranteId: string = '';
   usuarioNombre: string = '';
+  usuarioId: string = '';
+  resenas: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -22,44 +23,79 @@ export class DejarResenaPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Supón que el restauranteId viene por query params o route params
+    // Obtener el ID del restaurante desde la URL
     this.restauranteId = this.route.snapshot.paramMap.get('id') || '';
-    // Supón que el nombre de usuario está en localStorage
+
+    // Obtener datos del usuario desde `localStorage`
     const userData = localStorage.getItem('userData');
-    this.usuarioNombre = userData ? JSON.parse(userData).nombre : 'Anónimo';
+    if (userData) {
+      const usuario = JSON.parse(userData);
+      this.usuarioNombre = usuario.nombre;
+      this.usuarioId = usuario.id || 'anonimo';
+    } else {
+      this.usuarioNombre = 'Anónimo';
+      this.usuarioId = 'anonimo';
+    }
+
+    this.cargarResenas();
+  }
+
+  cargarResenas() {
+    this.databaseService.getDocumentById('restaurantes', this.restauranteId).subscribe(restauranteDoc => {
+      if (restauranteDoc && restauranteDoc.payload.exists) {
+        const data = restauranteDoc.payload.data();
+        this.resenas = data.resenas || []; // 🔹 Cargar reseñas existentes
+      } else {
+        console.error('No se encontró el restaurante en Firestore.');
+      }
+    });
+  }
+
+  guardarResenaTemporal() {
+    const nuevaResena = {
+      idUsuario: this.usuarioId,
+      usuario: this.usuarioNombre,
+      comentario: this.comentario,
+      fechaCreacion: new Date().toISOString()
+    };
+
+    // Guardar en `localStorage` temporalmente
+    localStorage.setItem('reseñaTemporal', JSON.stringify(nuevaResena));
+
+    console.log('Reseña guardada temporalmente:', nuevaResena);
+  }
+
+  enviarResena() {
+    if (!this.restauranteId) {
+      alert('No se encontró el restaurante.');
+      return;
+    }
+
+    if (!this.comentario.trim()) {
+      alert('La reseña no puede estar vacía.');
+      return;
+    }
+
+    // Recuperar reseña temporal de `localStorage`
+    const resenaGuardada = localStorage.getItem('reseñaTemporal');
+    if (!resenaGuardada) {
+      alert('No hay reseña guardada.');
+      return;
+    }
+
+    const nuevaResena = JSON.parse(resenaGuardada);
+
+    this.resenas.push(nuevaResena);
+    this.actualizarResenasEnFirestore();
+  }
+
+  actualizarResenasEnFirestore() {
+    this.databaseService.updateFireStoreDocument('restaurantes', this.restauranteId, { resenas: this.resenas })
+      .then(() => console.log('✅ Reseñas actualizadas en Firestore'))
+      .catch(error => console.error('⚠️ Error al actualizar reseñas:', error));
   }
 
   goBack() {
     this.router.navigate(['/resenas']);
   }
-
-  enviarResena() {
-  if (!this.restauranteId) {
-    alert('No se encontró el restaurante.');
-    return;
-  }
-
-  const resena = {
-    comentario: this.comentario,
-    usuario: this.usuarioNombre,
-    fecha: new Date()
-  };
-
-  console.log('RestauranteId:', this.restauranteId);
-  console.log('Reseña:', resena);
-  
-  // NO DESCOMENTAR ESTA FUNCION (FUNCION CON ERROR), GRACIAS -GIANIS
-  // this.databaseService.addResenaToRestaurante(this.restauranteId, resena)
-  //   .then(() => {
-  //     alert('¡Reseña enviada!');
-  //     this.comentario = '';
-  //   })
-  //   .catch((err) => {
-  //     alert('Error al enviar la reseña');
-  //     console.error('Error al guardar reseña:', err);
-  //   });
-  // PIPIPIPIPIPI
-
-
-}
 }
