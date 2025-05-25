@@ -66,28 +66,33 @@ export class DejarResenaPage implements OnInit {
   }
 
   enviarResena() {
-    if (!this.restauranteId) {
-      alert('No se encontró el restaurante.');
-      return;
-    }
-
-    if (!this.comentario.trim()) {
-      alert('La reseña no puede estar vacía.');
-      return;
-    }
-
-    // Recuperar reseña temporal de `localStorage`
-    const resenaGuardada = localStorage.getItem('reseñaTemporal');
-    if (!resenaGuardada) {
-      alert('No hay reseña guardada.');
-      return;
-    }
-
-    const nuevaResena = JSON.parse(resenaGuardada);
-
-    this.resenas.push(nuevaResena);
-    this.actualizarResenasEnFirestore();
+  if (!this.restauranteId) {
+    alert('No se encontró el restaurante.');
+    return;
   }
+
+  if (!this.comentario.trim()) {
+    alert('La reseña no puede estar vacía.');
+    return;
+  }
+
+  const nuevaResena = {
+    idUsuario: this.usuarioId,
+    usuario: this.usuarioNombre,
+    comentario: this.comentario,
+    fechaCreacion: new Date().toISOString()
+  };
+
+  this.databaseService.updateResenasEnRestaurante(this.restauranteId, nuevaResena)
+    .then(() => {
+      alert('¡Reseña enviada y guardada en Firestore!');
+      this.comentario = '';  // Limpiar campo de texto
+    })
+    .catch((err) => {
+      alert('Error al enviar la reseña');
+      console.error('Error al guardar reseña:', err);
+    });
+}
 
   actualizarResenasEnFirestore() {
     this.databaseService.updateFireStoreDocument('restaurantes', this.restauranteId, { resenas: this.resenas })

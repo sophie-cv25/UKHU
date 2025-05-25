@@ -183,6 +183,19 @@ async ensureResenasSubcollection(restauranteId: string): Promise<void> {
   });
 }
 
+updateResenasEnRestaurante(restauranteId: string, nuevaResena: any): Promise<void> {
+  return runInInjectionContext(this.injector, async () => {
+    const restauranteRef = this.firestore.collection('restaurantes').doc(restauranteId);
+
+    await restauranteRef.update({
+      resenas: arrayUnion(nuevaResena)  // 🔹 Agregar la nueva reseña al array sin eliminar las anteriores
+    });
+
+    console.log(`✅ Reseña agregada en el restaurante ${restauranteId}.`);
+  });
+}
+
+
 
 
 
