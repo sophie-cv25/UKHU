@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthserviceService } from 'src/app/services/authservice.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -19,7 +20,11 @@ export class EditPerfilcPage implements OnInit {
   ];
   iconoSeleccionado: number = 0;
 
-  constructor(private dbService: DatabaseService, private authService: AuthserviceService) {}
+  constructor(
+    private dbService: DatabaseService,
+    private authService: AuthserviceService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     const storedUserData = localStorage.getItem('userData');
@@ -43,30 +48,27 @@ export class EditPerfilcPage implements OnInit {
   }
 
   guardarIconoSeleccionado() {
-  this.userData.iconoPerfil = this.iconosPerfil[this.iconoSeleccionado];
-  localStorage.setItem('userData', JSON.stringify(this.userData));
-  
-  // 
-  this.guardarCambios();
-}
-
+    this.userData.iconoPerfil = this.iconosPerfil[this.iconoSeleccionado];
+    localStorage.setItem('userData', JSON.stringify(this.userData));
+  }
 
   guardarCambios() {
     const storedUserData = localStorage.getItem('userData');
     if (!storedUserData) {
       console.error('No se encontraron datos del usuario en localStorage.');
+      this.goToPerfilYRecargar();
       return;
     }
     const userData = JSON.parse(storedUserData);
     if (!userData.uid) {
       console.error('No se pudo actualizar: falta el UID del usuario.');
+      this.goToPerfilYRecargar();
       return;
     }
 
     const updatedData: any = {};
     let huboCambio = false;
 
-    // 🔹 Detectar cambios en los datos del usuario
     if (userData.email?.trim() && userData.email !== this.userData.email) {
       updatedData.email = this.userData.email;
       huboCambio = true;
@@ -79,42 +81,35 @@ export class EditPerfilcPage implements OnInit {
       updatedData.nombreUsuario = this.userData.nombreUsuario;
       huboCambio = true;
     }
-
-    // 🔹 Detectar si el icono fue cambiado
     if (this.userData.iconoPerfil && this.userData.iconoPerfil !== userData.icono) {
       updatedData.icono = this.userData.iconoPerfil;
       huboCambio = true;
     }
 
-    // 🔹 Si no hubo cambios, no enviamos la actualización
     if (!huboCambio) {
-      console.log('No se realizaron cambios en el perfil.');
+      this.goToPerfilYRecargar();
       return;
     }
 
-    this.actualizarPerfilEnFirestore(userData.uid, updatedData);
-  }
-
-  actualizarPerfilEnFirestore(uid: string, updatedData: any) {
-    this.dbService.getCollectionByCustomparam('users', 'uid', uid).pipe(take(1)).subscribe(userDataArray => {
+    this.dbService.getCollectionByCustomparam('users', 'uid', userData.uid).pipe(take(1)).subscribe(userDataArray => {
       if (!userDataArray || userDataArray.length === 0) {
         console.error('Error: No se encontró el documento en Firestore.');
+        this.goToPerfilYRecargar();
         return;
       }
       const userDoc = userDataArray[0];
 
-      // 🔹 Verificar si el campo `icono` ya existe en el documento de Firebase
       if ('icono' in userDoc && updatedData.icono === userDoc.icono) {
-        console.log("El campo 'icono' ya existe y no ha cambiado, no se realizan actualizaciones.");
-        return; // 🔹 Si ya existe y es el mismo, no hacemos nada
+        this.goToPerfilYRecargar();
+        return;
       }
 
       this.dbService.updateFireStoreDocument('users', userDoc.id, updatedData)
         .then(() => {
-          console.log("Perfil actualizado correctamente en Firestore.");
-          this.actualizarLocalStorage(uid, updatedData);
+          this.actualizarLocalStorage(userData.uid, updatedData);
+          this.goToPerfilYRecargar();
         })
-        .catch(error => console.error("Error al actualizar perfil en Firestore:", error));
+        .catch(() => this.goToPerfilYRecargar());
     });
   }
 
@@ -123,5 +118,15 @@ export class EditPerfilcPage implements OnInit {
     if (!storedUserData) return;
     const userData = JSON.parse(storedUserData);
     localStorage.setItem('userData', JSON.stringify({ ...userData, ...updatedData }));
+  }
+
+  // Ir a perfil y recargar la página (FULL reload)
+  goToPerfilYRecargar() {
+    this.router.navigate(['/perfil']).then(() => {
+      // Espera un pequeño delay para asegurar que la navegación ocurrió antes de recargar
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
+    });
   }
 }
