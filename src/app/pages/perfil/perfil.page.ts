@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -32,19 +31,19 @@ export class PerfilPage implements OnInit {
     this.router.navigate(['/sign-in']);
   }
 
-
   cambiarIdioma(event: any) {
-  const idiomaSeleccionado = event.detail?.value; // ✅ Extraer el valor correctamente
-
-  if (idiomaSeleccionado) {
-    this.idioma = idiomaSeleccionado;
-    this.languageService.cambiarIdioma(this.idioma); // ✅ Aplicar el idioma en el servicio
-    console.log('Idioma cambiado a:', this.idioma); // 🔹 Depuración en consola
-  } else {
-    console.error('No se pudo obtener el idioma seleccionado. Evento recibido:', event);
+    const idiomaSeleccionado = event.detail?.value; // ✅ Extraer el valor correctamente
+    if (idiomaSeleccionado) {
+      this.idioma = idiomaSeleccionado;
+      this.languageService.cambiarIdioma(this.idioma); // ✅ Aplicar el idioma en el servicio
+      console.log('Idioma cambiado a:', this.idioma); // 🔹 Depuración en consola
+    } else {
+      console.error('No se pudo obtener el idioma seleccionado. Evento recibido:', event);
+    }
   }
-}
 
-
-
+  // ✅ Nueva función para redirigir al historial del usuario con su ID
+  irAlHistorial() {
+    this.router.navigate([`/historial/${this.userData.id}`]);
+  }
 }

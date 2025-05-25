@@ -50,8 +50,8 @@ const routes: Routes = [
   loadChildren: () => import('./pages/restaurante-detalle/restaurante-detalle.module').then(m => m.RestauranteDetallePageModule)
   },
   {
-    path: 'historial',
-    loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule)
+    path: 'historial/:id', // ✅ Agregamos ":id" como parámetro dinámico
+    loadChildren: () => import('./pages/historial/historial.module').then(m => m.HistorialPageModule)
   },
   {
     path: 'cambiar-contrasena',

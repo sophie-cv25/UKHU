@@ -29,9 +29,10 @@
       <ion-button color="success" shape="round" size="small" class="boton-personalizado" routerLink="/edit-perfilc">
         {{ 'boton_editar' | translate }}
       </ion-button>
-      <ion-button color="success" shape="round" size="small" class="boton-personalizado" routerLink="/historial">
-        {{ 'boton_historial' | translate }}
-      </ion-button>
+      <ion-button color="success" shape="round" size="small" class="boton-personalizado" [routerLink]="'/historial/' + userData.id">
+  {{ 'boton_historial' | translate }}
+</ion-button>
+
     </div>
     <!-- Información básica con datos dinámicos -->
     <div class="info-basica">
