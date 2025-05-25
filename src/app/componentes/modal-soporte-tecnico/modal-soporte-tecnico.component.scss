@@ -1,21 +1,60 @@
 .item-contacto,
 .item-faq {
-  background: #232428 !important; // Igual al fondo del card/modal
+  background: #232428 !important;
   border-radius: 12px;
   margin-bottom: 12px;
   box-shadow: none !important;
   border: none !important;
   color: #fff;
-  --background: #232428 !important; // Para Ionic internamente
+  --background: #232428 !important;
   --ion-item-background: #232428 !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
   cursor: pointer;
   transition: background 0.2s;
+  position: relative;
+  z-index: 1;
 }
 
 .item-faq:hover {
   background: #292b30 !important;
+}
+
+.faq-item-wrapper {
+  position: relative;
+  margin-bottom: 22px;
+  /* Para que el overlay no tape el contenido adyacente */
+}
+
+.respuesta-faq {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: #ffd600;
+  color: #232428;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  max-width: 90%;
+  min-height: 48px;
+  z-index: 10;
+  margin-top: 8px;
+  /* Puedes ajustar margin-top para más separación */
+}
+
+.respuesta-faq .icono-circular {
+  margin-right: 12px;
+  background: #ffd600 !important;
+  color: #232428 !important;
+  font-size: 2rem;
+  min-width: 40px;
+  min-height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
 ion-card-content {
@@ -44,8 +83,8 @@ ion-item {
 }
 
 .icono-circular {
-  background: #ffd600 !important;   // Fondo amarillo
-  color: #232428 !important;        // Lupa color fondo (oscuro)
+  background: #ffd600 !important;
+  color: #232428 !important;
   border-radius: 50%;
   padding: 8px;
   font-size: 1.5rem;
@@ -54,18 +93,6 @@ ion-item {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.respuesta-faq {
-  background: #ffd600;
-  color: #232428;
-  padding: 14px 18px;
-  border-radius: 10px;
-  margin: 10px 0 18px 44px;
-  font-weight: 600;
-  font-size: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  max-width: 90%;
 }
 
 ion-card-title{

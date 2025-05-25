@@ -1,3 +1,5 @@
+
+
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
     <ion-title color="warning" class="titulo-modal">Soporte Tecnico</ion-title>
@@ -10,72 +12,83 @@
 </ion-header>
 
 <ion-content class="ion-padding fondo-modal">
-<ion-card class="card-modal">
-  <ion-card-header>
-    <ion-label class="titulo-seccion">Contáctanos</ion-label>
-  </ion-card-header>
-  <ion-card-content>
-    <ion-item lines="none" class="item-contacto">
-      <ion-icon name="mail-outline" slot="start" class="icono-circular"></ion-icon>
-      <ion-label>Contáctanos</ion-label>
-      <ion-buttons slot="end">
-<ion-button fill="clear" color="warning" href="https://mail.google.com/mail/?view=cm&to=gianira.salas@ucb.edu.bo" target="_blank">
-  <ion-icon name="mail-outline"></ion-icon>
-</ion-button>
-        <ion-button fill="clear" color="success" href="https://wa.me/+59176731122" target="_blank">
-          <ion-icon name="logo-whatsapp"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-item>
-  </ion-card-content>
-</ion-card>
-
-<ion-card class="card-modal">
-  <ion-card-header>
-    <ion-label class="titulo-seccion">Preguntas Frecuentes</ion-label>
-  </ion-card-header>
-  <ion-card-content>
-    <ion-list>
-      <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(0)">
-        <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
-        <ion-label>¿Dónde puedo ver el puesto de comidas en el que estuve?</ion-label>
+  <ion-card class="card-modal">
+    <ion-card-header>
+      <ion-label class="titulo-seccion">Contáctanos</ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="none" class="item-contacto">
+        <ion-icon name="mail-outline" slot="start" class="icono-circular"></ion-icon>
+        <ion-label>Contáctanos</ion-label>
+        <ion-buttons slot="end">
+          <ion-button fill="clear" color="warning" href="https://mail.google.com/mail/?view=cm&to=gianira.salas@ucb.edu.bo" target="_blank">
+            <ion-icon name="mail-outline"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" color="success" href="https://wa.me/+59176731122" target="_blank">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+          </ion-button>
+        </ion-buttons>
       </ion-item>
-      <div *ngIf="preguntaActiva === 0" class="respuesta-faq">
-        Puedes encontrar tu historial de locales justo en tu perfil.
-      </div>
+    </ion-card-content>
+  </ion-card>
 
-      <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(1)">
-        <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
-        <ion-label>¿Cómo puedo ganar un descuento en un local?</ion-label>
-      </ion-item>
-      <div *ngIf="preguntaActiva === 1" class="respuesta-faq">
-        Consulta las promociones activas en la sección de descuentos.
-      </div>
-
-      <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(2)">
-        <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
-        <ion-label>¿Cómo cambio mi contraseña?</ion-label>
-      </ion-item>
-      <div *ngIf="preguntaActiva === 2" class="respuesta-faq">
-        Ve a tu perfil y selecciona "Cambiar contraseña".
-      </div>
-
-      <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(3)">
-        <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
-        <ion-label>¿Cómo puedo cambiar el idioma de la app?</ion-label>
-      </ion-item>
-      <div *ngIf="preguntaActiva === 3" class="respuesta-faq">
-        En configuraciones, selecciona el idioma que prefieras.
-      </div>
-
-      <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(4)">
-        <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
-        <ion-label>¿Cómo cambio la apariencia de la app?</ion-label>
-      </ion-item>
-      <div *ngIf="preguntaActiva === 4" class="respuesta-faq">
-        Puedes cambiar el tema en la sección de apariencia en configuraciones.
-      </div>
-    </ion-list>
-  </ion-card-content>
-</ion-card>
+  <ion-card class="card-modal">
+    <ion-card-header>
+      <ion-label class="titulo-seccion">Preguntas Frecuentes</ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <div class="faq-item-wrapper">
+          <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(0)">
+            <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
+            <ion-label>¿Dónde puedo ver el puesto de comidas en el que estuve?</ion-label>
+          </ion-item>
+          <div *ngIf="preguntaActiva === 0" class="respuesta-faq">
+            <ion-icon name="search-outline" class="icono-circular"></ion-icon>
+            <span>Puedes encontrar tu historial de locales justo en tu perfil.</span>
+          </div>
+        </div>
+        <div class="faq-item-wrapper">
+          <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(1)">
+            <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
+            <ion-label>¿Cómo puedo ganar un descuento en un local?</ion-label>
+          </ion-item>
+          <div *ngIf="preguntaActiva === 1" class="respuesta-faq">
+            <ion-icon name="search-outline" class="icono-circular"></ion-icon>
+            <span>Consulta las promociones activas en la sección de descuentos.</span>
+          </div>
+        </div>
+        <div class="faq-item-wrapper">
+          <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(2)">
+            <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
+            <ion-label>¿Cómo cambio mi contraseña?</ion-label>
+          </ion-item>
+          <div *ngIf="preguntaActiva === 2" class="respuesta-faq">
+            <ion-icon name="search-outline" class="icono-circular"></ion-icon>
+            <span>Ve a tu perfil y selecciona "Cambiar contraseña".</span>
+          </div>
+        </div>
+        <div class="faq-item-wrapper">
+          <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(3)">
+            <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
+            <ion-label>¿Cómo puedo cambiar el idioma de la app?</ion-label>
+          </ion-item>
+          <div *ngIf="preguntaActiva === 3" class="respuesta-faq">
+            <ion-icon name="search-outline" class="icono-circular"></ion-icon>
+            <span>En configuraciones, selecciona el idioma que prefieras.</span>
+          </div>
+        </div>
+        <div class="faq-item-wrapper">
+          <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(4)">
+            <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
+            <ion-label>¿Cómo cambio la apariencia de la app?</ion-label>
+          </ion-item>
+          <div *ngIf="preguntaActiva === 4" class="respuesta-faq">
+            <ion-icon name="search-outline" class="icono-circular"></ion-icon>
+            <span>Puedes cambiar el tema en la sección de apariencia en configuraciones.</span>
+          </div>
+        </div>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
