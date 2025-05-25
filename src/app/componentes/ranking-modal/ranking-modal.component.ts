@@ -16,7 +16,7 @@ export class RankingModalComponent implements OnInit {
   calificacionSeleccionada: number = 0;  // ✅ Ahora inicia con 0 en lugar de null
 
 
-  constructor(private modalCtrl: ModalController, private databaseService: DatabaseService, private navParams: NavParams) {}
+  constructor(public modalCtrl: ModalController, private databaseService: DatabaseService, private navParams: NavParams) {}
 
   ngOnInit() {
     this.restauranteId = this.navParams.get('restauranteId');

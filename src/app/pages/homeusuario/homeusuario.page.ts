@@ -18,6 +18,7 @@ export class HomeusuarioPage implements OnInit {
 
   ngOnInit() {
     this.databaseService.fetchFirestoreCollection('restaurantes').subscribe((data: any[]) => {
+      console.log('Restaurantes obtenidos:', data);
       this.restaurantes = data;
     });
   }

@@ -136,5 +136,22 @@ guardarRankingRestaurante(usuarioId: string, restauranteId: string, calificacion
   });
 }
 
+getTopRestaurantes(limit: number = 5): Observable<any[]> {
+  return runInInjectionContext(this.injector, () => {
+    return this.firestore.collection('restaurantes', ref =>
+      ref.orderBy('rating', 'desc').limit(limit)
+    ).valueChanges({ idField: 'id' });
+  });
+}
+
+// NO DESCOMENTAR ESTA FUNCION (FUNCION CON ERROR), GRACIAS -GIANIS
+// addResenaToRestaurante(restauranteId: string, resena: any) {
+//   return this.firestore
+//     .collection('restaurantes')
+//     .doc(restauranteId)
+//     .collection('resenas')
+//     .add(resena);
+// }
+// PIPIPIPIPIPI
 
 }
