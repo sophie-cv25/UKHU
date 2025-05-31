@@ -54,7 +54,7 @@ ion-toolbar {
 .home-usuario {
   background-color: #191A1D;
   min-height: 100vh;
-  padding-bottom: 60px;
+  padding-bottom: 120px;
 }
 
 ion-header, ion-toolbar {
@@ -171,4 +171,23 @@ app-tab-bar {
   bottom: 0;
   width: 100%;
   z-index: 10;
+}
+.link-buscar {
+  color: #e64980;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.boton-ver-todos {
+  width: 300px;
+  margin-top: 24px;
+}
+.boton-ver-todos-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+ion-content {
+  --padding-bottom: 150px; // Alternativa para Ionic
 }

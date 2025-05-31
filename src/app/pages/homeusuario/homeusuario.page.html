@@ -36,27 +36,43 @@
   </swiper-container>
 
   <!-- Carrusel: Recién visitados -->
-  <h2 class="section-title">Recién visitados</h2>
-  <swiper-container slides-per-view="1.2" space-between="10" style="width: 100%;">
-    <swiper-slide *ngFor="let restaurante of restaurantes">
-      <div class="card" (click)="irADetalle(restaurante)">
-        <img [src]="restaurante.imagen" alt="{{ restaurante.nombre }}">
-        <div>{{ restaurante.nombre }}</div>
-      </div>
-    </swiper-slide>
-  </swiper-container>
+<h2 class="section-title">Recién visitados</h2>
+<div *ngIf="usuarioId; else mensajeInicioSesion">
+  <ng-container *ngIf="restaurantesVisitados.length > 0; else mensajeSinHistorial">
+    <swiper-container slides-per-view="1.2" space-between="10" style="width: 100%;">
+      <swiper-slide *ngFor="let restaurante of restaurantesVisitados">
+        <div class="card" (click)="irADetalle(restaurante)">
+          <img [src]="restaurante.imagen" alt="{{ restaurante.nombre }}">
+          <div>{{ restaurante.nombre }}</div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </ng-container>
+  <ng-template #mensajeSinHistorial>
+    <p class="mensaje-error">
+      Aún no visitaste ningún restaurante <br>
+      <a (click)="irABuscar()" class="link-buscar">Busca uno y visítalo ahora!</a>
+    </p>
+  </ng-template>
+</div>
+<ng-template #mensajeInicioSesion>
+  <p class="mensaje-error">Debes iniciar sesión para ver tu historial de visitas.</p>
+</ng-template>
 
-  <!-- Mejores rankeados (4 cards grandes, NO carrusel) -->
-  <h2 class="section-title">Mejores rankeados</h2>
-  <div class="cards-grid">
-    <div
-      class="card"
-      *ngFor="let restaurante of restaurantes"
-      (click)="irADetalle(restaurante)">
-      <img [src]="restaurante.imagen" alt="{{ restaurante.nombre }}">
-      <div>{{ restaurante.nombre }}</div>
-    </div>
+<!-- Mejores rankeados -->
+<h2 class="section-title">Mejores rankeados</h2>
+<div class="cards-grid">
+  <div class="card" *ngFor="let restaurante of restaurantesMejores | slice:0:4" (click)="irADetalle(restaurante)">
+    <img [src]="restaurante.imagen" alt="{{ restaurante.nombre }}">
+    <div>{{ restaurante.nombre }}</div>
   </div>
+</div>
+<div class="boton-ver-todos-container">
+  <ion-button color="success" shape="round" class="boton-personalizado boton-ver-todos" (click)="irATopRestaurantes()">
+    Ver todos
+  </ion-button>
+</div>
+
 </ion-content>
 
 <ion-footer>
