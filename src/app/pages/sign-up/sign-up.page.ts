@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthserviceService } from 'src/app/services/authservice.service';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -15,7 +16,7 @@ export class SignUpPage {
   password: string = '';
   confirmPassword: string = '';
 
-  constructor(private authService: AuthserviceService, private db: DatabaseService) {}
+  constructor(private authService: AuthserviceService, private db: DatabaseService, private router: Router) {}
 
   validarEmail(email: string): boolean {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
@@ -75,5 +76,6 @@ export class SignUpPage {
         return null;
       })
       .catch(err => console.error('Error en registro:', err));
+      this.router.navigate(['/sign-in']);
   }
 }
