@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthserviceService } from 'src/app/services/authservice.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,8 +17,18 @@ export class SignInPage {
   constructor(
     private authService: AuthserviceService, 
     private dbService: DatabaseService ,
-    private router: Router 
+    private router: Router,
+    private alertController: AlertController,
   ) {}
+
+  async mostrarAlertaLoginExitoso() {
+    const alert = await this.alertController.create({
+      header: '¡Bienvenido!',
+      message: 'Inicio de sesión exitoso.',
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 
   iniciarSesion() {
     if (!this.email || !this.password) {
@@ -49,12 +60,12 @@ this.authService.iniciarSesion(this.email, this.password)
 
       // Guardar los datos en localStorage
       localStorage.setItem('userData', JSON.stringify(userData));
+      this.mostrarAlertaLoginExitoso().then(() => {
+        this.router.navigate(['/perfil']);
       console.log('Datos del usuario guardados en localStorage.');
-
-      // Redirigir a /perfil después de guardar los datos
-      this.router.navigate(['/perfil']);
     });
-  })
+  });
+})
   .catch(err => console.error('Error en inicio de sesión:', err));
 
 
