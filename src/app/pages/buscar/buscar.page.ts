@@ -9,7 +9,7 @@ import { CodigoModalComponent } from 'src/app/componentes/codigo-modal/codigo-mo
   selector: 'app-buscar',
   templateUrl: './buscar.page.html',
   styleUrls: ['./buscar.page.scss'],
-  standalone:false
+  standalone: false
 })
 export class BuscarPage implements OnInit {
   @ViewChild(IonModal) modal!: IonModal;
@@ -21,6 +21,10 @@ export class BuscarPage implements OnInit {
   searchTerm: string = '';
   busquedaActiva: boolean = false;
   mostrarFiltros: boolean = false;
+
+  categoriaSeleccionada: string = '';
+  zonaSeleccionada: string = '';
+
   destino: {
     latitud: number,
     longitud: number,
@@ -31,7 +35,7 @@ export class BuscarPage implements OnInit {
     private databaseService: DatabaseService,
     private navCtrl: NavController,
     private route: ActivatedRoute,
-    private modalCtrl: ModalController // <-- Importante para abrir el modal de código
+    private modalCtrl: ModalController
   ) { }
 
   ngOnInit() {
@@ -47,7 +51,6 @@ export class BuscarPage implements OnInit {
       }
       this.cargarRestaurantes();
 
-      // MOSTRAR EL MODAL DE CODIGO SI LLEGA LA SEÑAL
       if (params['abrirCodigo']) {
         this.abrirCodigoModal(params);
       }
@@ -116,7 +119,7 @@ export class BuscarPage implements OnInit {
   }
 
   buscarRestaurantes() {
-    if (!this.busquedaActiva) return; 
+    if (!this.busquedaActiva) return;
     if (this.searchTerm.trim() === '') {
       this.restaurantesFiltrados = this.restaurantes;
     } else {

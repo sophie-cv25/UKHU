@@ -1,53 +1,46 @@
-// Asegúrate de que el fondo del body y del ion-app sea transparente
+/* Fondo general transparente */
 body,
 ion-app {
   --ion-background-color: transparent !important;
   background: transparent !important;
 }
 
+/* Header con fondo amarillo */
 ion-header {
-  // Aseguramos que el ion-header en sí no tenga background ni sombra
-  --background: transparent !important; // Añadimos !important aquí también
-  background: transparent !important;
-  box-shadow: none !important; // Eliminamos cualquier sombra del header
+  --background: #FFD700 !important; /* Fondo amarillo */
+  background: #FFD700 !important;
+  box-shadow: none !important;
+  padding: 16px !important;
 
-  // SOBRESCRIBE EL DIV.HEADER-BACKGROUND que Ionic inyecta
   .header-background {
-    background: transparent !important; // ¡Crucial! Forzar la transparencia
-    box-shadow: none !important; // Eliminar cualquier sombra
-    border: none !important; // Asegurarse de que no haya bordes
-    // display: none !important; // Comenta esta línea si no funciona y solo quieres transparencia
+    background: #FFD700 !important;
+    box-shadow: none !important;
+    border: none !important;
   }
 
   ion-toolbar {
-    --background: transparent !important; // Añadimos !important
-    background: transparent !important;
+    --background: #FFD700 !important;
+    background: #FFD700 !important;
     --border-width: 0 !important;
     box-shadow: none !important;
     padding: 0 !important;
     margin: 0 !important;
-    // Esto es un truco: A veces un z-index alto asegura que esté por encima de todo
     z-index: 100 !important;
   }
 
-  // Pseudo-elementos si todavía se interponen
   &::before,
   &::after {
-    background: transparent !important;
-    // display: none !important; // Comenta si solo quieres transparencia
+    background: #FFD700 !important;
   }
 
-  // Estilos para la ion-searchbar
   ion-searchbar {
-    --background: #2c2c2c; // Color de fondo de la barra de búsqueda
-    --border-radius: 25px; // Redondeo de las esquinas
-    --color: #ffffff; // Color del texto de entrada
-    --placeholder-color: #f84b5f; // Color del placeholder
-    --icon-color: #f84b5f; // Color de los iconos
-
-    // Padding de la searchbar dentro del header.
-    // Lo ponemos directamente aquí si el toolbar tiene 0 padding
-    padding: 8px 16px !important; // Ajusta este padding si necesitas más espacio arriba/abajo
+    --background: #2c2c2c !important;
+    --border-radius: 25px !important;
+    --color: #ffffff !important;
+    --placeholder-color: #f84b5f !important;
+    --icon-color: #f84b5f !important;
+    padding: 8px 16px !important;
+    margin: 0 !important;
 
     .searchbar-input-container {
       background: var(--background);
@@ -69,30 +62,265 @@ ion-header {
     .searchbar-inner-container {
       background: transparent !important;
     }
+
+    /* Botón X personalizado */
+    .searchbar-clear-button {
+      background: #f84b5f !important;
+      border-radius: 50% !important;
+      width: 24px !important;
+      height: 24px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
   }
 }
 
-// Asegurarse de que el ion-content tenga un z-index bajo si el mapa es su hijo directo
-// y el header necesita estar encima.
+/* El mapa se muestra de fondo */
 ion-content {
-  --background: transparent !important; // Fondo transparente para el contenido
+  --background: transparent !important;
   background: transparent !important;
-  position: absolute; // Podría ser necesario para que el mapa ocupe todo el espacio
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 0; // Asegura que esté por debajo del header
+  z-index: 0;
 }
 
-// Si tu mapa es un componente personalizado <app-map>,
-// asegúrate de que también ocupe todo el espacio y esté por debajo del header.
+/* El componente de mapa ocupa toda la pantalla y está detrás */
 app-map {
-  display: block; // Importante para que ocupe espacio si es un custom element
+  display: block;
   width: 100%;
   height: 100%;
-  position: absolute; // Esto es crucial para que se extienda y esté por debajo del header
+  position: absolute;
   top: 0;
   left: 0;
-  z-index: -1; // Asegura que esté por debajo de todo lo demás en ion-content
+  z-index: -1;
+}
+
+/* Modal flotante con fondo oscuro */
+ion-modal::part(content) {
+  background: #1a1a1a !important; /* Fondo oscuro */
+  border-radius: 20px 20px 0 0;
+  backdrop-filter: blur(8px);
+}
+
+/* Estilos para el contenido del modal */
+ion-modal ion-content {
+  --background: #1a1a1a !important;
+  background: #1a1a1a !important;
+}
+
+/* Header del modal con fondo amarillo */
+ion-modal ion-header {
+  --background: #FFD700 !important;
+  background: #FFD700 !important;
+}
+
+ion-modal ion-toolbar {
+  --background: #FFD700 !important;
+  background: #FFD700 !important;
+}
+
+ion-modal ion-title {
+  color: #000 !important;
+  font-weight: bold !important;
+}
+
+/* Filtros horizontales - ACTUALIZADO para scroll horizontal visible */
+.filtros-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding: 16px 16px 16px 16px;
+  gap: 12px;
+  background: #FFD700;
+  margin-bottom: 8px;
+  /* Hacer que se pueda hacer scroll horizontal */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer y Edge */
+  /* Permitir que los elementos se salgan parcialmente */
+  padding-right: 50px; /* Espacio extra para mostrar elementos cortados */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari y Opera */
+  }
+
+  .filtro-opcion {
+    background: transparent;
+    border: 2px solid #f84b5f;
+    border-radius: 20px;
+    padding: 8px 16px;
+    color: #f84b5f;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Evita que se compriman */
+    min-width: fit-content; /* Asegura que mantengan su tamaño */
+    /* Forzar un ancho mínimo para que se vean cortados */
+    min-width: 120px;
+
+    &.activo,
+    &:hover {
+      background: #f84b5f;
+      color: white;
+    }
+
+    &:last-child {
+      margin-right: 16px; /* Margen extra al último elemento */
+    }
+  }
+}
+
+/* Contenedor de filtros de zonas - NUEVO para hacer scrollable */
+.zonas-container {
+  max-height: 200px; /* Altura máxima para el scroll */
+  overflow-y: auto;
+  background: #1a1a1a;
+  margin-bottom: 8px;
+  /* Ocultar scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer y Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari y Opera */
+  }
+}
+
+/* Lista de zonas */
+ion-list {
+  background: #1a1a1a !important;
+  
+  ion-item-divider {
+    --background: #2c2c2c !important;
+    --color: #FFD700 !important;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  ion-item {
+    --background: #1a1a1a !important;
+    --color: white !important;
+    border-bottom: 1px solid #FFD700;
+    margin-bottom: 4px;
+
+    ion-label {
+      color: white !important;
+      font-size: 16px;
+      padding: 12px 0;
+    }
+
+    &:hover {
+      --background: #2c2c2c !important;
+    }
+  }
+}
+
+/* Searchbar dentro del modal */
+ion-modal ion-searchbar {
+  --background: #2c2c2c !important;
+  --border-radius: 25px !important;
+  --color: #ffffff !important;
+  --placeholder-color: #999 !important;
+  --icon-color: #999 !important;
+  padding: 8px 16px !important;
+  margin: 16px !important;
+}
+
+/* Cards de restaurantes */
+app-card-2 {
+  display: block;
+  width: 100%;
+}
+
+/* Estilos para los items de restaurantes */
+ion-list ion-item {
+  --background: #1a1a1a !important;
+  --border-color: #f84b5f !important;
+  border: 2px solid #f84b5f !important;
+  border-radius: 12px !important;
+  margin: 8px 16px !important;
+  padding: 16px !important;
+  --padding-start: 16px !important;
+  --padding-end: 16px !important;
+  --inner-padding-end: 0px !important;
+  --padding-top: 16px !important;
+  --padding-bottom: 16px !important;
+  
+  /* Para que el card ocupe todo el ancho disponible */
+  ion-label {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
+
+/* Estilos específicos para el componente card-2 - ACTUALIZADO para evitar desbordamiento */
+app-card-2 {
+  .restaurant-card {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 80px;
+    overflow: hidden; /* Evita desbordamiento */
+
+    .restaurant-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 16px;
+      min-width: 0; /* Permite que el contenido se comprima */
+      overflow: hidden; /* Evita desbordamiento */
+      
+      .restaurant-name {
+        color: #f84b5f !important;
+        font-size: 18px !important;
+        font-weight: bold !important;
+        margin-bottom: 8px;
+        line-height: 1.2;
+        /* Controla el desbordamiento del texto */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 100%;
+      }
+
+      .restaurant-details {
+        color: white !important;
+        font-size: 14px;
+        line-height: 1.4;
+        overflow: hidden; /* Evita desbordamiento */
+        
+        .time, .distance, .hours {
+          color: white !important;
+          display: block;
+          margin: 2px 0;
+          /* Controla el desbordamiento del texto */
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 100%;
+        }
+        
+        .time {
+          margin-bottom: 4px;
+        }
+      }
+    }
+
+    .restaurant-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+  }
 }
