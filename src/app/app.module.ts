@@ -23,6 +23,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 // Nueva forma de manejar HTTP Client
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { DatabaseService } from './services/database.service';
 
 
 // 🔹 Función para cargar los archivos de traducción
@@ -53,6 +54,7 @@ export function HttpLoaderFactory(http: any) {
     })
   ],
   providers: [
+    DatabaseService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     TranslateService,
     provideHttpClient(withInterceptorsFromDi()) 

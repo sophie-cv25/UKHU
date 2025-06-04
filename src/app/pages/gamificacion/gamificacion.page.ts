@@ -1,31 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { DatabaseService } from '../../services/database.service'; // ✅ Importación correcta
+
 @Component({
   selector: 'app-gamificacion',
   templateUrl: './gamificacion.page.html',
   styleUrls: ['./gamificacion.page.scss'],
-  standalone:false
+  standalone: false
 })
 export class GamificacionPage implements OnInit {
 
-  constructor(private navController: NavController) { }
+  constructor(private navController: NavController, private databaseService: DatabaseService) {}  // ✅ Inyectamos `DatabaseService`
 
-  ngOnInit() {
-  }
- // Método para redirigir a la página de Misiones
+  ngOnInit() {}
+
   goToMissions() {
-    this.navController.navigateForward('/misiones'); // Reemplaza '/misiones' con la ruta real de tu página de misiones
+    this.navController.navigateForward('/misiones');
   }
 
-  // Método para redirigir a la página de Recompensas
   goToRewards() {
-    this.navController.navigateForward('/recompensas'); // Reemplaza '/recompensas' con la ruta real de tu página de recompensas
+    this.navController.navigateForward('/recompensas');
   }
 
-  // Puedes añadir un método para la notificación si lo necesitas
   showNotifications() {
-    // Lógica para mostrar notificaciones o navegar a una página de notificaciones
     console.log('Notificaciones clicadas!');
-    // this.navController.navigateForward('/notificaciones');
   }
+
+  agregarMision() {
+    this.databaseService.addMision(
+      'SEMANAL 2',
+      'Come 5 platillos de diferentes restaurantes',
+      50,
+      'http://localhost:8100/assets/images/mis5.png',
+      '12/06/2025'
+    )
+    .then(() => console.log('✅ Misión añadida correctamente'))
+    .catch(error => console.error('❌ Error al añadir la misión:', error));
+  }
+
 }
