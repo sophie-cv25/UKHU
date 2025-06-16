@@ -48,12 +48,13 @@ export class MapComponent implements AfterViewInit, OnChanges {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(this.map);
 
+      // Icono de destino usando logo.svg (puedes cambiarlo si quieres un icono diferente para soloDestino)
       L.marker([this.latitud, this.longitud], {
         icon: L.icon({
-          iconUrl: 'assets/icon/favicon.png',
+          iconUrl: 'assets/icon/Puntos.svg',
           iconSize: [38, 38],
-          iconAnchor: [22, 94],
-          popupAnchor: [-15, -88]
+          iconAnchor: [19, 38],
+          popupAnchor: [0, -38]
         })
       })
       .addTo(this.map)
@@ -89,27 +90,27 @@ export class MapComponent implements AfterViewInit, OnChanges {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(this.map);
 
-    // Opcional: marcador de "mi ubicación"
+    // Marcador de "mi ubicación" usando Perfilrosa.svg
     L.marker([lat, lng], {
       icon: L.icon({
-        iconUrl: 'assets/icon/favicon.png',
-        iconSize: [38, 38],
-        iconAnchor: [22, 94],
-        popupAnchor: [-15, -88]
+        iconUrl: 'assets/icon/Perfilrosa.svg',
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+        popupAnchor: [0, -40]
       })
     }).addTo(this.map)
-    .bindPopup('<b>Mi ubicación actual</b>')
-    .openPopup();
+      .bindPopup('<b>Mi ubicación actual</b>')
+      .openPopup();
 
-    // Marcadores de restaurantes
+    // Marcadores de restaurantes usando logo.svg
     this.items.forEach((element: any) => {
       if (element.latitud && element.longitud) {
         L.marker([element.latitud, element.longitud], {
           icon: L.icon({
-            iconUrl: 'assets/icon/favicon.png',
+            iconUrl: 'assets/icon/Puntos.svg',
             iconSize: [38, 38],
-            iconAnchor: [22, 94],
-            popupAnchor: [-15, -88]
+            iconAnchor: [19, 38],
+            popupAnchor: [0, -38]
           })
         })
         .addTo(this.map)
