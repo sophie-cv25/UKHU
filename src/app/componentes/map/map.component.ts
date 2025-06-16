@@ -51,7 +51,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
       // Icono de destino usando logo.svg (puedes cambiarlo si quieres un icono diferente para soloDestino)
       L.marker([this.latitud, this.longitud], {
         icon: L.icon({
-          iconUrl: 'assets/icon/Puntos.svg',
+          iconUrl: 'assets/icon/Puntosrosa.svg',
           iconSize: [38, 38],
           iconAnchor: [19, 38],
           popupAnchor: [0, -38]
@@ -107,7 +107,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
       if (element.latitud && element.longitud) {
         L.marker([element.latitud, element.longitud], {
           icon: L.icon({
-            iconUrl: 'assets/icon/Puntos.svg',
+            iconUrl: 'assets/icon/Puntosrosa.svg',
             iconSize: [38, 38],
             iconAnchor: [19, 38],
             popupAnchor: [0, -38]
