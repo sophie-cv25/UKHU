@@ -36,12 +36,11 @@
         <ion-icon name="chevron-forward-sharp"></ion-icon>
       </ion-button>
     </div>
-<div style="text-align:center; margin-bottom:12px;">
-  <ion-button shape="round" color="success" size="small" (click)="guardarIconoSeleccionado()">
-    {{ 'editarPerfil.guardarIcono' | translate }}
-  </ion-button>
-</div>
-
+    <div style="text-align:center; margin-bottom:12px;">
+      <ion-button shape="round" color="success" size="small" (click)="guardarIconoSeleccionado()">
+        {{ 'editarPerfil.guardarIcono' | translate }}
+      </ion-button>
+    </div>
 
     <div class="texto-derecha">
       {{ 'editarPerfil.credencial' | translate }}
@@ -61,8 +60,8 @@
         <ion-input [(ngModel)]="userData.nombreUsuario"></ion-input>
       </ion-item>
     </div>
-    <!-- Botón guardar configuraciones -->
-    <ion-button expand="block" color="success" class="guardar" (click)="guardarCambios()">
+    <!-- Botón confirmar cambios -->
+    <ion-button expand="block" color="success" class="guardar" (click)="presentConfirmAlert()">
       {{ 'editarPerfil.guardar' | translate }}
     </ion-button>
   </div>

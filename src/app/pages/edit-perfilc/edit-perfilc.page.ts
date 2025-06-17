@@ -3,6 +3,7 @@ import { AuthserviceService } from 'src/app/services/authservice.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-perfilc',
@@ -23,7 +24,8 @@ export class EditPerfilcPage implements OnInit {
   constructor(
     private dbService: DatabaseService,
     private authService: AuthserviceService,
-    private router: Router
+    private router: Router,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -50,6 +52,26 @@ export class EditPerfilcPage implements OnInit {
   guardarIconoSeleccionado() {
     this.userData.iconoPerfil = this.iconosPerfil[this.iconoSeleccionado];
     localStorage.setItem('userData', JSON.stringify(this.userData));
+  }
+
+  async presentConfirmAlert() {
+    const alert = await this.alertController.create({
+      header: '¿Confirmar cambios?',
+      message: '¿Estás seguro/a de guardar los cambios?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+        },
+        {
+          text: 'Sí',
+          handler: () => {
+            this.guardarCambios();
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
   guardarCambios() {
@@ -123,7 +145,6 @@ export class EditPerfilcPage implements OnInit {
   // Ir a perfil y recargar la página (FULL reload)
   goToPerfilYRecargar() {
     this.router.navigate(['/perfil']).then(() => {
-      // Espera un pequeño delay para asegurar que la navegación ocurrió antes de recargar
       setTimeout(() => {
         window.location.reload();
       }, 100);
