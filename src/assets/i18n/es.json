@@ -152,7 +152,20 @@
       "3": "En configuraciones, selecciona el idioma que prefieras.",
       "4": "Puedes cambiar el tema en la sección de apariencia en configuraciones."
     }
-  }
+  },
+    "tab_bar": {
+    "eventos": "Eventos",
+    "eventos_alt": "Icono de Eventos",
+    "buscar": "Buscar",
+    "buscar_alt": "Icono de Buscar",
+    "home": "Inicio",
+    "home_alt": "Icono de Inicio",
+    "puntos": "Puntos",
+    "puntos_alt": "Icono de Puntos",
+    "perfil": "Perfil",
+    "perfil_alt": "Icono de Perfil"
+  
+}
 }
 
 

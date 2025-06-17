@@ -148,8 +148,21 @@
       "3": "In settings, choose the language you prefer.",
       "4": "You can change the theme in the appearance section of settings."
     }
+  },
+  "tab_bar": {
+    "eventos": "Events",
+    "eventos_alt": "Events Icon",
+    "buscar": "Search",
+    "buscar_alt": "Search Icon",
+    "home": "Home",
+    "home_alt": "Home Icon",
+    "puntos": "Points",
+    "puntos_alt": "Points Icon",
+    "perfil": "Profile",
+    "perfil_alt": "Profile Icon"
   }
 }
+
 
   
 
