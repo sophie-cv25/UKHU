@@ -8,6 +8,14 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <app-map
+    (ubicacionActual)="actualizarUbicacion($event)"
+    [latitud]="destino?.latitud"
+    [longitud]="destino?.longitud"
+    [soloDestino]="!!destino"
+    [idDestino]="destino?.id"
+  ></app-map>
+  
   <ion-modal #modal [initialBreakpoint]="0.5" [breakpoints]="[0, 0.25, 0.5, 0.75]">
     <ng-template>
       <ion-content>
@@ -24,6 +32,28 @@
             </ion-buttons>
           </ion-toolbar>
         </ion-header>
+
+        <div *ngIf="mostrarFiltros" class="filtros-scroll">
+          <div
+            class="filtro-opcion"
+            *ngFor="let categoria of categorias"
+            [class.activo]="categoriaSeleccionada === categoria"
+            (click)="filtrarPorCategoria(categoria)"
+          >
+            {{ categoria }}
+          </div>
+        </div>
+
+        <div *ngIf="mostrarFiltros" class="zonas-container">
+          <div
+            class="zona-opcion"
+            *ngFor="let zona of zonas"
+            [class.activo]="zonaSeleccionada === zona"
+            (click)="filtrarPorZona(zona)"
+          >
+            {{ zona }}
+          </div>
+        </div>
 
         <ion-searchbar 
           [placeholder]="'buscar.buscar_restaurantes_placeholder' | translate" 

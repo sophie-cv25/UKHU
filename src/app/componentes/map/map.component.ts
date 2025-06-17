@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, AfterViewInit, Input, OnChanges, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import * as L from 'leaflet';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -13,6 +13,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
   @Input() longitud?: number;
   @Input() soloDestino?: boolean = false;
   @Input() idDestino?: string;
+  @Output() ubicacionActual = new EventEmitter<{lat: number, lng: number}>();
 
   private map!: L.Map;
   items: any[] = [];
@@ -37,7 +38,6 @@ export class MapComponent implements AfterViewInit, OnChanges {
       this.map.remove();
     }
 
-    // Si está en soloDestino, usa la lat/lng provistas
     if (this.soloDestino && this.latitud && this.longitud) {
       this.map = L.map('map', {
         center: [this.latitud, this.longitud],
@@ -48,7 +48,6 @@ export class MapComponent implements AfterViewInit, OnChanges {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(this.map);
 
-      // Icono de destino usando logo.svg (puedes cambiarlo si quieres un icono diferente para soloDestino)
       L.marker([this.latitud, this.longitud], {
         icon: L.icon({
           iconUrl: 'assets/icon/Puntosrosa.svg',
@@ -61,20 +60,20 @@ export class MapComponent implements AfterViewInit, OnChanges {
       .bindPopup(`<b>Destino seleccionado</b>`)
       .openPopup();
     } else {
-      // Modo normal: buscar ubicación actual
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
+            this.ubicacionActual.emit({ lat: position.coords.latitude, lng: position.coords.longitude });
             this.loadMapWithLocation(position.coords.latitude, position.coords.longitude);
           },
           (error) => {
-            // Si falla, usa centro por defecto
+            this.ubicacionActual.emit({ lat: -16.5, lng: -68.15 });
             this.loadMapWithLocation(-16.5, -68.15);
           },
           { enableHighAccuracy: true }
         );
       } else {
-        // Si no hay geolocalización, usa centro por defecto
+        this.ubicacionActual.emit({ lat: -16.5, lng: -68.15 });
         this.loadMapWithLocation(-16.5, -68.15);
       }
     }
@@ -90,7 +89,6 @@ export class MapComponent implements AfterViewInit, OnChanges {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(this.map);
 
-    // Marcador de "mi ubicación" usando Perfilrosa.svg
     L.marker([lat, lng], {
       icon: L.icon({
         iconUrl: 'assets/icon/Perfilrosa.svg',
@@ -102,7 +100,6 @@ export class MapComponent implements AfterViewInit, OnChanges {
       .bindPopup('<b>Mi ubicación actual</b>')
       .openPopup();
 
-    // Marcadores de restaurantes usando logo.svg
     this.items.forEach((element: any) => {
       if (element.latitud && element.longitud) {
         L.marker([element.latitud, element.longitud], {

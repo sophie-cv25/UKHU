@@ -31,6 +31,9 @@ export class BuscarPage implements OnInit {
     id?: string
   } | null = null;
 
+  ubicacionUsuario: { lat: number, lng: number } | null = null;
+  distanciasCalculadas: boolean = false; // Solo calcular una vez
+
   constructor(
     private databaseService: DatabaseService,
     private navCtrl: NavController,
@@ -55,6 +58,14 @@ export class BuscarPage implements OnInit {
         this.abrirCodigoModal(params);
       }
     });
+  }
+
+  actualizarUbicacion(event: { lat: number, lng: number }) {
+    this.ubicacionUsuario = event;
+    this.distanciasCalculadas = false; // Permitir recalcular si cambia ubicación
+    if (this.restaurantes.length > 0) {
+      this.calcularDistanciasYTiempo();
+    }
   }
 
   async abrirCodigoModal(params: any) {
@@ -90,6 +101,9 @@ export class BuscarPage implements OnInit {
       } else {
         this.restaurantesFiltrados = this.restaurantes;
       }
+
+      this.distanciasCalculadas = false; // Permitir recalcular si se recarga la data de restaurantes
+      this.calcularDistanciasYTiempo();
     });
   }
 
@@ -97,6 +111,48 @@ export class BuscarPage implements OnInit {
     this.busquedaActiva = true;
     this.restaurantesFiltrados = this.restaurantes;
     this.modal.present();
+
+    if (!this.distanciasCalculadas) {
+      this.calcularDistanciasYTiempo();
+      this.distanciasCalculadas = true;
+    }
+  }
+
+  calcularDistanciasYTiempo() {
+    if (!this.ubicacionUsuario) return;
+    const userLat = this.ubicacionUsuario.lat;
+    const userLng = this.ubicacionUsuario.lng;
+
+    this.restaurantes.forEach(rest => {
+      if (rest.latitud && rest.longitud) {
+        const d = this.calcularDistancia(userLat, userLng, rest.latitud, rest.longitud); // en km
+        rest.distancia = d;
+        rest.tiempo = d / 5 * 60; // minutos (velocidad promedio: 5km/h)
+      } else {
+        rest.distancia = null;
+        rest.tiempo = null;
+      }
+    });
+
+    // Forzar actualización de referencia
+    this.restaurantesFiltrados = [...this.restaurantesFiltrados];
+  }
+
+  calcularDistancia(lat1: number, lon1: number, lat2: number, lon2: number): number {
+    // Fórmula Haversine
+    const R = 6371; // radio de la Tierra en km
+    const dLat = this.gradosARadianes(lat2 - lat1);
+    const dLon = this.gradosARadianes(lon2 - lon1);
+    const a = 
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(this.gradosARadianes(lat1)) * Math.cos(this.gradosARadianes(lat2)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+  }
+
+  gradosARadianes(grados: number): number {
+    return grados * Math.PI / 180;
   }
 
   irARestaurante(restaurante: any) {
@@ -129,13 +185,14 @@ export class BuscarPage implements OnInit {
       );
       return coincideCategoria && coincideZona && coincideBusqueda;
     });
+
+    // Forzar actualización de referencia y cálculo cada vez que aplicas filtros
+    this.calcularDistanciasYTiempo();
   }
 
   buscarRestaurantes() {
     if (!this.busquedaActiva) return;
 
-    // Si quieres que la búsqueda limpie filtros de categoría y zona, mantenlo así.
-    // Si quieres que filtros y búsqueda funcionen juntos, comenta o elimina las siguientes líneas:
     if (this.searchTerm.trim() !== '') {
       this.categoriaSeleccionada = '';
       this.zonaSeleccionada = '';

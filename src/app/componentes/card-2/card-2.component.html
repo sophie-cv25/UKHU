@@ -1,10 +1,16 @@
 <div class="card2_container">
   <div class="header">
-    <h2 class="local">{{restaurante.nombre}}</h2>
+    <h2 class="local">{{ restaurante.nombre }}</h2>
     <figure class="imglocal">
       <img [src]="restaurante.imagen" alt="{{ restaurante.nombre }}" />
     </figure>
   </div>
-  <h3 class="tiempo">tiempo</h3>
-  <h3 class="distancia">Distancia</h3>
+  <div class="info-extra">
+    <h3 class="tiempo" *ngIf="restaurante.tiempo !== null && restaurante.tiempo !== undefined">
+      {{ restaurante.tiempo | number:'1.0-0' }} min a pie
+    </h3>
+    <h3 class="distancia" *ngIf="restaurante.distancia !== null && restaurante.distancia !== undefined">
+      {{ restaurante.distancia | number:'1.1-2' }} km
+    </h3>
+  </div>
 </div>
