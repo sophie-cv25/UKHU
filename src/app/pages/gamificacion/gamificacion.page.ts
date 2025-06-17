@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { DatabaseService } from '../../services/database.service'; // ✅ Importación correcta
+import { DatabaseService } from '../../services/database.service';
+import { ActivatedRoute } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-gamificacion',
@@ -9,10 +11,59 @@ import { DatabaseService } from '../../services/database.service'; // ✅ Import
   standalone: false
 })
 export class GamificacionPage implements OnInit {
+  usuarioId: string = '';
+  userData: any = {};
+  historial: any[] = [];
+  locales: number = 0;
+  puntos: number = 0;
 
-  constructor(private navController: NavController, private databaseService: DatabaseService) {}  // ✅ Inyectamos `DatabaseService`
+  constructor(
+    private navController: NavController,
+    private databaseService: DatabaseService,
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // ✅ Extraer userData desde localStorage
+    const storedUserData = localStorage.getItem('userData');
+
+    if (storedUserData) {
+      this.userData = JSON.parse(storedUserData);
+      console.log('📦 LocalStorage - Datos completos del usuario:', this.userData);
+      this.usuarioId = this.userData.id || '';
+    } else {
+      this.userData = {};
+      console.log('⚠️ No se encontraron datos de usuario en LocalStorage.');
+    }
+
+    if (this.usuarioId) {
+      setTimeout(() => {
+        this.databaseService.getHistorialDeUsuario(this.usuarioId).subscribe(data => {
+          console.log('✅ Historial extraído después de 10s:', data);
+          this.historial = data;
+
+          this.locales = this.historial.length; // Contamos los elementos en el historial
+          this.puntos = this.locales * 10; // Calculamos los puntos
+
+          // ✅ Guardar valores en `localStorage`
+          localStorage.setItem('locales', JSON.stringify(this.locales));
+          localStorage.setItem('puntos', JSON.stringify(this.puntos));
+
+          this.cdr.detectChanges();
+          console.log('🔢 Total de registros:', this.locales);
+          console.log('⭐ Puntos acumulados:', this.puntos);
+        });
+      }, 10000); // ⏳ Retraso de 10 segundos
+    }
+
+    // ✅ Cargar puntos desde `localStorage`
+    const puntosGuardados = localStorage.getItem('puntos');
+    if (puntosGuardados) {
+      this.puntos = JSON.parse(puntosGuardados);
+      console.log('📦 LocalStorage - puntos recuperados:', this.puntos);
+    }
+  }
 
   goToMissions() {
     this.navController.navigateForward('/misiones');
@@ -37,5 +88,4 @@ export class GamificacionPage implements OnInit {
     .then(() => console.log('✅ Misión añadida correctamente'))
     .catch(error => console.error('❌ Error al añadir la misión:', error));
   }
-
 }

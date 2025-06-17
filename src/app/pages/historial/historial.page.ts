@@ -12,6 +12,8 @@ import { ChangeDetectorRef } from '@angular/core';
 export class HistorialPage implements OnInit {
   usuarioId: string = '';
   historial: any[] = [];
+  locales: number = 0;
+  puntos: number = 0;
 
   constructor(
     private databaseService: DatabaseService,
@@ -27,7 +29,17 @@ export class HistorialPage implements OnInit {
       this.databaseService.getHistorialDeUsuario(this.usuarioId).subscribe(data => {
         console.log('✅ Historial extraído:', data);
         this.historial = data;
-        this.cdr.detectChanges(); // Detecta cambios manualmente
+
+        this.locales = this.historial.length; // Contamos los elementos en el historial
+        this.puntos = this.locales * 10; // Calculamos los puntos
+
+        // Guardar valores en localStorage
+        localStorage.setItem('locales', JSON.stringify(this.locales));
+        localStorage.setItem('puntos', JSON.stringify(this.puntos));
+
+        this.cdr.detectChanges();
+        console.log('🔢 Total de registros:', this.locales);
+        console.log('⭐ Puntos acumulados:', this.puntos);
       });
     }
   }
