@@ -1,6 +1,6 @@
 <ion-content class="login-content" fullscreen>
   <div class="top-bg">
-    <h2 class="title-signin">{{ 'login_titulo' | translate }}</h2>
+    <h2 class="title-signin">Iniciar Sesión</h2>
   </div>
 
   <div class="login-box">
@@ -10,7 +10,7 @@
           [(ngModel)]="email"
           name="email"
           type="email"
-          [placeholder]="'login_correo' | translate"
+          placeholder="Correo electrónico"
           required
         ></ion-input>
       </ion-item>
@@ -20,17 +20,17 @@
           [(ngModel)]="password"
           name="password"
           type="password"
-          [placeholder]="'login_contrasena' | translate"
+          placeholder="Contraseña"
           required
         ></ion-input>
       </ion-item>
 
       <div class="forgot-password">
-        <a routerLink="/forgot-pasword">{{ 'login_olvidaste_contrasena' | translate }}</a>
+        <a routerLink="/forgot-pasword">¿Olvidaste tu contraseña?</a>
       </div>
 
       <ion-button expand="block" class="btn-login" type="submit">
-        {{ 'login_boton' | translate }}
+        Iniciar sesión
       </ion-button>
 
       <div class="social-icons">
@@ -41,7 +41,7 @@
 
       <div class="footer-links">
         <a [routerLink]="['/signin-comercio']">Login Comercio</a>
-        <a [routerLink]="['/sign-up']">{{ 'login_registro' | translate }}</a>
+        <a [routerLink]="['/sign-up']">Registrarse</a>
       </div>
     </form>
   </div>

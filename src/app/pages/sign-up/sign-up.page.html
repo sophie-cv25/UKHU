@@ -1,7 +1,6 @@
-
 <ion-content class="login-content" fullscreen>
   <div class="top-bg">
-    <h2 class="title-signin">{{ 'registro_titulo' | translate }}</h2>
+    <h2 class="title-signin">Registro</h2>
   </div>
 
   <div class="login-box">
@@ -31,7 +30,7 @@
           [(ngModel)]="email"
           name="email"
           type="email"
-          placeholder="Email:"
+          placeholder="Correo electrónico:"
           required
         ></ion-input>
       </ion-item>
@@ -41,7 +40,7 @@
           [(ngModel)]="password"
           name="password"
           type="password"
-          placeholder="Password:"
+          placeholder="Contraseña:"
           required
         ></ion-input>
       </ion-item>
@@ -51,12 +50,12 @@
           [(ngModel)]="confirmPassword"
           name="confirmPassword"
           type="password"
-          placeholder="Confirm Password:"
+          placeholder="Confirmar contraseña:"
           required
         ></ion-input>
       </ion-item>
 
-      <ion-button expand="block" class="btn-login" type="submit">Sign up</ion-button>
+      <ion-button expand="block" class="btn-login" type="submit">Registrarse</ion-button>
 
       <div class="social-icons">
         <ion-icon name="logo-facebook"></ion-icon>
@@ -65,7 +64,7 @@
       </div>
 
       <div class="footer-links">
-        <a href="/sign-in">Sign In</a>
+        <a href="/sign-in">Iniciar sesión</a>
       </div>
     </form>
   </div>
