@@ -27,10 +27,10 @@
     "mejores_rankeados": "Top Rated",
     "ver_todos": "See All"
   },
-"eventos": {
-    "titulo": "Eventos",
+  "eventos": {
+    "titulo": "Events",
     "la_ruta_de_miguel": {
-      "alt": "La Ruta de Miguel"
+      "alt": "Miguel's Route"
     },
     "sophitas": {
       "alt": "SOPHitas"
