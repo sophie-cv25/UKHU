@@ -2,7 +2,7 @@
   <ion-toolbar color="primary">
     <!-- Título centrado -->
     <ion-title class="ion-text-center titulo-eventos" color="danger">
-      Eventos
+      {{ 'eventos.titulo' | translate }}
     </ion-title>
 
     <!-- Campanita -->
@@ -17,17 +17,17 @@
 <ion-content class="ion-padding" color="dark">
   <!-- Card Evento 1 -->
   <ion-card class="card-evento">
-    <img src="assets/icon/la-ruta-de-miguel.png" alt="La Ruta de Miguel" />
+    <img src="assets/icon/la-ruta-de-miguel.png" alt="{{ 'eventos.la_ruta_de_miguel_alt' | translate }}" />
   </ion-card>
 
   <!-- Card Evento 2 -->
   <ion-card class="card-evento">
-    <ion-img src="assets/icon/sophitas.png" alt="SOPHitas"></ion-img>
+    <ion-img src="assets/icon/sophitas.png" alt="{{ 'eventos.sophitas_alt' | translate }}"></ion-img>
   </ion-card>
 
   <!-- Card Evento 3 (más alta, no se recorta) -->
   <ion-card class="card-evento">
-    <img src="assets/icon/ukhu-caldos.png" alt="Ukhu Caldos" class="img-natural" />
+    <img src="assets/icon/ukhu-caldos.png" alt="{{ 'eventos.ukhu_caldos_alt' | translate }}" class="img-natural" />
   </ion-card>
 </ion-content>
 

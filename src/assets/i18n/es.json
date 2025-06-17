@@ -1,69 +1,60 @@
 {
-  "perfil_titulo": "Perfil",
-  "perfil_icono": "Icono de perfil",
-  "boton_editar": "Editar",
-  "boton_historial": "Historial",
-  "perfil_nombre": "Nombre: ",
-  "perfil_usuario": "Usuario: ",
-  "grafico_acumulacion": "Gráfico de la acumulación de puntos o nivel",
-  "boton_cerrar_sesion": "Cerrar sesión",
-  "titulo_app": "UKHU",
-  "cerca_tuyo": "Cerca tuyo",
-  "recien_visitados": "Recién visitados",
-  "mejores_rankeados": "Mejores rankeados",
-  "cambiar_contrasena_titulo": "Cambiar Contraseña",
-  "subtitulo_cambiar_contrasena": "La contraseña debe tener al menos 6 caracteres e incluir una combinación de números, letras y caracteres especiales.",
-  "contraseña_actual": "Contraseña Actual:",
-  "contraseña_nueva": "Contraseña Nueva:",
-  "repetir_contraseña": "Repetir Contraseña:",
-  "boton_olvidaste_contrasena": "Olvidaste tu contraseña",
-  "boton_cambiar_contrasena": "Cambiar Contraseña",
-  "buscar_restaurantes_titulo": "Buscar Restaurantes",
-  "buscar_restaurantes_placeholder": "Buscar restaurantes...",
-  "resultados_busqueda": "Resultados de búsqueda",
-  "boton_filtros": "Filtros",
-  "zonas_label": "Zonas",
-  "configuracion_titulo": "Configuraciones",
-  "soporte_tecnico": "Soporte Técnico",
-  "preferencias_app": "Preferencias de la App",
-  "cambiar_contrasena": "Cambiar Contraseña",
-  "editar_perfil_titulo": "Editar Perfil",
-  "editar_perfil_correo": "Correo",
-  "editar_perfil_nombre": "Nombre",
-  "editar_perfil_usuario": "Usuario",
-  "editar_perfil_guardar": "Guardar Cambios",
-  "recuperar_contrasena_titulo": "Recuperar Contraseña",
-  "recuperar_contrasena_correo": "E-mail",
-  "recuperar_contrasena_enviar": "Enviar Correo de Recuperación",
-  "recuperar_contrasena_volver": "Volver al Inicio de Sesión",
-  "historial_titulo": "Historial",
-  "historial_subtitulo": "Restaurantes recién visitados",
-  "login_titulo": "Iniciar Sesión",
-  "login_correo": "Correo electrónico:",
-  "login_contrasena": "Contraseña:",
-  "login_olvidaste_contrasena": "Olvidaste tu contraseña",
-  "login_boton": "Iniciar Sesión",
-  "login_comercio": "Comercio",
-  "login_registro": "Registrarse",
-  "registro_titulo": "Registro",
-  "registro_nombre": "Nombre ",
-  "registro_correo": "Correo Electrónico",
-  "registro_contrasena": "Contraseña",
-  "registro_confirmar_contrasena": "Confirmar Contraseña",
-  "registro_referencia": "Número de referencia",
-  "registro_tipo_comida": "Tipo de comida",
-  "registro_descripcion": "Descripción breve",
-  "registro_ubicacion": "Ubicación",
-  "registro_zona": "Zona",
-  "registro_coordenadas": "Coordenadas",
-  "boton_registrar": "Registrar comercio",
+  "perfil": {
+    "titulo": "Mi Perfil",
+    "boton_editar": "Editar",
+    "boton_historial": "Historial",
+    "nombre": "Nombre",
+    "usuario": "Usuario",
+    "grafico_acumulacion": "Acumulación",
+    "boton_cerrar_sesion": "Cerrar Sesión"
+  },
 
-  "editar_comercio_titulo": "Editar información del comercio",
-  "editar_comercio_correo": "Correo electrónico",
-  "editar_comercio_referencia": "Número de contacto",
-  "editar_comercio_descripcion": "Descripción del comercio",
-  "editar_comercio_horario": "Horario de atención",
-  "editar_comercio_guardar": "Guardar Cambios",
-  "horario_apertura": "Hora de apertura",
-  "horario_cierre": "Hora de cierre"
+  "editarPerfil": {
+    "titulo": "Editar Perfil",
+    "correo": "Correo",
+    "nombre": "Nombre",
+    "usuario": "Nombre de Usuario",
+    "guardar": "Guardar Cambios",
+    "credencial": "Editar Credencial",
+    "guardarIcono": "Guardar" 
+  },
+  "home": {
+    "notificaciones": "Notificaciones",
+    "cerca_tuyo": "Cerca tuyo",
+    "recien_visitados": "Recién visitados",
+    "no_visitaste_restaurante": "Aún no visitaste ningún restaurante",
+    "busca_uno": "Busca uno y visítalo ahora!",
+    "debes_iniciar_sesion": "Debes iniciar sesión para ver tu historial de visitas.",
+    "mejores_rankeados": "Mejores rankeados",
+    "ver_todos": "Ver todos"
+  },
+    "eventos": {
+    "titulo": "Eventos",
+    "la_ruta_de_miguel_alt": "La Ruta de Miguel",
+    "sophitas_alt": "SOPHitas",
+    "ukhu_caldos_alt": "Ukhu Caldos"
+  },
+  "historial": {
+    "titulo": "Historial"
+  },
+  "misiones": {
+    "titulo": "Misiones",
+    "diarias": "Misiones Diarias",
+    "semanales": "Misiones Semanales",
+    "icono_alt": "Icono Misión",
+    "caduca": "Caduca:"
+  },
+    "detalle": {
+    "logo_alt": "Logo del restaurante",
+    "leer_reseñas": "Leer reseñas",
+    "como_llegar": "¡Ya llegué!",
+    "mision_semanal": "Misión Semanal"
+  },
+    "resennas": {
+    "titulo": "Reseñas"
+  }
 }
+
+
+
+

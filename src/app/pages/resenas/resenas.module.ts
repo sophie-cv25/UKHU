@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ResenasPageRoutingModule } from './resenas-routing.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { ResenasPage } from './resenas.page';
 import { SharedModule } from '../../modulos/shared/shared.module';
 
@@ -15,7 +15,8 @@ import { SharedModule } from '../../modulos/shared/shared.module';
     FormsModule,
     IonicModule,
     ResenasPageRoutingModule,
-    SharedModule
+    SharedModule,
+    TranslateModule
   ],
   declarations: [ResenasPage]
 })

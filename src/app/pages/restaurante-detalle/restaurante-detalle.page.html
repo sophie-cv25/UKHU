@@ -10,32 +10,32 @@
 
 <ion-content [fullscreen]="true" class="detalle-content">
   <div class="restaurante-header">
-    <img [src]="restaurante?.logoUrl || 'assets/icon/Perfil.svg'" alt="Logo" class="logo-restaurante" />
+    <img [src]="restaurante?.logoUrl || 'assets/icon/Perfil.svg'" 
+         [alt]="'detalle.logo_alt' | translate" 
+         class="logo-restaurante" />
     <div class="restaurante-info">
       <h2 class="nombre-restaurante">{{ restaurante?.nombre }}</h2>
       <div class="restaurante-rating">
         <ion-icon name="star" color="danger"></ion-icon>
         <span>{{ restaurante?.rating || '5.0' }}</span>
-        <a class="num-reviews" [routerLink]="'/resenas/' + restauranteId">Leer reseñas</a>
-
+        <a class="num-reviews" [routerLink]="'/resenas/' + restauranteId">
+          {{ 'detalle.leer_reseñas' | translate }}
+        </a>
       </div>
       <div class="restaurante-detalles-btn">
         <span>{{ restaurante?.categoria }}</span> · 
         <span>{{ restaurante?.zona }}</span> · 
         <span>{{ restaurante?.distancia || '500 m' }}</span>
         <ion-button class="como-llegar-btn" fill="solid" (click)="comoLlegar()">
-          Cómo llegar
+          {{ 'detalle.como_llegar' | translate }}
         </ion-button>
       </div>
     </div>
   </div>
 
-  <!-- <ion-button expand="block" (click)="abrirModalCodigo()">
-    Ingresar código
-  </ion-button> -->
-
+  <!-- Banner de misión semanal -->
   <div class="semanal-banner">
-    <span> MISION SEMANAL MISION SEMANAL</span>
+    <span>{{ 'detalle.mision_semanal' | translate }}</span>
   </div>
 
   <div class="menu-lista">

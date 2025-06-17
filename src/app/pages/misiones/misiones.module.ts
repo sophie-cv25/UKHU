@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { MisionesPageRoutingModule } from './misiones-routing.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { MisionesPage } from './misiones.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { MisionesPage } from './misiones.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    MisionesPageRoutingModule
+    MisionesPageRoutingModule,
+    TranslateModule
   ],
   declarations: [MisionesPage]
 })

@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { RecompensasPageRoutingModule } from './recompensas-routing.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { RecompensasPage } from './recompensas.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { RecompensasPage } from './recompensas.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    RecompensasPageRoutingModule
+    RecompensasPageRoutingModule,
+    TranslateModule
   ],
   declarations: [RecompensasPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA] // <--- ¡Añade esta línea en el array 'schemas'!

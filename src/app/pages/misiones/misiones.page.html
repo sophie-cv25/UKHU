@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/gamificacion"></ion-back-button>
     </ion-buttons>
-    <ion-title class="title-centered">Misiones</ion-title>
+    <ion-title class="title-centered">
+      {{ 'misiones.titulo' | translate }}
+    </ion-title>
     <ion-buttons slot="end">
       <ion-button>
         <ion-icon name="notifications-outline" size="large"></ion-icon>
@@ -13,19 +15,18 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-
   <!-- Misiones Diarias -->
-  <h2 class="section-title">Misiones Diarias</h2>
+  <h2 class="section-title">{{ 'misiones.diarias' | translate }}</h2>
 
   <ion-card class="mission-card" *ngFor="let mision of misionesDiarias">
     <div class="card-content-wrapper">
       <div class="card-icon">
-        <img [src]="mision.imagen" alt="Icono Misión" />
+        <img [src]="mision.imagen" alt="{{ 'misiones.icono_alt' | translate }}" />
       </div>
       <div class="card-details">
         <p class="card-category">{{ mision.categoria }}</p>
         <h3 class="card-title">{{ mision.descripcion }}</h3>
-        <p class="card-expiration">Caduca: {{ mision.caducacion }}</p>
+        <p class="card-expiration">{{ 'misiones.caduca' | translate }} {{ mision.caducacion }}</p>
       </div>
       <div class="card-points">
         <p class="points-value">+{{ mision.llajua }} Llajua</p>
@@ -38,17 +39,17 @@
   </ion-card>
 
   <!-- Misiones Semanales -->
-  <h2 class="section-title">Misiones Semanales</h2>
+  <h2 class="section-title">{{ 'misiones.semanales' | translate }}</h2>
 
   <ion-card class="mission-card" *ngFor="let mision of misionesSemanales">
     <div class="card-content-wrapper">
       <div class="card-icon">
-        <img [src]="mision.imagen" alt="Icono Misión" />
+        <img [src]="mision.imagen" alt="{{ 'misiones.icono_alt' | translate }}" />
       </div>
       <div class="card-details">
         <p class="card-category">{{ mision.categoria }}</p>
         <h3 class="card-title">{{ mision.descripcion }}</h3>
-        <p class="card-expiration">Caduca: {{ mision.caducacion }}</p>
+        <p class="card-expiration">{{ 'misiones.caduca' | translate }} {{ mision.caducacion }}</p>
       </div>
       <div class="card-points">
         <p class="points-value">+{{ mision.llajua }} Llajua</p>
@@ -59,5 +60,4 @@
       </div>
     </div>
   </ion-card>
-
 </ion-content>

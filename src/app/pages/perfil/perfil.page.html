@@ -1,6 +1,8 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
-    <ion-title class="ion-text-center" color="warning">{{ 'perfil_titulo' | translate }}</ion-title>
+    <ion-title class="ion-text-center" color="warning">
+      {{ 'perfil.titulo' | translate }}
+    </ion-title>
     <ion-buttons slot="end">
       <ion-button fill="clear" routerLink="/configuracion">
         <ion-icon name="settings-sharp" slot="icon-only" color="warning"></ion-icon>
@@ -27,31 +29,33 @@
     <!-- Botones Editar / Historial -->
     <div class="botones-perfil">
       <ion-button color="success" shape="round" size="small" class="boton-personalizado" routerLink="/edit-perfilc">
-        {{ 'boton_editar' | translate }}
+        {{ 'perfil.boton_editar' | translate }}
       </ion-button>
       <ion-button color="success" shape="round" size="small" class="boton-personalizado" [routerLink]="'/historial/' + userData.id">
-  {{ 'boton_historial' | translate }}
-</ion-button>
-
+        {{ 'perfil.boton_historial' | translate }}
+      </ion-button>
     </div>
+
     <!-- Información básica con datos dinámicos -->
     <div class="info-basica">
       <ion-item>
-        <ion-label>{{ 'perfil_nombre' | translate }}</ion-label>
+        <ion-label>{{ 'perfil.nombre' | translate }}</ion-label>
         <ion-input [(ngModel)]="userData.nombre" name="nombre" type="text" readonly></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'perfil_usuario' | translate }}</ion-label>
+        <ion-label>{{ 'perfil.usuario' | translate }}</ion-label>
         <ion-input [(ngModel)]="userData.nombreUsuario" name="nombreUsuario" type="text" readonly></ion-input>
       </ion-item>
     </div>
+
     <!-- Gráfico (placeholder) -->
     <div class="grafico-placeholder">
-      {{ 'grafico_acumulacion' | translate }}<br />
+      {{ 'perfil.grafico_acumulacion' | translate }}<br />
     </div>
+
     <!-- Botón cerrar sesión -->
     <ion-button color="success" shape="round" class="boton-personalizado boton-cerrar-sesion" (click)="cerrarSesion()">
-      {{ 'boton_cerrar_sesion' | translate }}
+      {{ 'perfil.boton_cerrar_sesion' | translate }}
     </ion-button>
   </div>
 </ion-content>

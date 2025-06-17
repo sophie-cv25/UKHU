@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { EventosPageRoutingModule } from './eventos-routing.module';
 import { EventosPage } from './eventos.page';
 import { TabBarComponent } from 'src/app/componentes/tab-bar/tab-bar.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { TabBarComponent } from 'src/app/componentes/tab-bar/tab-bar.component';
     FormsModule,
     IonicModule,
     EventosPageRoutingModule,
-    TabBarComponent
+    TabBarComponent,
+    TranslateModule
   ],
   declarations: [EventosPage]
 })
