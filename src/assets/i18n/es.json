@@ -130,10 +130,32 @@
     "idioma_ingles": "Inglés",
     "activar_notificaciones": "Activar Notificaciones",
     "modo_oscuro": "Modo Oscuro"
+  },
+  
+  "soporte_tecnico": {
+    "titulo": "Soporte Técnico",
+    "contactanos": "Contáctanos"
+  },
+  "faq": {
+    "titulo": "Preguntas Frecuentes",
+    "preguntas": {
+      "0": "¿Dónde puedo ver el puesto de comidas en el que estuve?",
+      "1": "¿Cómo puedo ganar un descuento en un local?",
+      "2": "¿Cómo cambio mi contraseña?",
+      "3": "¿Cómo puedo cambiar el idioma de la app?",
+      "4": "¿Cómo cambio la apariencia de la app?"
+    },
+    "respuestas": {
+      "0": "Puedes encontrar tu historial de locales justo en tu perfil.",
+      "1": "Consulta las promociones activas en la sección de descuentos.",
+      "2": "Ve a tu perfil y selecciona 'Cambiar contraseña'.",
+      "3": "En configuraciones, selecciona el idioma que prefieras.",
+      "4": "Puedes cambiar el tema en la sección de apariencia en configuraciones."
+    }
   }
-
-
 }
+
+
 
 
 

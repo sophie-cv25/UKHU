@@ -1,8 +1,8 @@
-
-
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
-    <ion-title color="warning" class="titulo-modal">Soporte Tecnico</ion-title>
+    <ion-title color="warning" class="titulo-modal">
+      {{ 'soporte_tecnico.titulo' | translate }}
+    </ion-title>
     <ion-buttons slot="end">
       <ion-button fill="clear" (click)="dismiss()">
         <ion-icon name="close" color="warning"></ion-icon>
@@ -14,12 +14,14 @@
 <ion-content class="ion-padding fondo-modal">
   <ion-card class="card-modal">
     <ion-card-header>
-      <ion-label class="titulo-seccion">Contáctanos</ion-label>
+      <ion-label class="titulo-seccion">
+        {{ 'soporte_tecnico.contactanos' | translate }}
+      </ion-label>
     </ion-card-header>
     <ion-card-content>
       <ion-item lines="none" class="item-contacto">
         <ion-icon name="mail-outline" slot="start" class="icono-circular"></ion-icon>
-        <ion-label>Contáctanos</ion-label>
+        <ion-label>{{ 'soporte_tecnico.contactanos' | translate }}</ion-label>
         <ion-buttons slot="end">
           <ion-button fill="clear" color="warning" href="https://mail.google.com/mail/?view=cm&to=gianira.salas@ucb.edu.bo" target="_blank">
             <ion-icon name="mail-outline"></ion-icon>
@@ -34,58 +36,60 @@
 
   <ion-card class="card-modal">
     <ion-card-header>
-      <ion-label class="titulo-seccion">Preguntas Frecuentes</ion-label>
+      <ion-label class="titulo-seccion">
+        {{ 'faq.titulo' | translate }}
+      </ion-label>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
         <div class="faq-item-wrapper">
           <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(0)">
             <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
-            <ion-label>¿Dónde puedo ver el puesto de comidas en el que estuve?</ion-label>
+            <ion-label>{{ 'faq.preguntas.0' | translate }}</ion-label>
           </ion-item>
           <div *ngIf="preguntaActiva === 0" class="respuesta-faq">
             <ion-icon name="search-outline" class="icono-circular"></ion-icon>
-            <span>Puedes encontrar tu historial de locales justo en tu perfil.</span>
+            <span>{{ 'faq.respuestas.0' | translate }}</span>
           </div>
         </div>
         <div class="faq-item-wrapper">
           <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(1)">
             <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
-            <ion-label>¿Cómo puedo ganar un descuento en un local?</ion-label>
+            <ion-label>{{ 'faq.preguntas.1' | translate }}</ion-label>
           </ion-item>
           <div *ngIf="preguntaActiva === 1" class="respuesta-faq">
             <ion-icon name="search-outline" class="icono-circular"></ion-icon>
-            <span>Consulta las promociones activas en la sección de descuentos.</span>
+            <span>{{ 'faq.respuestas.1' | translate }}</span>
           </div>
         </div>
         <div class="faq-item-wrapper">
           <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(2)">
             <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
-            <ion-label>¿Cómo cambio mi contraseña?</ion-label>
+            <ion-label>{{ 'faq.preguntas.2' | translate }}</ion-label>
           </ion-item>
           <div *ngIf="preguntaActiva === 2" class="respuesta-faq">
             <ion-icon name="search-outline" class="icono-circular"></ion-icon>
-            <span>Ve a tu perfil y selecciona "Cambiar contraseña".</span>
+            <span>{{ 'faq.respuestas.2' | translate }}</span>
           </div>
         </div>
         <div class="faq-item-wrapper">
           <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(3)">
             <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
-            <ion-label>¿Cómo puedo cambiar el idioma de la app?</ion-label>
+            <ion-label>{{ 'faq.preguntas.3' | translate }}</ion-label>
           </ion-item>
           <div *ngIf="preguntaActiva === 3" class="respuesta-faq">
             <ion-icon name="search-outline" class="icono-circular"></ion-icon>
-            <span>En configuraciones, selecciona el idioma que prefieras.</span>
+            <span>{{ 'faq.respuestas.3' | translate }}</span>
           </div>
         </div>
         <div class="faq-item-wrapper">
           <ion-item lines="none" class="item-faq" (click)="mostrarRespuesta(4)">
             <ion-icon name="search-outline" slot="start" class="icono-circular"></ion-icon>
-            <ion-label>¿Cómo cambio la apariencia de la app?</ion-label>
+            <ion-label>{{ 'faq.preguntas.4' | translate }}</ion-label>
           </ion-item>
           <div *ngIf="preguntaActiva === 4" class="respuesta-faq">
             <ion-icon name="search-outline" class="icono-circular"></ion-icon>
-            <span>Puedes cambiar el tema en la sección de apariencia en configuraciones.</span>
+            <span>{{ 'faq.respuestas.4' | translate }}</span>
           </div>
         </div>
       </ion-list>

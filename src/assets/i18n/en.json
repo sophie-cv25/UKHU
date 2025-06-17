@@ -126,9 +126,33 @@
     "idioma_ingles": "English",
     "activar_notificaciones": "Enable Notifications",
     "modo_oscuro": "Dark Mode"
-  }
+  },
   
+  "soporte_tecnico": {
+    "titulo": "Technical Support",
+    "contactanos": "Contact Us"
+  },
+  "faq": {
+    "titulo": "Frequently Asked Questions",
+    "preguntas": {
+      "0": "Where can I see the food stand I visited?",
+      "1": "How can I get a discount at a restaurant?",
+      "2": "How do I change my password?",
+      "3": "How can I change the app language?",
+      "4": "How do I change the app appearance?"
+    },
+    "respuestas": {
+      "0": "You can find your visit history in your profile.",
+      "1": "Check the active promotions in the discounts section.",
+      "2": "Go to your profile and select 'Change Password'.",
+      "3": "In settings, choose the language you prefer.",
+      "4": "You can change the theme in the appearance section of settings."
+    }
+  }
 }
+
+  
+
 
   
   
