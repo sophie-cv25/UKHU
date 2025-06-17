@@ -1,13 +1,30 @@
+$negro-unico: #191A1D;
+
+.fondo-modal,
+ion-content,
+:host {
+  background: $negro-unico !important;
+  --ion-background-color: #18191b !important;
+}
+
+// Cards, items, etc. usan el mismo negro
+.card-modal {
+  background: $negro-unico !important;
+  border-radius: 18px;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
 .item-contacto,
 .item-faq {
-  background: #232428 !important;
+  background: $negro-unico !important;
   border-radius: 12px;
   margin-bottom: 12px;
   box-shadow: none !important;
   border: none !important;
   color: #fff;
-  --background: #232428 !important;
-  --ion-item-background: #232428 !important;
+  --background: $negro-unico !important;
+  --ion-item-background: $negro-unico !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
   cursor: pointer;
@@ -17,13 +34,12 @@
 }
 
 .item-faq:hover {
-  background: #292b30 !important;
+  background: $negro-unico !important;
 }
 
 .faq-item-wrapper {
   position: relative;
   margin-bottom: 22px;
-  /* Para que el overlay no tape el contenido adyacente */
 }
 
 .respuesta-faq {
@@ -33,23 +49,21 @@
   left: 0;
   top: 100%;
   background: #ffd600;
-  color: #232428;
+  color: $negro-unico;
   padding: 14px 18px;
   border-radius: 10px;
   font-weight: 600;
   font-size: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   max-width: 90%;
   min-height: 48px;
   z-index: 10;
   margin-top: 8px;
-  /* Puedes ajustar margin-top para más separación */
 }
 
 .respuesta-faq .icono-circular {
   margin-right: 12px;
   background: #ffd600 !important;
-  color: #232428 !important;
+  color: $negro-unico !important;
   font-size: 2rem;
   min-width: 40px;
   min-height: 40px;
@@ -63,11 +77,6 @@ ion-card-content {
   padding-right: 0 !important;
 }
 
-ion-content{
-  border-color: #ffd600;
-  border-top: 0px ;
-}
-
 ion-list {
   background: transparent !important;
   padding-left: 0 !important;
@@ -75,9 +84,9 @@ ion-list {
 }
 
 ion-item {
-  --background: #232428 !important;
-  --ion-item-background: #232428 !important;
-  background: #232428 !important;
+  --background: $negro-unico !important;
+  --ion-item-background: $negro-unico !important;
+  background: $negro-unico !important;
   box-shadow: none !important;
   border: none !important;
 }
@@ -95,11 +104,11 @@ ion-item {
   justify-content: center;
 }
 
-ion-card-title{
+ion-card-title {
   height: inherit;
 }
 
-ion-title{
+ion-title {
   color: #ffd600;
   left: 0;
 }
