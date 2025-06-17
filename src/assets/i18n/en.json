@@ -27,11 +27,18 @@
     "mejores_rankeados": "Top Rated",
     "ver_todos": "See All"
   },
-    "eventos": {
-    "titulo": "Events",
-    "la_ruta_de_miguel_alt": "La Ruta de Miguel",
-    "sophitas_alt": "SOPHitas",
-    "ukhu_caldos_alt": "Ukhu Caldos"
+"eventos": {
+    "titulo": "Eventos",
+    "la_ruta_de_miguel": {
+      "alt": "La Ruta de Miguel"
+    },
+    "sophitas": {
+      "alt": "SOPHitas"
+    },
+    "ukhu_caldos": {
+      "alt": "Ukhu Caldos"
+    }
+  
   },
   "historial": {
     "titulo": "History"
@@ -51,7 +58,78 @@
   },
     "resennas": {
     "titulo": "Reviews"
+  },
+   "buscar": {
+    "buscar_restaurantes_placeholder": "Search restaurants...",
+    "resultados_busqueda": "Search results",
+    "boton_filtros": "Filters"
+  },
+  "cambiar_contrasena": {
+    "cambiar_contrasena_titulo": "Change Password",
+    "subtitulo_cambiar_contrasena": "Enter your new password",
+    "contraseña_actual": "Current Password",
+    "contraseña_nueva": "New Password",
+    "repetir_contraseña": "Repeat Password",
+    "boton_olvidaste_contrasena": "Forgot your password?",
+    "boton_cambiar_contrasena": "Change Password"
+  },
+    "configuracion": {
+    "titulo": "Settings",
+    "soporte_tecnico": "Technical Support",
+    "preferencias_app": "App Preferences",
+    "cambiar_contrasena": "Change Password"
+  },
+  "notificaciones": {
+    "titulo": "Notifications"
+  },
+    "recuperar_contrasena": {
+    "titulo": "Forgot my password",
+    "ingresa_email": "Enter your email to reset your password:",
+    "email": "Email",
+    "boton_enviar": "Send"
+  },
+   "control_puntos": {
+    "titulo": "Points Control",
+    "puntos_acumulados": "Accumulated Points",
+    "misiones": "Missions",
+    "recompensas": "Rewards"
+  },
+  "recompensas": {
+    "titulo": "Rewards",
+    "descuentos": "Discounts",
+    "cupon_10": {
+      "alt": "10% Discount Coupon",
+      "titulo": "10% Discount Coupon",
+      "costo": "200 Llajuas",
+      "descripcion": "Claim your coupon. Valid for any of our selected restaurants."
+    },
+    "cupon_15": {
+      "alt": "15% Discount Coupon",
+      "titulo": "15% Discount Coupon",
+      "costo": "300 Llajuas",
+      "descripcion": "Claim your coupon. Valid for any of our selected restaurants."
+    },
+    "cupon_20": {
+      "alt": "20% Discount Coupon",
+      "titulo": "20% Discount Coupon",
+      "costo": "400 Llajuas",
+      "descripcion": "Enjoy this exclusive discount at your favorite restaurants."
+    }
+  },
+    "preferencias_1": {
+    "titulo": "Settings",
+    "cerrar": "Close",
+    "preferencias": "App Preferences",
+    "idioma": "Language",
+    "seleccionar_idioma": "Select your preferred language.",
+    "idioma_espanol": "Spanish",
+    "idioma_ingles": "English",
+    "activar_notificaciones": "Enable Notifications",
+    "modo_oscuro": "Dark Mode"
   }
   
-  
 }
+
+  
+  
+

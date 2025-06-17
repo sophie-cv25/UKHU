@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-modal-soporte-tecnico',
@@ -10,7 +11,13 @@ import { ModalController } from '@ionic/angular';
 export class ModalSoporteTecnicoComponent {
   preguntaActiva: number | null = null;
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private translateService: TranslateService // ✅ Inyectar `TranslateService`
+  ) {
+    // ✅ Usar idioma almacenado o predeterminado
+    this.translateService.use(localStorage.getItem('idioma') || 'es');
+  }
 
   dismiss() {
     this.modalCtrl.dismiss();

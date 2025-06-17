@@ -38,24 +38,23 @@ export class GamificacionPage implements OnInit {
     }
 
     if (this.usuarioId) {
-      setTimeout(() => {
-        this.databaseService.getHistorialDeUsuario(this.usuarioId).subscribe(data => {
-          console.log('✅ Historial extraído después de 10s:', data);
-          this.historial = data;
+  this.databaseService.getHistorialDeUsuario(this.usuarioId).subscribe(data => {
+    console.log('✅ Historial extraído:', data);
+    this.historial = data;
 
-          this.locales = this.historial.length; // Contamos los elementos en el historial
-          this.puntos = this.locales * 10; // Calculamos los puntos
+    this.locales = this.historial.length; // Contamos los elementos en el historial
+    this.puntos = this.locales * 10; // Calculamos los puntos
 
-          // ✅ Guardar valores en `localStorage`
-          localStorage.setItem('locales', JSON.stringify(this.locales));
-          localStorage.setItem('puntos', JSON.stringify(this.puntos));
+    // ✅ Guardar valores en `localStorage`
+    localStorage.setItem('locales', JSON.stringify(this.locales));
+    localStorage.setItem('puntos', JSON.stringify(this.puntos));
 
-          this.cdr.detectChanges();
-          console.log('🔢 Total de registros:', this.locales);
-          console.log('⭐ Puntos acumulados:', this.puntos);
-        });
-      }, 10000); // ⏳ Retraso de 10 segundos
-    }
+    this.cdr.detectChanges();
+    console.log('🔢 Total de registros:', this.locales);
+    console.log('⭐ Puntos acumulados:', this.puntos);
+  });
+}
+
 
     // ✅ Cargar puntos desde `localStorage`
     const puntosGuardados = localStorage.getItem('puntos');

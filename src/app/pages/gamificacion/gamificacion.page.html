@@ -1,6 +1,8 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title class="title-centered">Control de puntos</ion-title>
+    <ion-title class="title-centered">
+      {{ 'control_puntos.titulo' | translate }}
+    </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="showNotifications()">
         <ion-icon name="notifications-outline" size="large"></ion-icon>
@@ -14,19 +16,18 @@
     <div class="card-background-top"></div>
     <div class="card-content">
       <h2 class="llajua-text">LLAJUA</h2>
-      <p class="points-progress">{{puntos}}/500</p>
-      <p class="points-label">Puntos acumulados</p>
+      <p class="points-progress">{{ puntos }}/500</p>
+      <p class="points-label">{{ 'control_puntos.puntos_acumulados' | translate }}</p>
     </div>
   </div>
 
   <ion-button expand="block" class="action-button missions-button" (click)="goToMissions()">
-    <span class="button-text">Misiones</span>
+    <span class="button-text">{{ 'control_puntos.misiones' | translate }}</span>
   </ion-button>
 
   <ion-button expand="block" class="action-button rewards-button" (click)="goToRewards()">
-    <span class="button-text">Recompensas</span>
+    <span class="button-text">{{ 'control_puntos.recompensas' | translate }}</span>
   </ion-button>
-
 </ion-content>
 
 <ion-footer>

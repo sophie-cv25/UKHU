@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title class="custom-title">Configuraciones</ion-title>
+    <ion-title class="custom-title">
+      {{ 'preferencias_1.titulo' | translate }}
+    </ion-title>
     <ion-buttons slot="end">
       <ion-button>
         <ion-icon name="notifications-outline"></ion-icon>
@@ -14,50 +16,45 @@
 
 <ion-content class="custom-content" fullscreen>
   <div class="main-preferences-box">
-    <!-- Barrita amarilla clickeable (antes era ::before, ahora es div real) -->
+    <!-- Barrita amarilla clickeable -->
     <div 
       class="barra-cerrar"
       (click)="cerrarYRedirigir()"
-      title="Cerrar"
+      title="{{ 'preferencias_1.cerrar' | translate }}"
       style="cursor:pointer;"
     ></div>
 
     <div class="box-header">
-      <span class="box-title">Preferencias de la App</span>
+      <span class="box-title">
+        {{ 'preferencias_1.preferencias' | translate }}
+      </span>
       <!-- Botón de cerrar/redirigir -->
-      <ion-button
-        fill="clear"
-        class="close-btn"
-        (click)="cerrarYRedirigir()"
-        style="margin:0; padding:0;"
-      >
+      <ion-button fill="clear" class="close-btn" (click)="cerrarYRedirigir()">
         <ion-icon name="close-outline" class="close-icon"></ion-icon>
       </ion-button>
     </div>
+
     <div class="selector-idioma">
-      <label class="subtitle">Idioma</label>
-      <div class="subtitle-desc">Selecciona tu idioma favorito.</div>
+      <label class="subtitle">
+        {{ 'preferencias_1.idioma' | translate }}
+      </label>
+      <div class="subtitle-desc">
+        {{ 'preferencias_1.seleccionar_idioma' | translate }}
+      </div>
       <ion-select [value]="idioma" (ionChange)="cambiarIdioma($event)" class="custom-select">
-        <ion-select-option value="es">🇪🇸 {{ 'idioma_espanol' | translate }}</ion-select-option>
-        <ion-select-option value="en">🇺🇸 {{ 'idioma_ingles' | translate }}</ion-select-option>
+        <ion-select-option value="es">🇪🇸 {{ 'preferencias_1.idioma_espanol' | translate }}</ion-select-option>
+        <ion-select-option value="en">🇺🇸 {{ 'preferencias_1.idioma_ingles' | translate }}</ion-select-option>
       </ion-select>
     </div>
+
     <div class="toggles-section">
       <div class="toggle-row">
-        <span>Activar Notificaciones</span>
-        <ion-toggle
-          [(ngModel)]="notificaciones"
-          color="warning"
-          class="custom-toggle"
-        ></ion-toggle>
+        <span>{{ 'preferencias_1.activar_notificaciones' | translate }}</span>
+        <ion-toggle [(ngModel)]="notificaciones" color="warning" class="custom-toggle"></ion-toggle>
       </div>
       <div class="toggle-row">
-        <span>Modo Oscuro</span>
-        <ion-toggle
-          [(ngModel)]="modoOscuro"
-          color="warning"
-          class="custom-toggle"
-        ></ion-toggle>
+        <span>{{ 'preferencias_1.modo_oscuro' | translate }}</span>
+        <ion-toggle [(ngModel)]="modoOscuro" color="warning" class="custom-toggle"></ion-toggle>
       </div>
     </div>
   </div>

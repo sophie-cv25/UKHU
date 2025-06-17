@@ -16,6 +16,7 @@ import { CodigoModalComponent } from 'src/app/componentes/codigo-modal/codigo-mo
 import { FormsModule } from '@angular/forms';
 import { RankingModalComponent } from 'src/app/componentes/ranking-modal/ranking-modal.component';
 import { HistorialCardComponent } from 'src/app/componentes/historial-card/historial-card.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { HistorialCardComponent } from 'src/app/componentes/historial-card/histo
     CardResenasComponent,
     CodigoModalComponent,
     RankingModalComponent,
-    HistorialCardComponent
+    HistorialCardComponent,
   ],
   exports:[
     Input1Component,

@@ -28,11 +28,18 @@
     "mejores_rankeados": "Mejores rankeados",
     "ver_todos": "Ver todos"
   },
-    "eventos": {
-    "titulo": "Eventos",
-    "la_ruta_de_miguel_alt": "La Ruta de Miguel",
-    "sophitas_alt": "SOPHitas",
-    "ukhu_caldos_alt": "Ukhu Caldos"
+  "eventos": {
+    "titulo": "Events",
+    "la_ruta_de_miguel": {
+      "alt": "Miguel's Route"
+    },
+    "sophitas": {
+      "alt": "SOPHitas"
+    },
+    "ukhu_caldos": {
+      "alt": "Ukhu Caldos"
+    }
+  
   },
   "historial": {
     "titulo": "Historial"
@@ -52,8 +59,82 @@
   },
     "resennas": {
     "titulo": "Reseñas"
+  },
+  
+  "buscar": {
+    "buscar_restaurantes_placeholder": "Buscar restaurantes...",
+    "resultados_busqueda": "Resultados de búsqueda",
+    "boton_filtros": "Filtros"
+  },
+   "cambiar_contrasena": {
+    "cambiar_contrasena_titulo": "Cambiar contraseña",
+    "subtitulo_cambiar_contrasena": "Ingrese su nueva contraseña",
+    "contraseña_actual": "Contraseña actual",
+    "contraseña_nueva": "Nueva contraseña",
+    "repetir_contraseña": "Repetir contraseña",
+    "boton_olvidaste_contrasena": "¿Olvidaste tu contraseña?",
+    "boton_cambiar_contrasena": "Cambiar contraseña"
+  },
+    "configuracion": {
+    "titulo": "Configuración",
+    "soporte_tecnico": "Soporte Técnico",
+    "preferencias_app": "Preferencias de la App",
+    "cambiar_contrasena": "Cambiar contraseña"
+  },
+  "notificaciones": {
+    "titulo": "Notificaciones"
+  },
+    "recuperar_contrasena": {
+    "titulo": "Olvidé mi contraseña",
+    "ingresa_email": "Ingresa tu e-mail para restablecer tu contraseña:",
+    "email": "E-mail",
+    "boton_enviar": "Enviar"
+  },
+    "control_puntos": {
+    "titulo": "Control de puntos",
+    "puntos_acumulados": "Puntos acumulados",
+    "misiones": "Misiones",
+    "recompensas": "Recompensas"
+  },
+  
+  "recompensas": {
+    "titulo": "Recompensas",
+    "descuentos": "Descuentos",
+    "cupon_10": {
+      "alt": "Cupón 10% de Descuento",
+      "titulo": "Cupón de 10% de Descuento",
+      "costo": "200 Llajuas",
+      "descripcion": "Reclama tu cupón. Cupón válido para cualquiera de nuestros restaurantes seleccionados."
+    },
+    "cupon_15": {
+      "alt": "Cupón 15% de Descuento",
+      "titulo": "Cupón de 15% de Descuento",
+      "costo": "300 Llajuas",
+      "descripcion": "Reclama tu cupón. Cupón válido para cualquiera de nuestros restaurantes seleccionados."
+    },
+    "cupon_20": {
+      "alt": "Cupón 20% de Descuento",
+      "titulo": "Cupón de 20% de Descuento",
+      "costo": "400 Llajuas",
+      "descripcion": "Aprovecha este descuento exclusivo en tus restaurantes favoritos."
+    }
+  },
+  "preferencias_1": {
+    "titulo": "Configuraciones",
+    "cerrar": "Cerrar",
+    "preferencias": "Preferencias de la App",
+    "idioma": "Idioma",
+    "seleccionar_idioma": "Selecciona tu idioma favorito.",
+    "idioma_espanol": "Español",
+    "idioma_ingles": "Inglés",
+    "activar_notificaciones": "Activar Notificaciones",
+    "modo_oscuro": "Modo Oscuro"
   }
+
+
 }
+
+
 
 
 
