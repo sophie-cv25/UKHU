@@ -1,9 +1,9 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'com.ucbx.Ukhu',
   appName: 'UKHU',
   webDir: 'www'
 };
 
-export default config;
+export default config;  
