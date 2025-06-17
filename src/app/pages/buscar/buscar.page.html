@@ -22,7 +22,12 @@
           <ion-toolbar>
             <ion-title>{{ 'resultados_busqueda' | translate }}</ion-title>
             <ion-buttons slot="end">
-              <ion-button (click)="toggleFiltros()">{{ 'boton_filtros' | translate }}</ion-button>
+              <ion-button 
+                class="boton-filtros" 
+                [class.activo]="mostrarFiltros" 
+                (click)="toggleFiltros()">
+                {{ 'boton_filtros' | translate }}
+              </ion-button>
             </ion-buttons>
           </ion-toolbar>
         </ion-header>
@@ -41,12 +46,14 @@
 
         <!-- Contenedor scrollable para las zonas -->
         <div *ngIf="mostrarFiltros" class="zonas-container">
-          <ion-item-divider color="light">
-            <ion-label>{{ 'zonas_label' | translate }}</ion-label>
-          </ion-item-divider>
-          <ion-item *ngFor="let zona of zonas" (click)="filtrarPorZona(zona)">
-            <ion-label>{{ zona }}</ion-label>
-          </ion-item>
+          <div
+            class="zona-opcion"
+            *ngFor="let zona of zonas"
+            [class.activo]="zonaSeleccionada === zona"
+            (click)="filtrarPorZona(zona)"
+          >
+            {{ zona }}
+          </div>
         </div>
 
         <ion-searchbar 

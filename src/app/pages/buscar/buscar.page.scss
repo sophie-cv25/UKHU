@@ -132,9 +132,9 @@ ion-modal ion-title {
 .filtros-scroll {
   display: flex;
   overflow-x: auto;
-  padding: 16px 16px 16px 16px;
+  padding: 16px 10px 10px 16px;
   gap: 12px;
-  background: #FFD700;
+  background: #1a1a1a;
   margin-bottom: 8px;
   /* Hacer que se pueda hacer scroll horizontal */
   scrollbar-width: none; /* Firefox */
@@ -158,13 +158,19 @@ ion-modal ion-title {
     transition: all 0.3s ease;
     flex-shrink: 0; /* Evita que se compriman */
     min-width: fit-content; /* Asegura que mantengan su tamaño */
-    /* Forzar un ancho mínimo para que se vean cortados */
     min-width: 120px;
 
-    &.activo,
-    &:hover {
+    /* SOLO hover no cambia clase activo para que no quede pegado el color */
+    &:hover:not(.activo) {
       background: #f84b5f;
       color: white;
+    }
+
+    &.activo {
+      background: #f84b5f;
+      color: white;
+      box-shadow: 0 0 8px #f84b5f;
+      font-weight: 600;
     }
 
     &:last-child {
@@ -191,10 +197,9 @@ ion-modal ion-title {
 /* Lista de zonas */
 ion-list {
   background: #1a1a1a !important;
-  
+
   ion-item-divider {
     --background: #2c2c2c !important;
-    --color: #FFD700 !important;
     font-weight: bold;
     position: sticky;
     top: 0;
@@ -204,8 +209,10 @@ ion-list {
   ion-item {
     --background: #1a1a1a !important;
     --color: white !important;
-    border-bottom: 1px solid #FFD700;
     margin-bottom: 4px;
+    --border-width: 0 !important; /* Elimina el borde predeterminado */
+    border-bottom: none !important; /* Por si lo aplica fuera de la variable */
+    border: none !important;
 
     ion-label {
       color: white !important;
@@ -224,32 +231,35 @@ ion-modal ion-searchbar {
   --background: #2c2c2c !important;
   --border-radius: 25px !important;
   --color: #ffffff !important;
-  --placeholder-color: #999 !important;
-  --icon-color: #999 !important;
-  padding: 8px 16px !important;
+  --placeholder-color: #f84b5f !important;
+  --icon-color: #f84b5f !important;
+  padding: 8px 0px !important;
   margin: 16px !important;
+
+  width: calc(100% - 32px); /* Asegura espacio para los márgenes */
+  box-sizing: border-box;   /* Incluye padding y margin en el ancho */
 }
 
 /* Cards de restaurantes */
 app-card-2 {
   display: block;
   width: 100%;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
 }
 
 /* Estilos para los items de restaurantes */
 ion-list ion-item {
   --background: #1a1a1a !important;
-  --border-color: #f84b5f !important;
-  border: 2px solid #f84b5f !important;
   border-radius: 12px !important;
-  margin: 8px 16px !important;
+  margin: -40px 7px !important;
   padding: 16px !important;
-  --padding-start: 16px !important;
-  --padding-end: 16px !important;
+  --padding-start: 7px !important;
+  --padding-end: 7px !important;
   --inner-padding-end: 0px !important;
-  --padding-top: 16px !important;
-  --padding-bottom: 16px !important;
-  
+  --padding-top: 9px !important;
+  --padding-bottom: 5px !important;
+
   /* Para que el card ocupe todo el ancho disponible */
   ion-label {
     width: 100% !important;
@@ -261,9 +271,6 @@ ion-list ion-item {
 app-card-2 {
   .restaurant-card {
     background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -278,14 +285,14 @@ app-card-2 {
       padding-right: 16px;
       min-width: 0; /* Permite que el contenido se comprima */
       overflow: hidden; /* Evita desbordamiento */
-      
+
       .restaurant-name {
         color: #f84b5f !important;
         font-size: 18px !important;
         font-weight: bold !important;
-        margin-bottom: 8px;
-        line-height: 1.2;
-        /* Controla el desbordamiento del texto */
+        margin-bottom: 4px; /* antes 8px */
+        margin-top: -2px;   /* antes 1px */
+        line-height: 1.1;   /* un poco más compacto */
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -297,8 +304,10 @@ app-card-2 {
         font-size: 14px;
         line-height: 1.4;
         overflow: hidden; /* Evita desbordamiento */
-        
-        .time, .distance, .hours {
+
+        .time,
+        .distance,
+        .hours {
           color: white !important;
           display: block;
           margin: 2px 0;
@@ -308,7 +317,7 @@ app-card-2 {
           white-space: nowrap;
           max-width: 100%;
         }
-        
+
         .time {
           margin-bottom: 4px;
         }
@@ -323,4 +332,65 @@ app-card-2 {
       flex-shrink: 0;
     }
   }
+}
+
+
+/* Zonas como slider horizontal - igual que categorías */
+.zonas-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 5px 0px 0px 16px;
+  gap: 12px;
+  background: #1a1a1a;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.zonas-container::-webkit-scrollbar {
+  display: none;
+}
+
+.zona-opcion {
+  background: transparent;
+  border: 2px solid #f84b5f;
+  border-radius: 20px;
+  padding: 8px 16px;
+  color: #f84b5f;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  min-width: 120px;
+}
+
+/* Aquí también usamos :hover solo si NO está activo para que no quede "pegado" */
+.zona-opcion:hover:not(.activo) {
+  background: transparent !important;
+  color: #f84b5f !important;
+}
+.filtros-scroll[_ngcontent-ng-c1148505467] .filtro-opcion[_ngcontent-ng-c1148505467]:hover:not(.activo) {
+  background: transparent !important;
+  color: #f84b5f !important;
+}
+
+.zona-opcion.activo {
+  background: #f84b5f;
+  color: white;
+  box-shadow: 0 0 8px #f84b5f;
+  font-weight: 600;
+}
+.boton-filtros {
+  --background: #FFD700;
+  --color: black;
+}
+
+.boton-filtros.activo {
+  --background: #FFD700;
+  --color: #f84b5f;
+  font-weight: bold;
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.7);
+}
+ ::ng-deep h2.local {
+  margin-top: 0px !important;
 }

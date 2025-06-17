@@ -109,26 +109,38 @@ export class BuscarPage implements OnInit {
   }
 
   filtrarPorCategoria(categoria: string) {
-    this.restaurantesFiltrados = this.restaurantes.filter(restaurante => restaurante.categoria === categoria);
-    this.mostrarFiltros = false;
+    this.categoriaSeleccionada = (this.categoriaSeleccionada === categoria) ? '' : categoria;
+    this.aplicarFiltros();
   }
 
   filtrarPorZona(zona: string) {
-    this.restaurantesFiltrados = this.restaurantes.filter(restaurante => restaurante.zona === zona);
-    this.mostrarFiltros = false;
+    this.zonaSeleccionada = (this.zonaSeleccionada === zona) ? '' : zona;
+    this.aplicarFiltros();
+  }
+
+  aplicarFiltros() {
+    this.restaurantesFiltrados = this.restaurantes.filter(restaurante => {
+      const coincideCategoria = this.categoriaSeleccionada ? restaurante.categoria === this.categoriaSeleccionada : true;
+      const coincideZona = this.zonaSeleccionada ? restaurante.zona === this.zonaSeleccionada : true;
+      const coincideBusqueda = this.searchTerm.trim() === '' ? true : (
+        restaurante.nombre?.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        restaurante.categoria?.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        restaurante.zona?.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+      return coincideCategoria && coincideZona && coincideBusqueda;
+    });
   }
 
   buscarRestaurantes() {
     if (!this.busquedaActiva) return;
-    if (this.searchTerm.trim() === '') {
-      this.restaurantesFiltrados = this.restaurantes;
-    } else {
-      const term = this.searchTerm.toLowerCase();
-      this.restaurantesFiltrados = this.restaurantes.filter((restaurante) =>
-        restaurante.nombre?.toLowerCase().includes(term) ||
-        restaurante.categoria?.toLowerCase().includes(term) ||
-        restaurante.zona?.toLowerCase().includes(term)
-      );
+
+    // Si quieres que la búsqueda limpie filtros de categoría y zona, mantenlo así.
+    // Si quieres que filtros y búsqueda funcionen juntos, comenta o elimina las siguientes líneas:
+    if (this.searchTerm.trim() !== '') {
+      this.categoriaSeleccionada = '';
+      this.zonaSeleccionada = '';
     }
+
+    this.aplicarFiltros();
   }
 }
