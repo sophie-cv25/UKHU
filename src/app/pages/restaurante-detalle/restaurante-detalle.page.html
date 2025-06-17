@@ -1,14 +1,16 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar color="none" class="toolbar-custom">
-    <ion-buttons slot="start">
-      <ion-button fill="clear" (click)="goBack()">
-        <ion-icon name="arrow-back" slot="icon-only" color="dark"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
+<!--
+  HEADER ROJO PEGADO AL TOPE (sticky)
+  Elimina el <ion-header> si NO necesitas el header nativo de Ionic.
+  El sticky header con flecha irá dentro de ion-content.
+-->
 <ion-content [fullscreen]="true" class="detalle-content">
+  <!-- Sticky custom header rojo con flecha -->
+  <div class="custom-sticky-header">
+    <button class="back-btn" (click)="goBack()">
+      <ion-icon name="arrow-back" color="dark"></ion-icon>
+    </button>
+  </div>
+
   <div class="restaurante-header">
     <img [src]="restaurante?.logoUrl || 'assets/icon/Perfil.svg'" 
          [alt]="'detalle.logo_alt' | translate" 
