@@ -1,14 +1,32 @@
 * {
   border-color: transparent;
 }
+
+:root {
+  --ion-toolbar-background: #121212 !important;
+}
+
+.toolbar-simulada {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #121212; /* 🔹 Color de fondo simulado */
+  padding: 12px;
+  width: 100%;
+}
+
+
+ion-header .toolbar-container {
+  background-color: #121212 !important;
+}
+
 ion-content {
   display: flex;
-align-items: center; /* 🔹 Centra los elementos horizontalmente */
-
+  align-items: center; /* 🔹 Centra los elementos horizontalmente */
 }
 
 .boton-personalizado {
-    margin-top: 266px;
+  margin-top: 266px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -23,6 +41,7 @@ align-items: center; /* 🔹 Centra los elementos horizontalmente */
   text-transform: none;
   justify-content: center;
 }
+
 ion-item {
   --background: transparent;
   --padding-start: 0;
@@ -52,7 +71,6 @@ ion-label {
   white-space: nowrap;
 }
 
-
 ion-input {
   flex: 1; /* 🔹 Ocupa el espacio restante para escribir */
   font-family: 'Montserrat', sans-serif;
@@ -64,18 +82,18 @@ ion-input {
   border: none;
 }
 
-p{
+p {
   margin-left: auto;
   margin-right: auto;
   display: block; /* 🔹 Asegura que el elemento se comporte como bloque */
   width: fit-content; /* 🔹 El ancho se ajusta automáticamente al contenido */
-    margin-bottom: 183px;
-    width: 312px;
-    margin-top: 73px;
+  margin-bottom: 183px;
+  width: 312px;
+  margin-top: 73px;
 }
+
 form {
   display: flex;
   flex-direction: column; /* 🔹 Mantiene los elementos en una columna */
   align-items: center; /* 🔹 Centra los elementos horizontalmente */
-
 }
