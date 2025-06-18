@@ -13,6 +13,7 @@ export class HomeusuarioPage implements OnInit {
   restaurantesVisitados: any[] = [];
   restaurantesMejores: any[] = [];
   usuarioId: string | null = null;
+  puntos: number = 0; // ✅ Agregamos la variable puntos
 
   constructor(
     private databaseService: DatabaseService,
@@ -26,6 +27,13 @@ export class HomeusuarioPage implements OnInit {
       alert("Debes iniciar sesión para ver tu historial de visitas.");
       this.router.navigate(['/onboardingf']);
       return;
+    }
+
+    // ✅ Cargar los puntos del usuario desde localStorage
+    const puntosGuardados = localStorage.getItem('puntos');
+    if (puntosGuardados) {
+      this.puntos = JSON.parse(puntosGuardados);
+      console.log('📦 LocalStorage - puntos recuperados:', this.puntos);
     }
 
     // Obtener todos los restaurantes
@@ -70,7 +78,6 @@ export class HomeusuarioPage implements OnInit {
   }
 
   irATopRestaurantes() {
-  this.router.navigate(['/top-restaurantes']);
-}
-
+    this.router.navigate(['/top-restaurantes']);
+  }
 }
