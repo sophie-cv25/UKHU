@@ -61,19 +61,22 @@ ion-buttons ion-icon {
   width: 50px !important;
   height: 50px !important;
   border-radius: 50% !important;
-  background: #ffd740 !important; /* Fondo amarillo para el icono */
+  background: #ffd740 !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
   margin-right: 15px !important;
   overflow: hidden !important;
+  flex-shrink: 0 !important; // ✅ Asegura que no se deforme en flexbox
 }
 
 .card-icon img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
+  border-radius: 50% !important; // ✅ Esto evita que la imagen quede ovalada
 }
+
 
 .card-details {
   flex-grow: 1 !important;
