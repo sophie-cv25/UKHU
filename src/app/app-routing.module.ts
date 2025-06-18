@@ -133,6 +133,11 @@ const routes: Routes = [
     path: 'recompensas',
     loadChildren: () => import('./pages/recompensas/recompensas.module').then( m => m.RecompensasPageModule)
   },
+  {
+    path: 'evento-semanal',
+    loadChildren: () => import('./pages/evento-semanal/evento-semanal.module').then( m => m.EventoSemanalPageModule)
+  },
+
 
 
  

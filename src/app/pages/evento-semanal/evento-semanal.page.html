@@ -1,0 +1,65 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/perfil">
+        <ion-icon name="arrow-back" slot="icon-only" color="warning"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title color="warning">
+      {{ 'evento-semanal.titulo' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="fondo-negro">
+
+  <!-- Banner del evento -->
+  <div class="banner-evento">
+    <img src="assets/icon/la-ruta-de-miguel.png" alt="Evento principal" />
+  </div>
+
+  <!-- Descripción general del evento -->
+  <div class="descripcion-evento">
+    Disfruta del mejor evento de comida rápida saludable con variedad y sabor. Productos frescos, locales destacados y promociones imperdibles para todos los gustos.
+  </div>
+
+  <!-- Productos en promo -->
+  <h2 class="seccion-subtitulo amarillo">
+    {{ 'evento-semanal.productos_en_promo' | translate }}
+  </h2>
+  <div class="cards-grid">
+    <div class="producto-card" *ngFor="let tipo of tiposDeComida">
+      <ion-card-header>{{ tipo.nombre }}</ion-card-header>
+      <img [src]="tipo.imagen" alt="{{ tipo.nombre }}" />
+    </div>
+  </div>
+
+  <!-- Restaurantes participantes -->
+  <h2 class="seccion-subtitulo amarillo">
+    {{ 'evento-semanal.restaurantesparticipantes' | translate }}
+  </h2>
+ <div class="restaurantes-scroll">
+  <div *ngFor="let restaurante of localesParticipantes" class="card2_container">
+    <div class="header-line"></div> <!-- línea amarilla arriba -->
+
+    <div class="header">
+      <h2 class="local">{{ restaurante.nombre }}</h2>
+    </div>
+
+    <figure class="imglocal">
+      <img [src]="restaurante.imagen" alt="{{ restaurante.nombre }}" />
+    </figure>
+
+    <div class="info-extra">
+      <p>{{ restaurante.infoExtra }}</p>
+      <p>{{ restaurante.cierre }}</p>
+    </div>
+
+    <div class="footer-line"></div> <!-- línea amarilla abajo -->
+  </div>
+ </div>
+</ion-content>
+
+<ion-footer>
+  <app-tab-bar></app-tab-bar>
+</ion-footer>

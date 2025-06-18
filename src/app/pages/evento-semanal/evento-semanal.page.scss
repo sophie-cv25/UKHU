@@ -1,0 +1,160 @@
+.fondo-negro {
+  --background: #0e0e0e;
+  background-color: #0e0e0e;
+  color: white;
+  max-height: 80vh; /* máximo 80% de la altura de la pantalla */
+  overflow-y: auto; /* barra vertical solo si es necesario */
+}
+
+
+ion-header {
+  --background: #000000 !important;
+  background: #000000 !important;
+  color: #ffc107; /* texto amarillo */
+}
+
+/* 🖼 Imagen del banner con título encima */
+.banner-evento {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 16px 0;
+
+  img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+  }
+
+  .titulo-imagen {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    color: #ffd700;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* 📝 Caja de descripción */
+.descripcion-evento {
+  background: #d94d59;
+  color: white;
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1rem;
+  line-height: 1.4;
+  border-radius: 16px; /* borde redondeado */
+}
+
+/* 🧃 Subtítulos de secciones */
+.seccion-subtitulo {
+  font-size: 1.2rem;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  font-weight: bold;
+  text-align: center; /* centrado */
+}
+
+.seccion-subtitulo.amarillo {
+  color: #ffd700;
+}
+
+/* 🍔 Productos: mostrar en fila, 3 tarjetas visibles */
+.cards-grid {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-bottom: 24px;
+}
+
+.producto-card {
+  background: #1e1e1e;
+  border-radius: 16px; /* borde redondeado 16px */
+  overflow: hidden;
+  text-align: center;
+  width: 30%;
+
+  ion-card-header {
+    background: #d94d59;
+    color: white;
+    font-weight: bold;
+    padding: 6px 0;
+    font-size: 1rem;
+    text-align: center; /* centrado */
+  }
+
+  img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+  }
+}
+
+/* Restaurantes con estilo card2_container */
+.restaurantes-scroll {
+  display: flex;
+  gap: 16px;
+  padding: 8px 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.card2_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 260px;
+  background-color: var(--ion-color-primary);
+  border-radius: 16px; /* borde redondeado */
+  color: white;
+  font-family: Arial, sans-serif;
+  min-width: 180px;
+  flex-shrink: 0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.card2_container .header {
+  background-color: #ffc107;
+  color: #1e1e1e;;
+  padding: 0px 15px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centrado */
+}
+
+.card2_container .imglocal {
+  flex-grow: 1;
+  background-color: var(--ion-color-light);
+  margin: -5px 11px;
+  border-radius: 12px;
+}
+
+.card2_container .imglocal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+.card2_container .footer {
+  background-color: #000000;
+  border-bottom: 4px solid var(--ion-color-warning); /* línea amarilla abajo */
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+  line-height: 1.2;
+  text-align: center; /* centrado */
+}
