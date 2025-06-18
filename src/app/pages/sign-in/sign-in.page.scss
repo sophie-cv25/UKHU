@@ -28,6 +28,7 @@
       font-weight: bolder;
       color: #000;
       z-index: 10;
+      width: 200px;
     }
   }
 
@@ -41,7 +42,7 @@
     padding-top: 60px;
 
     border-radius: 50px 50px 0 0;
-    margin-top: 30px;
+    margin-top: 100px;
     // min-height: calc(100% - 210px); // <-- Puedes mantener esto si funciona bien con 'height: 100%' y 'overflow: hidden'
     // o si quieres que la caja negra siempre tenga un tamaño mínimo garantizado.
     // Si causa problemas de scroll, puedes probar a eliminarlo.
