@@ -1,114 +1,109 @@
 ion-content {
-  --background: #1a1a1a; // Fondo oscuro
+  --background: #1A1A1A !important; /* Fondo global */
+  background: #1A1A1A !important;
 }
 
 ion-header {
-  --background: transparent;
-  background: transparent;
-  box-shadow: none;
+  --background: #1A1A1A !important; /* Fondo del header */
+  background: #1A1A1A !important;
+  box-shadow: none !important;
+}
 
-  ion-toolbar {
-    --background: transparent;
-    background: transparent;
-    --border-width: 0;
-    box-shadow: none;
+ion-toolbar {
+  --background: #1A1A1A !important; /* Fondo del toolbar */
+  background: #1A1A1A !important;
+  --border-width: 0 !important;
+  box-shadow: none !important;
+}
 
-    ion-back-button {
-      --color: #f7707d; // Color de la flecha hacia atrás (rosa rojizo)
-    }
+ion-back-button {
+  --color: #f7707d !important; /* Flecha hacia atrás en rosa rojizo */
+}
 
-    .title-centered {
-      text-align: center;
-      color: #f7707d; // Título "Recompensas" en rosa rojizo
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
+.title-centered {
+  text-align: center !important;
+  color: #f7707d !important; /* Título "Recompensas" en rosa rojizo */
+  font-weight: bold !important;
+  font-size: 1.2rem !important;
+}
 
-    ion-buttons {
-      ion-button {
-        --padding-end: 15px; // Ajusta el padding si el icono está muy pegado al borde
-      }
-    }
-  }
+ion-buttons ion-button {
+  --padding-end: 15px !important;
 }
 
 .section-title {
-  color: #ffd740; // Color para "Descuentos" (amarillo)
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-top: 25px; // Espacio superior
-  margin-bottom: 20px; // Espacio inferior
+  color: #ffd740 !important; /* Color para "Descuentos" (amarillo) */
+  text-align: center !important;
+  font-size: 1.4rem !important;
+  font-weight: bold !important;
+  margin-top: 25px !important;
+  margin-bottom: 20px !important;
 }
 
-.rewards-carousel { /* Este selector ya no se usa si estás usando swiper-container directamente, pero lo dejo por si acaso */
+/* Estilos de carrusel */
+.rewards-carousel {
   height: 420px;
   padding-bottom: 30px;
-
-  // Estilos para los puntos del pager
-  .swiper-pagination-bullet {
-    background: #444444 !important; // Color de los puntos inactivos (gris oscuro)
-    opacity: 1 !important; // Asegura que sean visibles
-  }
-
-  .swiper-pagination-bullet-active {
-    background: #f7707d !important; // Color del punto activo (rosa rojizo)
-  }
 }
 
-/* Nota: el .rewards-grid que tenías ya no es necesario con swiper-container, lo elimino para no confundir. */
+.swiper-pagination-bullet {
+  background: #444444 !important; /* Color de los puntos inactivos */
+  opacity: 1 !important;
+}
 
+.swiper-pagination-bullet-active {
+  background: #f7707d !important; /* Color del punto activo */
+}
 
+/* Estilos para tarjetas de recompensa */
 .reward-card {
-  --background: #2c2c2c;
-  border-radius: 15px;
-  min-width: 250px;
-  flex-shrink: 0;
-  margin-bottom: 20px;
-  /* scroll-snap-align: start; <- Esto lo maneja swiper-slide ahora */
-  overflow: hidden;
-  height: 380px;
+  --background: #2C2C2C !important;
+  border-radius: 15px !important;
+  min-width: 250px !important;
+  flex-shrink: 0 !important;
+  margin-bottom: 20px !important;
+  overflow: hidden !important;
+  height: 380px !important;
+}
 
-  .reward-image-container {
-    width: 100%;
-    height: 60%; /* Puedes ajustar este valor si quieres que la imagen ocupe más o menos del card */
-    background: #ffd740;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+.reward-image-container {
+  width: 100% !important;
+  height: 60% !important;
+  background: #ffd740 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  overflow: hidden !important;
+}
 
-    img {
-      width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
-      height: 100%; /* La imagen ocupa el 100% de la altura del contenedor */
-      object-fit: cover; /* La imagen se ajusta para cubrir completamente el contenedor, recortando si es necesario */
-      /* Si prefieres que la imagen se ajuste sin recortar, pero pueda dejar espacios en blanco, usa: object-fit: contain; */
-    }
-  }
+.reward-image-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
 
-  .reward-details {
-    padding: 15px;
-    text-align: center;
-    color: #ffffff;
+.reward-details {
+  padding: 15px !important;
+  text-align: center !important;
+  color: #ffffff !important;
+}
 
-    .reward-title {
-      font-size: 1.1rem;
-      font-weight: bold;
-      margin: 0 0 5px;
-    }
+.reward-title {
+  font-size: 1.1rem !important;
+  font-weight: bold !important;
+  margin: 0 0 5px !important;
+}
 
-    .reward-cost {
-      font-size: 0.9rem;
-      color: #f7707d;
-      font-weight: bold;
-      margin: 0 0 10px;
-    }
+.reward-cost {
+  font-size: 0.9rem !important;
+  color: #f7707d !important;
+  font-weight: bold !important;
+  margin: 0 0 10px !important;
+}
 
-    .reward-description {
-      font-size: 0.8rem;
-      color: #aaaaaa;
-      margin: 0;
-      line-height: 1.4;
-    }
-  }
+.reward-description {
+  font-size: 0.8rem !important;
+  color: #aaaaaa !important;
+  margin: 0 !important;
+  line-height: 1.4 !important;
 }
