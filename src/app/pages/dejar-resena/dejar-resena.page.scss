@@ -1,10 +1,10 @@
 .fondo-resena {
-  background: #232326;
-}
+   background-color: var(--ion-color-dark);
+} 
 
 .caja-resena {
   margin: 40px 16px 0 16px;
-  background: #ffd600;
+  background: var(--ion-color-success);
   border-radius: 22px;
   box-shadow: 0 4px 16px #00000030;
   padding: 24px 18px 18px 18px;
@@ -13,23 +13,57 @@
   align-items: stretch;
 }
 
-.input-resena {
-  background: transparent;
+.label-resena {
+  color: #232326;
+  font-size: 1em;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+.textarea-resena {
+  background: var(--ion-color-success);
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 1em;
+  color: #232326;
+  width: 100%;
+  min-height: 80px;
   border-radius: 12px;
-  margin-bottom: 18px;
+  padding: 8px 10px;
+  box-shadow: none;
+}
+
+.btn-enviar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
 }
 
 .btn-enviar {
-  background: #ffd600;
-  color: #232326;
+  --background: var(--ion-color-success);
+  --color: #232326;
   font-weight: bold;
   border-radius: 16px;
   margin: 0 auto;
   width: 120px;
+  height: 36px;
+  font-size: 1em;
+  box-shadow: none;
+  text-transform: none;
 }
 
 .titulo-resena {
-  color: #e64980;
+  color: var(--ion-color-warning);
   font-weight: bold;
   font-size: 1.2em;
+  text-align: center;
+}
+
+.textarea-resena::placeholder {
+  border-bottom: 1.5px solid #e64980; /* Color y grosor del subrayado */
+  padding-bottom: 2px;
+  background-size: 100% 2px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
 }
